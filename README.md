@@ -91,18 +91,34 @@ pip install -r requirements.txt
 
 ### 2. 환경변수 설정
 
-루트의 `.env` 파일에 아래 값을 채운다.
+루트에 `.env` 파일을 생성하고 아래 값을 채운다.
 
 ```env
-OPENAI_API_KEY=          # 필수
-QDRANT_URL=              # 필수
-QDRANT_API_KEY=          # 필수
-QDRANT_COLLECTION_NAME=  # 필수
+# ── LLM ─────────────────────────────────────────────
+OPENAI_API_KEY=          # 필수 | platform.openai.com
 
-LIBRARY_API_KEY=         # 정보나루 API (도서관 검색)
-NAVER_CLIENT_ID=         # 네이버 API (ISBN 검색)
+# ── Qdrant Vector DB ─────────────────────────────────
+QDRANT_URL=              # 필수 | Qdrant Cloud 클러스터 URL
+QDRANT_API_KEY=          # 필수 | Qdrant Cloud API 키
+QDRANT_COLLECTION_NAME=  # 필수 | 사용할 컬렉션 이름 (예: books_intro_48k)
+
+# ── 정보나루 Open API (도서관 검색 · 대출 조회) ──────
+# https://www.data4library.kr 에서 발급
+LIBRARY_API_KEY=         # 필수
+
+# ── 네이버 검색 API (도서 ISBN · 표지 이미지) ────────
+# https://developers.naver.com 에서 애플리케이션 등록 후 발급
+NAVER_CLIENT_ID=
 NAVER_CLIENT_SECRET=
-ALADIN_API_KEY=          # 알라딘 API
+
+# ── 알라딘 API (선택) ────────────────────────────────
+ALADIN_API_KEY=
+ALADIN_API_KEYS=         # 복수 키 사용 시 쉼표로 구분
+
+# ── 앱 설정 (기본값 그대로 사용 가능) ────────────────
+LLM_MODEL=gpt-4o-mini
+LLM_TEMPERATURE=0.7
+CHROMA_DB_PATH=./chroma_db
 ```
 
 ### 3. 시뮬레이션 실행
