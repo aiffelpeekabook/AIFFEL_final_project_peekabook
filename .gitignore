@@ -1,0 +1,32 @@
+.env
+
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Data files
+research/data/raw/
+research/data/processed/
+backend/chroma_db/
+
+# Model cache
+models/
+
+# Node
+frontend/node_modules/
+frontend/.next/
+
+# Python env
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Windows metadata
+*.Zone.Identifier
