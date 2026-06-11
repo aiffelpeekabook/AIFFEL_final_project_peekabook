@@ -30,3 +30,7 @@ build/
 
 # Windows metadata
 *.Zone.Identifier
+*:Zone.Identifier
+
+# wandb local run data
+backend/wandb/
