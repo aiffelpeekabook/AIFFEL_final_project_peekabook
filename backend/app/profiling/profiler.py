@@ -162,66 +162,80 @@ SUMMARY_PROMPT = """\
 - 한국어로 3~5문장의 간결한 요약문
 - 사용자의 독서 목적, 선호 장르, 스타일, 난이도, 현재 상황을 자연스럽게 통합
 - 구체적인 도서 추천을 위한 근거가 될 수 있도록 작성
+- 반드시 포함해야 할 요소:
+  (1) 책을 찾게 된 상황적·감정적 맥락 (왜 지금 이 책이 필요한가)
+  (2) 원하는 책의 구체적 특성 (장르, 테마, 분위기, 문체, 난이도)
+  (3) 이전 독서 경험이 있다면 그것과의 관계
+- 이 요약문이 향후 유사한 독서 요구를 가진 다른 세션을 검색하는 데 사용되므로, 감정적 맥락과 독서 목적을 명확하게 서술하세요
 
 요약문:"""
 
 REFLECTION_PROMPT = """\
-당신은 도서 큐레이션 시스템의 메모리 분석기입니다.
-아래의 세션 메모리와 연결된 이전 메모리들을 분석하여 고도화된 인사이트를 추출하세요.
-
+아래의 현재 세션 정보와 연결된 이전 메모리들을 분석하여, **현재 이 사용자가 원하는 책**을 더 깊이 이해하기 위한 3~7가지 인사이트를 도출하세요.
+ 
+중요: 인사이트는 반드시 현재 세션의 독서 요구를 중심으로 작성하세요. 연결된 이전 메모리는 현재 요구의 맥락을 깊이 이해하기 위한 참고 자료로 활용하되, 범용적인 과거 패턴 요약이 아닌 현재 시점에서 사용자가 어떤 책을 원하는지를 구체화하는 데 집중하세요.
+ 
 현재 세션 메모리:
 - 프로필: {current_profile}
 - 요약: {current_summary}
 - 독서 경험: {current_experiences}
-
+ 
 연결된 이전 메모리들 (1-hop):
 {linked_memories}
-
-다음의 심화 질문들에 답하며 reflection을 수행하세요:
-1. 사용자의 독서 패턴에서 반복되는 테마나 욕구가 있는가?
-2. 시간에 따른 독서 선호의 변화가 감지되는가?
-3. 사용자가 명시적으로 말하지 않았지만 추론 가능한 잠재적 선호가 있는가?
-4. 이전 경험과 현재 요구 사이의 연결점은 무엇인가?
-
-인사이트를 JSON 형식으로 응답하세요:
-{{
-    "recurring_themes": "반복되는 테마/패턴",
-    "preference_evolution": "선호 변화 추이",
-    "latent_preferences": "잠재적 선호",
-    "connections": "이전 경험과 현재 요구의 연결점",
-    "reflection_summary": "종합 인사이트 (3~5문장)"
-}}
-
+ 
+다음 4가지 관점에서 현재 요구를 심화 분석하세요:
+1. 현재 욕구의 본질: 사용자가 표면적으로 말한 것 너머에, 이전 메모리의 맥락을 고려했을 때 실제로 원하는 독서 경험은 무엇인가?
+2. 현재 선호의 구체화: 이전 메모리에서의 독서 경험을 참고하여, 현재 원하는 책의 테마, 분위기, 문체, 서사 구조 등을 더 구체적으로 추론할 수 있는가?
+3. 잠재적 선호: 사용자가 명시적으로 말하지 않았지만, 현재 프로필과 이전 경험의 맥락에서 추론 가능한 현재 시점의 숨겨진 선호가 있는가?
+4. 이전 경험과의 차별점: 과거 비슷한 맥락에서 읽었던 책과 비교하여, 이번에는 어떤 점에서 같거나 다른 책을 원하는가?
+ 
+인사이트 작성 기준:
+- 각 인사이트는 도서 메타데이터(장르, 테마, 분위기, 문체, 난이도 등)와 유사도 검색 시 매칭될 수 있도록 구체적인 독서 특성을 포함하세요.
+- "사용자가 '데미안'을 좋아한다"처럼 특정 책에 국한되지 않아야 합니다.
+- "사용자가 소설을 좋아한다"처럼 지나치게 일반적이어서도 안 됩니다.
+- "사용자는 때로는 A, 때로는 B를 읽는다"와 같은 범용적 패턴이 아닌, 현재 이 순간 어떤 책이 필요한지를 서술하세요.
+- 연결된 이전 메모리가 없는 경우, 현재 세션 정보만으로 인사이트를 도출하세요.
+ 
+예시 (현재 세션: 직장 스트레스 → 판타지 소설, 연결된 메모리: 스트레스 → 자기계발서 경험):
+[
+    "현실의 직장 스트레스에서 완전히 벗어나 몰입할 수 있는 세계관이 풍부한 판타지를 원함",
+    "이전에 자기계발서로 능동적 대처를 시도한 경험이 있으나, 현재는 분석보다 감정적 도피와 이야기 속 몰입을 통한 해소를 원함",
+    "무거운 주제보다는 긴장감과 모험이 있으면서도 결말이 희망적인 서사 구조를 선호할 가능성이 높음",
+    "빠른 전개와 페이지 터너 스타일의 가독성 높은 문체가 현재 상태에 적합함",
+    "직장 내 인간관계 스트레스가 배경이므로, 주인공이 역경을 극복하고 성장하는 서사에 감정적 공감을 느낄 가능성이 있음"
+]
+ 
+위 형식에 맞추어 Python 리스트 형태의 JSON 배열로만 응답하세요. 다른 텍스트는 포함하지 마세요..
+ 
 JSON 응답:"""
 
-LINK_JUDGMENT_PROMPT = """\
-두 세션 메모리 사이에 의미 있는 연결(link)이 존재하는지 판단하세요.
-
-세션 A (현재):
-{session_a}
-
-세션 B (후보):
-{session_b}
-
-다음 기준으로 판단하세요:
-1. 같은 reading_goal을 가지고 있는가? (가중치: 0.3)
-2. 비슷한 감정/상황 context인가? (가중치: 0.25)
-3. 추천된 책 장르가 겹치는가? (가중치: 0.25)
-4. 독서 스타일이나 난이도 선호가 유사한가? (가중치: 0.2)
-
+MEMORY_LINK_PROMPT = """\
+당신은 도서 큐레이션 시스템의 메모리 link 생성 에이전트입니다.
+새로운 세션 메모리의 요약과 유사한 이웃 메모리들의 요약을 비교하여, 어떤 이웃 메모리와 연결(link)을 생성해야 하는지 판단하세요.
+ 
+현재 세션 요약:
+{current_summary}
+ 
+유사한 이웃 메모리들:
+{nearest_neighbors}
+ 
+판단 기준 — 다음 중 하나 이상에 해당하면 연결을 생성하세요:
+1. 이웃 메모리의 독서 맥락이 현재 세션의 요구를 더 깊이 이해하는 데 도움이 되는가?
+2. 이웃 메모리와의 비교를 통해, 현재 사용자가 원하는 책의 특성(테마, 분위기, 문체 등)을 더 구체화할 수 있는가?
+3. 이웃 메모리가 현재 세션과 유사한 감정적/상황적 맥락이나 도서 목적을 공유하여, 현재 요구의 본질을 추론하는 데 참고가 되는가?
+ 
 아래 JSON 형식으로 응답하세요:
 {{
-    "should_link": true 또는 false,
-    "link_reason": "연결 이유",
-    "criteria_scores": {{
-        "reading_goal_match": 0.0~1.0,
-        "context_similarity": 0.0~1.0,
-        "genre_overlap": 0.0~1.0,
-        "style_similarity": 0.0~1.0
-    }},
-    "overall_strength": 0.0~1.0
+    "evolution_decisions": [
+        {{
+            "neighbor_session_id": "이웃 세션 ID",
+            "should_link": true 또는 false,
+            "link_reason": "현재 세션의 이해에 어떻게 도움이 되는지 (1~2문장)",
+            "link_strength": 0.0~1.0
+        }}
+    ]
 }}
-
+ 
 JSON 응답:"""
 
 
@@ -453,7 +467,7 @@ def create_nodes(llm: BaseChatModel, memory_store: MemoryStore):
         similar = memory_store.search_similar_profiles(
             profile=profile, k=3, exclude_session_id=state["session_id"]
         )
-        filtered = [s for s in similar if s.get("distance", 1.0) < 0.7]
+        filtered = [s for s in similar if s.get("distance", 1.0) < 0.5]
 
         if not filtered:
             return {"similar_profiles": [], "phase": Phase.SLOT_FILLING}
@@ -551,82 +565,120 @@ def create_nodes(llm: BaseChatModel, memory_store: MemoryStore):
         summary = state["summary"]
         experiences = state.get("book_experiences", [])
         session_id = state["session_id"]
-
-        similar = memory_store.search_by_summary(summary=summary, k=5, exclude_session_id=session_id)
+ 
+        # 1) summary 기반으로 유사 메모리 검색
+        similar = memory_store.search_by_summary(
+            summary=summary,
+            k=5,
+            exclude_session_id=session_id,
+        )
+ 
+        # 현재 세션 독서 경험 텍스트 구성
+        current_experiences_text = (
+            "\n".join(f"- {e.book_name}: {e.impression}" for e in experiences)
+            if experiences
+            else "없음"
+        )
+ 
+        # 2) 이웃 메모리 요약 포매팅 + 단일 호출로 링크 판단
         links: list[MemoryLink] = []
         linked_session_ids: list[str] = []
-
-        current_experiences_text = (
-            "\n".join(f"- {e.book_name}: {e.impression} {e.context}" for e in experiences)
-            if experiences else "없음"
-        )
-        current_session_text = (
-            f"프로필: {profile.to_embedding_text()}\n"
-            f"요약: {summary}\n"
-            f"독서 경험: {current_experiences_text}"
-        )
-
-        for candidate in similar:
-            cand_profile = candidate.get("profile", {})
-            cand_profile_text = " | ".join(
-                f"{SLOT_DESCRIPTIONS.get(k, k)}: {v.get('value', '')}"
-                for k, v in cand_profile.items()
-                if isinstance(v, dict) and v.get("value")
-            )
-            cand_experiences = candidate.get("experiences", [])
-            cand_experiences_text = (
-                "\n".join(
-                    f"- {e.get('book_name', '')}: {e.get('impression', '')} {e.get('context', '')}"
-                    for e in cand_experiences
+ 
+        if similar:
+            neighbor_texts = []
+            for idx, cand in enumerate(similar):
+                neighbor_texts.append(
+                    f"[이웃 {idx + 1}] 세션 ID: {cand['session_id']}\n"
+                    f"  요약: {cand.get('summary', '')}"
                 )
-                if cand_experiences else "없음"
+ 
+            evolution_prompt = MEMORY_LINK_PROMPT.format(
+                current_summary=summary,
+                nearest_neighbors="\n---\n".join(neighbor_texts),
             )
-            candidate_text = (
-                f"프로필: {cand_profile_text}\n"
-                f"요약: {candidate.get('summary', '')}\n"
-                f"독서 경험: {cand_experiences_text}"
-            )
-
-            prompt = LINK_JUDGMENT_PROMPT.format(
-                session_a=current_session_text,
-                session_b=candidate_text,
-            )
-            result = parse_json_response(await llm_call(llm, prompt))
-
-            if result.get("should_link", False):
-                link = MemoryLink(
-                    source_session_id=session_id,
-                    target_session_id=candidate["session_id"],
-                    link_reason=result.get("link_reason", ""),
-                    strength=result.get("overall_strength", 0.0),
-                )
-                links.append(link)
-                linked_session_ids.append(candidate["session_id"])
-                memory_store.save_link(link)
-
+            evolution_result = parse_json_response(await llm_call(llm, evolution_prompt))
+ 
+            decisions = evolution_result.get("evolution_decisions", [])
+            for decision in decisions:
+                if decision.get("should_link", False):
+                    target_id = decision.get("neighbor_session_id", "")
+                    valid_ids = {c["session_id"] for c in similar}
+                    if target_id in valid_ids:
+                        link = MemoryLink(
+                            source_session_id=session_id,
+                            target_session_id=target_id,
+                            link_reason=decision.get("link_reason", ""),
+                            strength=decision.get("link_strength", 0.0),
+                        )
+                        links.append(link)
+                        linked_session_ids.append(target_id)
+                        memory_store.save_link(link)
+ 
+        # 3) 1-hop 연결 메모리 수집 + link reason 매핑
+        link_reasons = {
+            link.target_session_id: link.link_reason for link in links
+        }
         linked_memories = []
         for lid in linked_session_ids:
             sess = memory_store.get_session(lid)
             if sess:
+                sess["link_reason"] = link_reasons.get(lid, "")
                 linked_memories.append(sess)
-
+ 
+        # 4) Reflection 수행 — 5가지 인사이트 리스트 추출
+        # linked_memories 포매팅 (연결 이유 + 프로필 + 요약 + 독서경험 + 이전 reflection)
+        def _format_linked_memory(m: dict) -> str:
+            parts = [f"세션 {m['session_id']}:"]
+            # 연결 이유
+            if m.get("link_reason"):
+                parts.append(f"연결 이유: {m['link_reason']}")
+            # 프로필 정보
+            m_profile = m.get("profile", {})
+            profile_items = []
+            for k, v in m_profile.items():
+                if isinstance(v, dict) and v.get("value"):
+                    desc = SLOT_DESCRIPTIONS.get(k, k)
+                    profile_items.append(f"{desc}: {v['value']}")
+            if profile_items:
+                parts.append(f"프로필: {' | '.join(profile_items)}")
+            # 요약
+            if m.get("summary"):
+                parts.append(f"요약: {m['summary']}")
+            # 독서 경험
+            m_exps = m.get("experiences", [])
+            if m_exps:
+                exp_lines = [f"  - {e.get('book_name', '')}: {e.get('impression', '')}" for e in m_exps]
+                parts.append(f"독서 경험:\n" + "\n".join(exp_lines))
+            # 이전 reflection
+            if m.get("reflection"):
+                parts.append(f"이전 인사이트: {m['reflection']}")
+            return "\n".join(parts)
+ 
         prompt = REFLECTION_PROMPT.format(
             current_profile=profile.to_embedding_text(),
             current_summary=summary,
             current_experiences=current_experiences_text,
             linked_memories=(
                 "\n---\n".join(
-                    f"세션 {m['session_id']}:\n요약: {m.get('summary', '')}\nReflection: {m.get('reflection', '')}"
-                    for m in linked_memories
+                    _format_linked_memory(m) for m in linked_memories
                 )
-                if linked_memories else "연결된 이전 메모리 없음"
+                if linked_memories
+                else "연결된 이전 메모리 없음"
             ),
         )
-        reflection_result = parse_json_response(await llm_call(llm, prompt))
-        reflection_text = reflection_result.get(
-            "reflection_summary", json.dumps(reflection_result, ensure_ascii=False)
-        )
-
+        reflection_raw = await llm_call(llm, prompt)
+ 
+        # 리스트 형태 파싱
+        reflection_parsed = parse_json_response(reflection_raw)
+        if isinstance(reflection_parsed, list):
+            reflection_list = reflection_parsed
+        else:
+            # fallback: 파싱 실패 시 원문을 단일 항목 리스트로
+            reflection_list = [reflection_raw.strip()]
+ 
+        reflection_text = " ".join(reflection_list)
+ 
+        # 5) ChromaDB에 저장
         session_memory = SessionMemory(
             session_id=session_id,
             profile=profile,
@@ -636,12 +688,15 @@ def create_nodes(llm: BaseChatModel, memory_store: MemoryStore):
             linked_session_ids=linked_session_ids,
         )
         memory_store.save_session(session_memory)
-
+ 
+        # 6) 완료 메시지
+        insights_display = "\n".join(f"  • {item}" for item in reflection_list)
         done_msg = (
             f"프로필 분석이 완료되었습니다!\n\n"
             f"📋 요약: {summary}\n\n"
-            f"💡 인사이트: {reflection_text}"
+            f"💡 인사이트:\n{insights_display}"
         )
+ 
         return {
             "reflection": reflection_text,
             "links": links,
