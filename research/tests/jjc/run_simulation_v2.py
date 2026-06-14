@@ -4,15 +4,22 @@ CRS × UserSim 오케스트레이션 스크립트 (v2).
 cover_url 기반 이미지 표시 + search_library/check_book_availability 전용 api_tools_v2 사용.
 
 실행:
-    cd backend
+    cd /home/jjeong3150/work/peekabook/research/tests/jjc
     python run_simulation_v2.py
 """
 import asyncio
 import copy
 import json
+import os
 import queue
+import sys
 import threading
 from typing import Any
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../../backend"))
+
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(__file__), "../../../.env"))
 
 from langchain_core.messages import AIMessage, HumanMessage
 

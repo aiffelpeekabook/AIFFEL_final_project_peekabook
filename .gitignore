@@ -8,7 +8,7 @@ __pycache__/
 # Data files
 research/data/raw/
 research/data/processed/
-backend/chroma_db/
+**/chroma_db/
 
 # Model cache
 models/

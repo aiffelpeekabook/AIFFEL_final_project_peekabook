@@ -108,6 +108,84 @@ def check_book_availability(lib_code: str, isbn13: str) -> str:
 
 
 @tool
+def check_book_availability_in_district(district_name: str, isbn13: str) -> str:
+    """
+    특정 구(예: 강남구)의 도서관들에서 특정 책의 대출 가능 여부를 한 번에 확인합니다.
+    district_name은 서울의 '구' 단위(예: 강남구, 마포구), isbn13은 책의 13자리 ISBN입니다.
+    """
+    region_codes = {
+        "종로구": "11010", "중구": "11020", "용산구": "11030", "성동구": "11040",
+        "광진구": "11050", "동대문구": "11060", "중랑구": "11070", "성북구": "11080",
+        "강북구": "11090", "도봉구": "11100", "노원구": "11110", "은평구": "11120",
+        "서대문구": "11130", "마포구": "11140", "양천구": "11150", "강서구": "11160",
+        "구로구": "11170", "금천구": "11180", "영등포구": "11190", "동작구": "11200",
+        "관악구": "11210", "서초구": "11220", "강남구": "11230", "송파구": "11240",
+        "강동구": "11250"
+    }
+
+    dtl_region = region_codes.get(district_name)
+    if not dtl_region:
+        return f"'{district_name}'에 대한 지역 코드를 찾을 수 없습니다."
+
+    # ── 1. 도서관 목록 조회 ──────────────────────────────────
+    try:
+        lib_resp = requests.get("http://data4library.kr/api/libSrch", params={
+            "authKey": DATA4LIBRARY_KEY,
+            "region": "11",
+            "dtl_region": dtl_region,
+            "pageSize": 3,
+            "format": "json",
+        })
+        print("\n" + "▼"*50)
+        print("📡 [도서관 목록 조회 API]")
+        print(f"👉 URL: {lib_resp.url}")
+        print("▲"*50 + "\n")
+        libs = lib_resp.json().get("response", {}).get("libs", [])
+    except Exception as e:
+        return f"도서관 목록 조회 중 오류: {e}"
+
+    if not libs:
+        return f"{district_name} 근처의 도서관 정보를 찾을 수 없습니다."
+
+    # ── 2. 각 도서관별 대출 가능 여부 확인 ──────────────────
+    results = []
+    for item in libs:
+        lib = item["lib"]
+        lib_name = lib.get("libName", "이름 없음")
+        lib_code = lib.get("libCode", "")
+
+        try:
+            avail_resp = requests.get("http://data4library.kr/api/bookExist", params={
+                "authKey": DATA4LIBRARY_KEY,
+                "libCode": lib_code,
+                "isbn13": isbn13,
+                "format": "json",
+            })
+            print("\n" + "▼"*50)
+            print(f"📡 [대출 가능 여부 조회 API] {lib_name}")
+            print(f"👉 URL: {avail_resp.url}")
+            print("▲"*50 + "\n")
+            result_data = avail_resp.json().get("response", {}).get("result", {})
+            has_book = result_data.get("hasBook")
+            loan_available = result_data.get("loanAvailable")
+
+            if has_book == "N":
+                status = "미소장"
+            elif has_book == "Y" and loan_available == "Y":
+                status = "대출 가능"
+            elif has_book == "Y" and loan_available == "N":
+                status = "대출 중 (예약 필요)"
+            else:
+                status = "확인 불가"
+        except Exception as e:
+            status = f"오류: {e}"
+
+        results.append(f"- {lib_name}: {status}")
+
+    return "\n".join(results)
+
+
+@tool
 def get_popular_books(age: str = None, gender: str = None) -> str:
     """
     사용자가 '요즘 인기 있는 책', '베스트셀러', '많이 읽는 책' 등을 추천해달라고 할 때 호출합니다.

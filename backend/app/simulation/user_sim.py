@@ -37,7 +37,7 @@ PERSONA_TEMPLATES = {
 
 class UserSimAgent:
     """
-    CSR 시스템의 프로파일링 질문에 페르소나 기반으로 자동 응답하는 에이전트.
+    CRS 시스템의 프로파일링 질문에 페르소나 기반으로 자동 응답하는 에이전트.
     """
 
     SYSTEM_PROMPT_TEMPLATE = """\
@@ -71,7 +71,7 @@ class UserSimAgent:
 
         if self.verbose:
             print(f"\n[Turn {self.turn_count}]")
-            print(f"  CSR  : {question}")
+            print(f"  CRS  : {question}")
 
         messages = [
             {"role": "system", "content": self.system_prompt},
