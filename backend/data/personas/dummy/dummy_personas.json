@@ -1,0 +1,78 @@
+{
+  "a": {
+    "demographics": "35세, 직장인, 남성, 서울 거주, 1인 가구",
+    "speaking_style": "구어체 존댓말, 간결한 문장",
+    "reader_type": "Scanner",
+    "disliked": "어려운 전문서",
+    "pain_points": "추천 근거 부족 시 선택 어려움",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "재테크 기초를 잡고 싶음",
+        "preferred_genre": "경제·재테크",
+        "reading_style": "사례 중심, 실용적인 글 선호",
+        "difficulty_level": "초보자 수준",
+        "current_context": "평일 저녁, 월급 정리하며"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "직장 스트레스를 다스리는 방법을 찾고 싶음",
+        "preferred_genre": "심리",
+        "reading_style": "공감 가는 사례 중심",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "평일 밤, 업무 후 마음이 무거운 상태"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "한국 단편 소설로 기분 전환하고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "짧고 여운이 남는 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 오후, 가볍게 한 편 읽고 싶음"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  },
+  "b": {
+    "demographics": "28세, 대학원생, 여성, 광주 거주, 1인 가구",
+    "speaking_style": "구어체 존댓말, 부드러운 어조",
+    "reader_type": "Deep Diver",
+    "disliked": "지나치게 가벼운 자기계발서",
+    "pain_points": "방대한 정보 속에서 신뢰할 만한 책 찾기 어려움",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "AI 기술 동향을 교양 수준에서 이해하고 싶음",
+        "preferred_genre": "AI·전산",
+        "reading_style": "트렌드 중심, 깊이 있는 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "평일 오전, 연구실에서 잠시 짬 나는 시간"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "철학적 사유로 삶의 방향을 정리하고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "깊이 있는 사색이 가능한 에세이 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 저녁, 혼자 사색하고 싶은 분위기"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "건강한 식습관과 운동 루틴을 잡고 싶음",
+        "preferred_genre": "가정·건강",
+        "reading_style": "실용적인 가이드 형식 선호",
+        "difficulty_level": "초보자 수준",
+        "current_context": "평일 저녁, 체력 저하를 느낀 한 주의 끝에"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}

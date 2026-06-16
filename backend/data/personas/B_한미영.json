@@ -1,0 +1,256 @@
+{
+  "B_한미영": {
+    "demographics": "43세, 전업주부(전직 초등교사), 경기도 수원시 거주, 자녀 2명(초5, 중1)",
+    "speaking_style": "차분하고 정중한 구어체, 자녀 이야기를 구체적으로 설명, 2~4문장",
+    "reader_type": "Deep Diver / Specialist",
+    "disliked": "아이 수준에 안 맞는 너무 어렵거나 유치한 책",
+    "pain_points": "두 아이 관심사가 달라 따로 추천 원함 / 수준 판단 기준이 없음",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "중학교 1학년 딸에게 과학기술·AI 관련 책을 찾아주고 싶음",
+        "preferred_genre": "청소년, 과학기술 (AI·로봇)",
+        "reading_style": "스토리텔링 방식으로 기술을 쉽게 풀어낸 책 선호",
+        "difficulty_level": "중학교 1학년 수준, 교과서보다 흥미로운 책",
+        "current_context": "주말 오전, 딸아이 과학 관심사를 살려주고 싶음"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "초등학교 5학년 아들에게 역사·사회 관련 책을 찾아주고 싶음",
+        "preferred_genre": "아동·청소년, 역사·사회",
+        "reading_style": "아이가 흥미를 잃지 않고 끝까지 읽을 수 있는 구성",
+        "difficulty_level": "초등 고학년 수준, 너무 딱딱한 설명은 피하고 싶음",
+        "current_context": "평일 저녁, 아들 역사 수업 보충 겸 흥미 유발"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "두 아이가 함께 읽을 수 있는 가족 독서 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 인문 교양",
+        "reading_style": "대화 나누기 좋은 주제, 가치관 형성에 도움 되는 책",
+        "difficulty_level": "초5~중1 모두 읽을 수 있는 수준",
+        "current_context": "주말 저녁, 가족이 함께 독서 후 대화하고 싶음"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "아이들 진로 탐색에 도움이 되는 책을 찾고 싶음",
+        "preferred_genre": "청소년, 진로·직업",
+        "reading_style": "다양한 직업군을 소개하는 흥미로운 구성",
+        "difficulty_level": "중학생 수준, 어렵지 않게 읽히는 책",
+        "current_context": "학기 중, 아이들 진로에 대해 자연스럽게 이야기 나누고 싶음"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "육아 스트레스를 해소할 나만의 책을 찾고 싶음",
+        "preferred_genre": "에세이, 심리 교양",
+        "reading_style": "공감 가는 이야기, 가볍게 읽히는 글 선호",
+        "difficulty_level": "성인 교양 수준, 너무 무겁지 않은 책",
+        "current_context": "아이들 재운 후 밤 시간, 나만의 시간을 갖고 싶음"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "중1 딸에게 뇌과학을 흥미롭게 소개하는 책을 찾아주고 싶음",
+        "preferred_genre": "청소년, 과학기술 (뇌과학)",
+        "reading_style": "일상 속 사례로 뇌의 작동 방식을 설명하는 글 선호",
+        "difficulty_level": "중학교 1학년 수준, 어렵지 않게 읽히는 책",
+        "current_context": "심리학에 관심이 생긴 딸이 뇌와 생각의 원리가 궁금하다고 함"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "초5 아들이 한국 근현대사를 흥미롭게 접할 수 있는 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 역사·사회",
+        "reading_style": "이야기 형식으로 역사를 풀어낸 구성 선호",
+        "difficulty_level": "초등 고학년 수준, 교과서보다 재미있는 책",
+        "current_context": "평일 저녁, 아들이 역사 수업에서 근현대사를 배우기 시작함"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "중1 딸에게 기후변화와 환경 문제를 다룬 책을 찾아주고 싶음",
+        "preferred_genre": "청소년, 과학기술 (환경·기후)",
+        "reading_style": "문제 제시와 해결책을 함께 다루는 균형 잡힌 글 선호",
+        "difficulty_level": "중학생 수준, 지나치게 무겁지 않은 책",
+        "current_context": "학교에서 환경 관련 수업을 받고 온 딸이 더 알고 싶다고 해서"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "초5 아들에게 한국 고대·중세사를 재미있게 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 역사·사회",
+        "reading_style": "만화나 삽화가 곁들여진 흥미로운 구성 선호",
+        "difficulty_level": "초등 고학년 수준, 이야기처럼 읽히는 책",
+        "current_context": "주말 오후, 아들이 역사 드라마를 보고 관심이 생긴 참"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "가족이 함께 환경·생태 문제를 생각해볼 수 있는 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 인문 교양",
+        "reading_style": "아이들과 대화 나누기 좋은 주제, 생각을 자극하는 글 선호",
+        "difficulty_level": "초5~중1 모두 읽을 수 있는 수준",
+        "current_context": "주말 저녁, 환경 뉴스를 보다가 아이들과 이야기 나누고 싶어짐"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "중1 딸에게 우주와 천문학에 대한 흥미를 키워줄 책을 찾고 싶음",
+        "preferred_genre": "청소년, 과학기술 (우주·천문학)",
+        "reading_style": "신비롭고 흥미로운 방식으로 우주를 설명하는 글 선호",
+        "difficulty_level": "중학생 수준, 전문 지식 없이도 읽히는 책",
+        "current_context": "딸이 천문학 다큐멘터리를 보고 관련 책이 읽고 싶다고 함"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "중1 딸에게 생명과학과 유전자를 쉽게 설명한 책을 찾아주고 싶음",
+        "preferred_genre": "청소년, 과학기술 (생명과학·유전자)",
+        "reading_style": "일상 속 사례로 생명과학을 풀어낸 글 선호",
+        "difficulty_level": "중학교 고학년~고등학생도 읽는 수준, 깊이 있는 내용도 가능",
+        "current_context": "과학 시간에 유전자 단원을 배우기 시작한 딸이 더 알고 싶다고 함"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "초5 아들에게 세계사를 쉽고 재미있게 접할 수 있는 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 역사·사회",
+        "reading_style": "지도와 그림이 풍부하고 흐름을 따라가기 쉬운 구성 선호",
+        "difficulty_level": "초등 고학년 수준, 어렵지 않게 읽히는 책",
+        "current_context": "평일 저녁, 아들이 세계 여러 나라에 관심을 보이기 시작함"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "두 아이와 함께 철학적 질문을 나눌 수 있는 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 인문 교양",
+        "reading_style": "아이들이 스스로 생각하게 만드는 질문 중심 구성 선호",
+        "difficulty_level": "초5~중1 모두 이해할 수 있는 수준",
+        "current_context": "주말 저녁, 아이들이 삶의 의미에 대해 질문을 던져와서"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "중1 딸에게 수학적 사고력을 키워줄 수 있는 책을 찾고 싶음",
+        "preferred_genre": "청소년, 과학기술 (수학·논리)",
+        "reading_style": "수학을 놀이처럼 접근하는 흥미로운 구성 선호",
+        "difficulty_level": "중학생 수준, 수학 공식보다 사고력 중심의 책",
+        "current_context": "수학을 어렵다고 느끼는 딸에게 흥미를 붙여주고 싶어서"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "초5 아들에게 민주주의와 정치를 쉽게 설명한 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 역사·사회",
+        "reading_style": "어린이 눈높이에서 사회 제도를 설명하는 친근한 글 선호",
+        "difficulty_level": "초등 고학년 수준, 딱딱하지 않은 책",
+        "current_context": "선거 뉴스를 보고 민주주의가 뭔지 묻는 아들이 생겨서"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "가족 간 소통 방식을 개선하는 데 도움이 될 책을 찾고 싶음",
+        "preferred_genre": "가정 및 건강",
+        "reading_style": "실제 사례 중심, 바로 적용해볼 수 있는 글 선호",
+        "difficulty_level": "성인 교양 수준, 너무 전문적이지 않은 책",
+        "current_context": "아이들 재운 후 밤 시간, 요즘 아이들과 대화가 줄어든 것 같아 고민됨"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "중1 딸에게 디지털 리터러시와 코딩 기초를 알려줄 책을 찾고 싶음",
+        "preferred_genre": "청소년, 과학기술 (디지털·코딩)",
+        "reading_style": "단계별로 따라하기 쉬운 구성, 예시가 풍부한 글 선호",
+        "difficulty_level": "중학생 입문 수준, 코딩 경험 없어도 읽힐 수 있는 책",
+        "current_context": "학교에서 정보 수업이 시작된 딸이 미리 준비하고 싶다고 함"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "초5 아들에게 돈과 경제 원리를 재미있게 알려줄 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 역사·사회",
+        "reading_style": "일상 속 사례로 경제를 설명하는 친근한 구성 선호",
+        "difficulty_level": "초등 고학년 수준, 어렵지 않은 책",
+        "current_context": "용돈 관리를 시작한 아들이 돈이 어떻게 돌아가는지 궁금해함"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "두 아이와 함께 읽을 수 있는 위인전이나 인물 이야기를 찾고 싶음",
+        "preferred_genre": "아동·청소년, 인문 교양",
+        "reading_style": "이야기처럼 읽히는 구성, 삶의 교훈이 자연스럽게 담긴 글 선호",
+        "difficulty_level": "초5~중1 모두 읽을 수 있는 수준",
+        "current_context": "학기 중, 아이들에게 좋은 롤모델 이야기를 들려주고 싶어서"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "초5 아들에게 사회 문제와 인권을 쉽게 설명한 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 역사·사회",
+        "reading_style": "어린이 눈높이에서 사회 문제를 다루는 따뜻한 시각의 글 선호",
+        "difficulty_level": "초등 고학년 수준, 무겁지 않게 접근하는 책",
+        "current_context": "학교에서 인권 주제 수업을 받고 온 아들이 더 알고 싶다고 함"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "중1 딸에게 미래 기술 트렌드를 흥미롭게 소개하는 책을 찾고 싶음",
+        "preferred_genre": "청소년, 과학기술 (미래 기술)",
+        "reading_style": "자율주행·메타버스 등 최신 기술을 쉽게 풀어낸 글 선호",
+        "difficulty_level": "중학교 고학년~고등학생도 읽는 수준, 깊이 있는 내용도 가능",
+        "current_context": "미래 직업에 관심이 많아진 딸이 최신 기술이 궁금하다고 함"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "부동산 기초 개념부터 청약까지 전체 흐름을 잡고 싶음",
+        "preferred_genre": "부동산·재테크",
+        "reading_style": "용어 설명이 친절하고 순서대로 따라갈 수 있는 구성 선호",
+        "difficulty_level": "부동산 초보 수준, 전문 용어 많은 책은 부담",
+        "current_context": "주변에서 집 이야기가 자꾸 나와서 기본 개념이라도 잡고 싶어짐"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "초5 아들에게 세계 여러 나라 지리와 문화를 소개하는 책을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 역사·사회",
+        "reading_style": "사진과 지도가 풍부하고 흥미롭게 구성된 글 선호",
+        "difficulty_level": "초등 고학년 수준, 가볍게 읽히는 책",
+        "current_context": "세계 여러 나라에 관심이 생긴 아들이 책을 찾아달라고 함"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "두 아이와 함께 읽을 한국 현대 동화나 청소년 문학을 찾고 싶음",
+        "preferred_genre": "아동·청소년, 인문 교양",
+        "reading_style": "서사가 있고 감동적인 글, 아이들과 감상 나누기 좋은 책 선호",
+        "difficulty_level": "초5~중1 모두 읽을 수 있는 수준",
+        "current_context": "주말 저녁, 오랜만에 아이들과 문학 이야기를 나누고 싶어서"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "40대 여성 건강 관리에 도움이 되는 책을 찾고 싶음",
+        "preferred_genre": "가정 및 건강",
+        "reading_style": "실용적인 정보 중심, 일상에서 바로 실천할 수 있는 글 선호",
+        "difficulty_level": "성인 교양 수준, 의학 전문서는 부담",
+        "current_context": "최근 체력이 예전 같지 않다는 걸 느끼면서 건강에 신경 쓰고 싶어짐"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "일상 지출을 줄이고 가계부 쓰는 습관을 잡을 방법을 찾고 싶음",
+        "preferred_genre": "부동산·재테크",
+        "reading_style": "바로 따라 할 수 있는 실용적인 팁 위주 선호",
+        "difficulty_level": "가볍게 읽히는 수준",
+        "current_context": "이달 생활비가 예상보다 많이 나와서 지출 관리를 다시 점검하고 싶어짐"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "중년 가계 재정을 체계적으로 정리할 방법을 찾고 싶음",
+        "preferred_genre": "부동산·재테크",
+        "reading_style": "가계 재정 전반을 다루는 실용적인 글 선호",
+        "difficulty_level": "성인 일반 수준, 기초 개념 설명 포함된 책 선호",
+        "current_context": "아이들 교육비가 늘면서 가계 재정을 다시 들여다봐야겠다 싶어짐"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "두 아이와 함께 읽을 세계 명작이나 고전 입문서를 찾고 싶음",
+        "preferred_genre": "아동·청소년, 인문 교양",
+        "reading_style": "원작의 감동을 살리되 아이들이 읽기 쉽게 재구성된 글 선호",
+        "difficulty_level": "초5~중1 모두 읽을 수 있는 수준",
+        "current_context": "방학을 앞두고 아이들에게 고전 한 권 읽혀보고 싶어짐"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "집안 살림을 더 효율적으로 꾸려나갈 실용적인 방법을 찾고 싶음",
+        "preferred_genre": "가정 및 건강",
+        "reading_style": "구체적인 팁과 사례 중심, 바로 적용할 수 있는 글 선호",
+        "difficulty_level": "가볍게 읽히는 수준",
+        "current_context": "아이들 재운 후 밤 시간, 살림이 점점 버겁게 느껴져서"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}

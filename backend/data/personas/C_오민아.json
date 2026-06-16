@@ -1,0 +1,256 @@
+{
+  "C_오민아": {
+    "demographics": "17세, 고등학생, 인천시 연수구 거주",
+    "speaking_style": "10대 구어체, 솔직하고 직설적, 짧은 문장, 이모지 가끔",
+    "reader_type": "Scanner / Generalist",
+    "disliked": "옛날 책, 지나치게 전문적인 기술서, 학교 교과서 같은 느낌",
+    "pain_points": "검색해도 옛날 책만 나옴 / 자기 수준에 맞는지 판단 어려움",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "인디 게임 개발 입문서를 찾고 싶음 (코딩 거의 처음)",
+        "preferred_genre": "게임 개발, 코딩 입문",
+        "reading_style": "단계적으로 따라갈 수 있는 구성, 그림이나 예시 많은 책",
+        "difficulty_level": "고등학생 입문 수준, 너무 전문적이면 포기함",
+        "current_context": "주말 오후, 방학 때 게임 만들어보고 싶어서 찾아봄"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "게임 기획과 스토리텔링에 대해 배우고 싶음",
+        "preferred_genre": "게임 기획, 창작·스토리텔링",
+        "reading_style": "실제 게임 사례로 설명해주는 책 선호",
+        "difficulty_level": "고등학생도 읽을 수 있는 수준",
+        "current_context": "코딩보다 기획 쪽에 더 관심이 생김"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "디지털 아트와 게임 그래픽에 관심이 생겨 입문서 찾고 싶음",
+        "preferred_genre": "디지털 아트, 그래픽 디자인 입문",
+        "reading_style": "시각적으로 보기 좋고 따라하기 쉬운 구성",
+        "difficulty_level": "미술 비전공자도 따라할 수 있는 수준",
+        "current_context": "게임에 들어갈 캐릭터를 직접 그려보고 싶어짐"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "AI와 미래 기술이 궁금해서 쉽게 읽을 수 있는 책 찾고 싶음",
+        "preferred_genre": "과학기술, AI 교양",
+        "reading_style": "어렵지 않게 쓰인 교양서, 트렌드 중심",
+        "difficulty_level": "청소년도 읽을 수 있는 교양 수준",
+        "current_context": "AI가 게임 개발에도 쓰인다는 걸 알게 되어 궁금해짐"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "나처럼 10대에 꿈을 찾아간 사람들의 이야기가 읽고 싶음",
+        "preferred_genre": "청소년 에세이, 진로·자기계발",
+        "reading_style": "공감 가는 이야기, 무겁지 않게 읽히는 글",
+        "difficulty_level": "청소년 눈높이, 가볍고 재미있는 책",
+        "current_context": "진로 고민이 많아지는 시기, 비슷한 또래 이야기가 위로가 될 것 같음"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "Unity나 Godot 같은 게임 엔진 기초를 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "게임 개발, 코딩 입문",
+        "reading_style": "예제 중심, 직접 따라 만들 수 있는 구성 선호",
+        "difficulty_level": "코딩 초보도 따라갈 수 있는 수준",
+        "current_context": "주말 오후, 게임 엔진이 뭔지 궁금해서 찾아보기 시작함"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "웹툰 기획과 스크립트 쓰는 법을 배우고 싶음",
+        "preferred_genre": "창작·스토리텔링",
+        "reading_style": "실제 웹툰 사례 중심, 바로 따라 해볼 수 있는 구성 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 수준",
+        "current_context": "게임 기획하다 보니 웹툰도 만들어보고 싶어짐"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "픽셀아트를 처음부터 배울 수 있는 입문서를 찾고 싶음",
+        "preferred_genre": "디지털 아트, 그래픽 디자인 입문",
+        "reading_style": "단계별 튜토리얼, 따라하기 쉬운 구성 선호",
+        "difficulty_level": "미술 경험 없어도 시작할 수 있는 수준",
+        "current_context": "인디 게임에 들어갈 픽셀 캐릭터를 직접 만들어보고 싶어짐"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "메타버스와 가상현실이 뭔지 쉽게 이해할 수 있는 책을 찾고 싶음",
+        "preferred_genre": "과학기술, AI 교양",
+        "reading_style": "트렌드 중심, 어렵지 않게 풀어낸 글 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 교양 수준",
+        "current_context": "게임이랑 메타버스가 연결된다는 얘기를 듣고 궁금해짐"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "10대에 좋아하는 걸 일로 만든 사람들 이야기가 읽고 싶음",
+        "preferred_genre": "청소년 에세이, 진로·자기계발",
+        "reading_style": "공감 가는 실제 이야기, 가볍게 읽히는 글 선호",
+        "difficulty_level": "청소년 눈높이, 무겁지 않은 책",
+        "current_context": "게임 만드는 걸 직업으로 삼을 수 있을지 고민되는 밤"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "파이썬으로 간단한 게임을 만들어볼 수 있는 책을 찾고 싶음",
+        "preferred_genre": "게임 개발, 코딩 입문",
+        "reading_style": "예제 코드 중심, 직접 실행해볼 수 있는 구성 선호",
+        "difficulty_level": "파이썬 기초 알면 따라갈 수 있는 수준",
+        "current_context": "주말 오후, 코딩 공부하면서 결과물을 바로 만들어보고 싶어짐"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "스토리텔링의 원리와 구조를 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "창작·스토리텔링",
+        "reading_style": "이론보다 사례 중심, 쉽게 읽히는 글 선호",
+        "difficulty_level": "고등학생도 읽을 수 있는 수준",
+        "current_context": "게임 기획하다 보니 이야기 구조가 중요하다는 걸 느낌"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "캐릭터 일러스트 기초를 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "디지털 아트, 그래픽 디자인 입문",
+        "reading_style": "그림 많고 따라 그리기 쉬운 구성 선호",
+        "difficulty_level": "미술 비전공자도 시작할 수 있는 수준",
+        "current_context": "게임 캐릭터 직접 그려보고 싶은데 어디서 시작해야 할지 모르겠음"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "자기만의 길을 찾은 크리에이터 이야기가 읽고 싶음",
+        "preferred_genre": "청소년 에세이, 진로·자기계발",
+        "reading_style": "솔직하고 공감 가는 이야기, 읽기 편한 글 선호",
+        "difficulty_level": "청소년 눈높이, 가볍고 재미있는 책",
+        "current_context": "유튜버나 인디 개발자처럼 자기 콘텐츠로 사는 사람들이 궁금해짐"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "모바일 앱이나 게임 개발 기초를 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "게임 개발, 코딩 입문",
+        "reading_style": "단계별 따라하기 구성, 예시 많은 책 선호",
+        "difficulty_level": "코딩 입문자도 따라갈 수 있는 수준",
+        "current_context": "만든 게임을 모바일로 출시해보고 싶다는 생각이 들어서"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "독자나 플레이어를 몰입시키는 글쓰기 방법을 배우고 싶음",
+        "preferred_genre": "창작·스토리텔링",
+        "reading_style": "실제 사례 중심, 바로 적용해볼 수 있는 글 선호",
+        "difficulty_level": "고등학생도 읽을 수 있는 수준",
+        "current_context": "게임 스토리 쓰다가 어떻게 해야 재밌는지 막막해짐"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "데이터와 알고리즘이 뭔지 교양 수준에서 이해하고 싶음",
+        "preferred_genre": "과학기술, AI 교양",
+        "reading_style": "수식 없이 개념을 쉽게 풀어낸 글 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 교양 수준",
+        "current_context": "코딩 공부하면서 알고리즘이 자꾸 나오는데 뭔지 제대로 알고 싶어짐"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "게임의 역사와 문화를 교양 수준에서 알고 싶음",
+        "preferred_genre": "문화·취미 교양",
+        "reading_style": "흥미로운 사례 중심, 가볍게 읽히는 글 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 교양 수준",
+        "current_context": "게임을 만들다 보니 게임의 역사가 궁금해짐"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "게임 속에 쓰이는 수학과 알고리즘 원리를 알고 싶음",
+        "preferred_genre": "게임 개발, 코딩 입문",
+        "reading_style": "수식보다 원리 중심, 게임 사례로 설명해주는 글 선호",
+        "difficulty_level": "고등학생 수준, 수학 공식 나열은 부담",
+        "current_context": "게임 개발하다가 수학이 왜 필요한지 궁금해져서"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "소설이나 픽션 창작 기초를 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "창작·스토리텔링",
+        "reading_style": "실제 창작 예시 많고 따라 써볼 수 있는 구성 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 수준",
+        "current_context": "게임 스토리 쓰다 보니 소설도 써보고 싶어짐"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "UI·UX 디자인 기초를 배울 수 있는 입문서를 찾고 싶음",
+        "preferred_genre": "디지털 아트, 그래픽 디자인 입문",
+        "reading_style": "시각적으로 보기 좋고 실제 예시가 많은 구성 선호",
+        "difficulty_level": "디자인 비전공자도 따라갈 수 있는 수준",
+        "current_context": "게임 인터페이스를 직접 디자인해보고 싶어짐"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "나다운 자기표현 방법과 정체성 찾기에 관한 책을 읽고 싶음",
+        "preferred_genre": "청소년 에세이, 진로·자기계발",
+        "reading_style": "공감 가는 이야기, 강요 없이 읽히는 글 선호",
+        "difficulty_level": "청소년 눈높이, 가볍게 읽히는 책",
+        "current_context": "내가 만드는 게임에 나다움을 담고 싶은데 뭐가 나다운 건지 모르겠어서"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "오픈소스와 개발자 커뮤니티 활용법을 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "게임 개발, 코딩 입문",
+        "reading_style": "실제 커뮤니티 활용 사례 중심, 실용적인 글 선호",
+        "difficulty_level": "코딩 입문자도 이해할 수 있는 수준",
+        "current_context": "혼자 개발하다 막히는 부분을 해결할 방법이 필요해서"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "미래 직업과 기술 트렌드를 쉽게 알 수 있는 책을 찾고 싶음",
+        "preferred_genre": "과학기술, AI 교양",
+        "reading_style": "트렌드 중심, 흥미롭게 읽히는 글 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 교양 수준",
+        "current_context": "게임 개발자 말고 또 어떤 직업이 생길지 궁금해짐"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "유튜브나 콘텐츠 기획 방법을 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "창작·스토리텔링",
+        "reading_style": "실제 사례 중심, 바로 따라 해볼 수 있는 구성 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 수준",
+        "current_context": "게임 개발 과정을 유튜브에 올려보고 싶다는 생각이 들어서"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "음악과 사운드 기초를 배울 수 있는 입문서를 찾고 싶음",
+        "preferred_genre": "문화·취미 교양",
+        "reading_style": "이론보다 실습 중심, 따라하기 쉬운 구성 선호",
+        "difficulty_level": "음악 비전공자도 시작할 수 있는 수준",
+        "current_context": "게임 BGM을 직접 만들어보고 싶어서"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "영상 편집과 모션그래픽 기초를 배울 수 있는 책을 찾고 싶음",
+        "preferred_genre": "디지털 아트, 그래픽 디자인 입문",
+        "reading_style": "예시 영상 중심, 단계별 따라하기 구성 선호",
+        "difficulty_level": "입문자도 따라갈 수 있는 수준",
+        "current_context": "게임 트레일러 영상을 직접 만들어보고 싶어짐"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "고등학생의 진로 고민과 선택에 관한 현실적인 이야기가 읽고 싶음",
+        "preferred_genre": "청소년 에세이, 진로·자기계발",
+        "reading_style": "솔직하고 현실적인 이야기, 무겁지 않게 읽히는 글 선호",
+        "difficulty_level": "청소년 눈높이, 가볍고 공감 가는 책",
+        "current_context": "수시 준비 시작하면서 진짜 내가 원하는 게 뭔지 헷갈려서"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "AI가 창작과 예술 분야를 어떻게 바꾸는지 알고 싶음",
+        "preferred_genre": "과학기술, AI 교양",
+        "reading_style": "사례 중심, 흥미롭게 읽히는 글 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 교양 수준",
+        "current_context": "AI로 그림 그리고 음악 만드는 걸 보고 게임 개발에도 쓸 수 있을지 궁금해짐"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "시나리오와 대본 쓰는 법을 배울 수 있는 입문서를 찾고 싶음",
+        "preferred_genre": "문화·취미 교양",
+        "reading_style": "실제 대본 예시 중심, 따라 써볼 수 있는 구성 선호",
+        "difficulty_level": "청소년도 읽을 수 있는 수준",
+        "current_context": "게임 스토리를 대본 형식으로 써보고 싶어서"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}
