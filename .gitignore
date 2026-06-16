@@ -9,6 +9,7 @@ __pycache__/
 research/data/raw/
 research/data/processed/
 **/chroma_db/
+**/chroma_db_runs/
 
 # Model cache
 models/
@@ -33,4 +34,4 @@ build/
 *:Zone.Identifier
 
 # wandb local run data
-backend/wandb/
+**/wandb/

@@ -20,7 +20,7 @@ from app.state.state_v3 import GraphState, Phase, UserProfile
 load_dotenv()
 
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
-memory_store = MemoryStore(persist_directory=os.getenv("CHROMA_DB_PATH", "./chroma_db"))
+memory_store = MemoryStore(persist_directory=os.getenv("CHROMA_DB_PATH", "./chroma_db/{user_id}"))
 nodes = create_nodes(llm, memory_store)
 
 session_id = str(uuid.uuid4())[:8]

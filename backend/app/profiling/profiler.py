@@ -61,6 +61,11 @@ EXTRACT_SLOT_PROMPT = """\
 당신은 도서 큐레이션을 위한 정보 추출기입니다.
 사용자의 응답에서 아래 항목들에 대한 정보를 추출하세요.
 
+[주의]
+  - 반드시 {"value": "..."} 형태를 유지하세요.
+  - <slot_name>의 값은 반드시 객체 {"value": "문자열"} 이어야 합니다. 문자열을 직접 값으로 쓰지 마세요.
+  - value는 반드시 문자열. 객체나 배열 금지. 정보 없으면 null
+
 추출 대상 항목:
 {target_slots}
 
@@ -69,11 +74,11 @@ EXTRACT_SLOT_PROMPT = """\
 대화 맥락:
 {conversation_context}
 
-아래 JSON 형식으로 응답하세요. 정보가 없는 항목은 null로 표시합니다:
+아래 JSON 반드시 형식으로 응답하세요. 정보가 없는 항목은 null로 표시합니다:
 {{
     "extracted": {{
         "<slot_name>": {{
-            "value": "추출된 값 또는 null"
+            "value": "추출된 문자열"
         }}
     }}
 }}
