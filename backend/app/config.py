@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from datetime import timezone, timedelta
 
 load_dotenv()
 
@@ -24,3 +25,23 @@ SIMILARITY_THRESHOLD: float = 0.5
 CONFIDENCE_THRESHOLD: float = 0.6
 SIMILAR_SEARCH_K: int = 3
 LINK_CANDIDATE_K: int = 5
+
+JUDGE_MODEL = "claude-haiku-4-5-20251001" # peeka_judge
+ 
+MAX_TURNS = 12 # 대화 제어
+ 
+KST = timezone(timedelta(hours=9)) # 한국 시간대 (timestamp / log 표기용)
+ 
+# 시뮬레이션 경로 (env로 오버라이드 가능)
+SIMULATION_CHROMA_BASE = os.getenv(
+    "SIMULATION_CHROMA_BASE",
+    "backend/chroma_db_runs",
+)
+SIMULATION_RESULTS_DIR = os.getenv(
+    "SIMULATION_RESULTS_DIR",
+    "research/data/simulation_results",
+)
+PERSONA_DIR = os.getenv(
+    "PERSONA_DIR",
+    "backend/data/personas",
+)
