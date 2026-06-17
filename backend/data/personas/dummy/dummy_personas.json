@@ -1,0 +1,192 @@
+{
+  "a": {
+    "demographics": "35세, 직장인, 남성, 서울 거주, 1인 가구",
+    "speaking_style": "구어체 존댓말, 간결한 문장",
+    "reader_type": "Scanner",
+    "disliked": "어려운 전문서",
+    "pain_points": "추천 근거 부족 시 선택 어려움",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "재테크 기초를 잡고 싶음",
+        "preferred_genre": "경제·재테크",
+        "reading_style": "사례 중심, 실용적인 글 선호",
+        "difficulty_level": "초보자 수준",
+        "current_context": "평일 저녁, 월급 정리하며"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "직장 스트레스를 다스리는 방법을 찾고 싶음",
+        "preferred_genre": "심리",
+        "reading_style": "공감 가는 사례 중심",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "평일 밤, 업무 후 마음이 무거운 상태"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "한국 단편 소설로 기분 전환하고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "짧고 여운이 남는 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 오후, 가볍게 한 편 읽고 싶음"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  },
+  "b": {
+    "demographics": "28세, 대학원생, 여성, 광주 거주, 1인 가구",
+    "speaking_style": "구어체 존댓말, 부드러운 어조",
+    "reader_type": "Deep Diver",
+    "disliked": "지나치게 가벼운 자기계발서",
+    "pain_points": "방대한 정보 속에서 신뢰할 만한 책 찾기 어려움",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "AI 기술 동향을 교양 수준에서 이해하고 싶음",
+        "preferred_genre": "AI·전산",
+        "reading_style": "트렌드 중심, 깊이 있는 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "평일 오전, 연구실에서 잠시 짬 나는 시간"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "철학적 사유로 삶의 방향을 정리하고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "깊이 있는 사색이 가능한 에세이 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 저녁, 혼자 사색하고 싶은 분위기"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "건강한 식습관과 운동 루틴을 잡고 싶음",
+        "preferred_genre": "가정·건강",
+        "reading_style": "실용적인 가이드 형식 선호",
+        "difficulty_level": "초보자 수준",
+        "current_context": "평일 저녁, 체력 저하를 느낀 한 주의 끝에"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  },
+  "c": {
+    "demographics": "19세, 재수생, 남성, 강원도 거주, 부모님과 동거",
+    "speaking_style": "구어체 존댓말, 짧고 직접적인 문장",
+    "reader_type": "Goal-Oriented Reader",
+    "disliked": "너무 두꺼운 책, 이론 위주의 딱딱한 글",
+    "pain_points": "어떤 책부터 읽어야 할지 모르겠음",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "공부 집중력을 높이는 방법을 알고 싶음",
+        "preferred_genre": "자기계발",
+        "reading_style": "단계별 실천법이 담긴 글 선호",
+        "difficulty_level": "청소년·대학생 수준",
+        "current_context": "수험 준비 중, 슬럼프가 온 시점"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "세계사 흐름을 큰 그림으로 이해하고 싶음",
+        "preferred_genre": "역사",
+        "reading_style": "스토리텔링 방식의 쉬운 서술 선호",
+        "difficulty_level": "청소년·대학생 수준",
+        "current_context": "수능 준비 중, 배경지식 쌓으려고"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "미래 직업과 진로를 탐색하고 싶음",
+        "preferred_genre": "진로·직업",
+        "reading_style": "다양한 직업인의 이야기를 담은 인터뷰 형식 선호",
+        "difficulty_level": "청소년·대학생 수준",
+        "current_context": "입시 준비 중, 막연한 불안감이 있는 시기"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  },
+  "d": {
+    "demographics": "67세, 은퇴자, 남성, 전주 거주, 기혼, 자녀 3명",
+    "speaking_style": "구어체 존댓말, 느리고 신중한 어조",
+    "reader_type": "Slow Reader",
+    "disliked": "영어 외래어가 많은 책, 디지털·IT 관련 서적",
+    "pain_points": "글씨가 작거나 편집이 복잡한 책은 읽기 힘듦",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "고전 문학을 천천히 다시 읽고 싶음",
+        "preferred_genre": "고전·세계문학",
+        "reading_style": "묵직하고 품격 있는 문장 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "오전 산책 후, 마루에 앉아 볕 드는 시간"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "한국 현대사를 내가 살아온 시각으로 되짚어보고 싶음",
+        "preferred_genre": "역사",
+        "reading_style": "연대기 중심, 사실에 충실한 서술 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "저녁 식사 후, TV 대신 책을 펴는 시간"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "손주에게 읽어줄 만한 그림책이나 동화를 찾고 싶음",
+        "preferred_genre": "아동·그림책",
+        "reading_style": "따뜻하고 교훈이 담긴 이야기 선호",
+        "difficulty_level": "아동 수준",
+        "current_context": "주말, 손주가 놀러 오는 날"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  },
+  "e": {
+    "demographics": "24세, 프리랜서 번역가, 여성, 서울 거주, 1인 가구",
+    "speaking_style": "구어체 존댓말, 빠르고 논리적인 어조",
+    "reader_type": "Deep Diver",
+    "disliked": "번역 품질이 낮은 외서, 내용 없이 분량만 많은 책",
+    "pain_points": "이미 읽은 책과 비슷한 책만 추천받는 느낌",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "언어와 사고의 관계에 대해 깊이 파고들고 싶음",
+        "preferred_genre": "언어학·인문",
+        "reading_style": "학술적이지만 대중적으로 풀어쓴 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "번역 작업 중 막히는 표현이 생겨 잠깐 환기하려고"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "일본 현대 소설을 원서 감각으로 즐기고 싶음",
+        "preferred_genre": "일본문학",
+        "reading_style": "문체가 살아있는 번역본 또는 원서 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "주말 밤, 작업 마감 후 보상처럼 읽는 시간"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "프리랜서로 오래 버티는 법을 현실적으로 알고 싶음",
+        "preferred_genre": "경제·진로",
+        "reading_style": "경험담 중심, 솔직한 서술 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "수입이 불규칙했던 달의 끝, 불안한 마음으로"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}
