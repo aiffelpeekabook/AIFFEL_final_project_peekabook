@@ -73,7 +73,7 @@ SWEEP_CONFIG = {
     "method": "grid",
     "metric": {"name": "match_rate/peekajudge", "goal": "maximize"},
     "parameters": {
-        "persona_name":    {"values": ["A_최재원", "B_한미영"]},
+        "persona_name":    {"values": ["A_최재원", "B_한미영", "C_오민아", "D_이수빈", "E_정미희"]},
         "query_transform": {"values": ["none"]},
     },
 }
