@@ -40,7 +40,6 @@ from app.config import (
     JUDGE_MODEL,
     LLM_MODEL,
     MAX_TURNS,
-    PERSONA_DIR,
     SIMULATION_CHROMA_BASE,
     SIMULATION_RESULTS_DIR,
 )
@@ -83,9 +82,9 @@ SWEEP_CONFIG = {
 # ── rag 모듈 설정 ─────────────────────────────────────────────────────────────
 def _set_query_transform(query_transform: str) -> None:
     step_back, rewrite, decompose = QUERY_TRANSFORM_CONFIGS[query_transform]
-    qt_v6.USE_STEP_BACK = step_back
-    qt_v6.USE_REWRITE   = rewrite
-    qt_v6.USE_DECOMPOSE = decompose
+    qt_v5.USE_STEP_BACK = step_back
+    qt_v5.USE_REWRITE   = rewrite
+    qt_v5.USE_DECOMPOSE = decompose
 
 
 # ── 단일 페르소나 실행 ────────────────────────────────────────────────────────
@@ -128,7 +127,7 @@ def run_for_persona(persona_id:    str,
             create_app_fn=lambda chroma_db_path: create_app(
                 chroma_db_path=chroma_db_path,
                 use_genre_filter=use_genre_filter,
-                rag_module=qt_v6,
+                rag_module=qt_v5,
             ),
             initial_state=initial_state,
             chroma_base_dir=SIMULATION_CHROMA_BASE,
@@ -163,7 +162,7 @@ def run():
             create_app_fn=lambda chroma_db_path: create_app(
                 chroma_db_path=chroma_db_path,
                 use_genre_filter=False,
-                rag_module=qt_v6,
+                rag_module=qt_v5,
             ),
             initial_state=initial_state,
             chroma_base_dir=SIMULATION_CHROMA_BASE,
@@ -182,7 +181,8 @@ def main():
     parser = argparse.ArgumentParser(description="PeekaReader 멀티세션 시뮬레이션 (jjc)")
     parser.add_argument("--persona",      type=str, help="페르소나 ID (예: A_최재원)")
     parser.add_argument("--all",          action="store_true", help="전체 페르소나 순회")
-    parser.add_argument("--persona-dir",  type=str, default=PERSONA_DIR)
+    parser.add_argument("--persona-dir",  type=str,
+                        default=os.path.join(REPO_ROOT, "backend/data/personas"))
     parser.add_argument("--query-transform", type=str, default="none",
                         choices=list(QUERY_TRANSFORM_CONFIGS.keys()))
     parser.add_argument("--use-genre-filter", action="store_true", default=False)

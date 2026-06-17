@@ -90,7 +90,7 @@ def _run_user_sim(persona_id:  str,
 
         if isinstance(message, dict) and message.get("__done__"):
             collector["crs_result"] = message["result"]
-            collector.setdefault("status", "success")
+            collector["status"] = "success"
             break
 
         if agent.turn_count >= max_turns:
