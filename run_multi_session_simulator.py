@@ -7,16 +7,16 @@
 - 페르소나별 멀티세션 (N_SESSIONS 고정)
 
 실행:
-    cd /home/jjeong3150/work/peekabook/backend
-    python ../research/tests/jjc/run_multi_session_simulator.py --persona A_최재원
+    cd /home/jjeong3150/work/peekabook
+    python run_multi_session_simulator.py --persona A_최재원
 
 더미 페르소나로 빠른 검증:
-    cd /home/jjeong3150/work/peekabook/backend
-    python ../research/tests/jjc/run_multi_session_simulator.py --persona-dir ../backend/data/personas/dummy --persona a
+    cd /home/jjeong3150/work/peekabook
+    python run_multi_session_simulator.py --persona-dir backend/data/personas/dummy --persona a
 
 Sweep 실행:
-    cd /home/jjeong3150/work/peekabook/backend
-    python ../research/tests/jjc/run_multi_session_simulator.py --sweep
+    cd /home/jjeong3150/work/peekabook
+    python run_multi_session_simulator.py --sweep
 """
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ import sys
 from datetime import datetime
 
 HERE      = os.path.dirname(os.path.abspath(__file__))
-REPO_ROOT = os.path.abspath(os.path.join(HERE, "../../.."))
+REPO_ROOT = HERE  # 레포 루트에 위치
 sys.path.insert(0, os.path.join(REPO_ROOT, "backend"))
 
 from dotenv import load_dotenv
