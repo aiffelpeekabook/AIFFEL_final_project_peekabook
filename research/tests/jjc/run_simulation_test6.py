@@ -1,18 +1,17 @@
 """
-CRS × UserSim 오케스트레이션 스크립트 (test5).
+CRS × UserSim 오케스트레이션 스크립트 (test6).
 
-test4 대비 변경:
-- graph_test4 사용: extract_genre_node_v2로 대분류 3개, 중분류 5개 필수 선택
-- query_transform_v6 사용: extract_genre_node_v2 포함 버전
-- wandb tags: ["mandatory_genre_filter"] 추가 → 필터 전략 변경 이력 추적
+test5 대비 변경:
+- 쿼리 변환 전략 비교 평가: step_back / rewrite / decompose / rewrite_decompose
+- HyDE RAG 평가 포함
 
 실행:
     cd /home/jjeong3150/work/peekabook/backend
-    python ../research/tests/jjc/run_simulation_test5.py
+    python ../research/tests/jjc/run_simulation_test6.py
 
 Sweep 실행:
     cd /home/jjeong3150/work/peekabook/backend
-    python ../research/tests/jjc/run_simulation_test5.py --sweep
+    python ../research/tests/jjc/run_simulation_test6.py --sweep
 """
 import asyncio
 import copy
@@ -34,11 +33,10 @@ from langchain_core.messages import AIMessage, HumanMessage
 
 load_dotenv(os.path.join(os.path.dirname(__file__), "../../../.env"))
 
-from app.pipeline.graph_test4 import create_app, initial_state
+from app.pipeline.graph_test3 import create_app, initial_state
 from app.simulation.user_sim_v2 import PERSONA_BANK, UserSimAgent, PeekaJudge
-import app.rag.query_transform_v6 as qt_v6
+import app.rag.query_transform_v5 as qt_v5
 
-WANDB_TAGS = ["mandatory_genre_filter"]
 
 # ── Query Transformation 조합 정의 ───────────────────────────────────────────
 QUERY_TRANSFORM_CONFIGS = {
@@ -55,11 +53,11 @@ SWEEP_CONFIG = {
     "method": "grid",
     "metric": {"name": "mean_score", "goal": "maximize"},
     "parameters": {
-        "collection_name":  {"values": ["books_intro_48k", "books_merged_48k"]},
+        "collection_name":  {"values": ["books_intro_48k"]},
         "persona_name":     {"values": ["A_최재원", "B_한미영", "C_오민아"]},
-        "use_genre_filter": {"values": [True, False]},
-        "query_transform":  {"values": ["none"]},
-        "run_index":        {"values": list(range(10, 16))},
+        "use_genre_filter": {"values": [False]},
+        "query_transform":  {"values": ["step_back", "rewrite", "decompose", "rewrite_decompose"]},
+        "run_index":        {"values": list(range(1, 10))},
     },
 }
 
@@ -76,7 +74,7 @@ def estimate_usersim_tokens(history: list) -> tuple[int, int]:
     """UserSimAgent 대화 히스토리에서 토큰 수 추정.
     Returns: (input_tokens, output_tokens)
     """
-    system_tokens = 350
+    system_tokens = 350  # SYSTEM_PROMPT_TEMPLATE 고정 오버헤드 추정
     input_tokens  = system_tokens + sum(
         _count_tokens(m["content"]) for m in history if m["role"] == "user"
     )
@@ -94,8 +92,8 @@ def estimate_judge_tokens(persona: dict, book_intros: dict) -> tuple[int, int]:
     book_intros_str = "\n\n".join(
         f"📚 {title}\n소개: {intro}" for title, intro in book_intros.items()
     )
-    input_tokens  = _count_tokens(persona_str + book_intros_str) + 600
-    output_tokens = 60 * len(book_intros)
+    input_tokens  = _count_tokens(persona_str + book_intros_str) + 600  # 프롬프트 템플릿 오버헤드
+    output_tokens = 60 * len(book_intros)                                # 책당 ~60 토큰 출력 추정
     return input_tokens, output_tokens
 
 
@@ -152,7 +150,7 @@ def run_user_sim(persona: dict, result_collector: list, user_to_crs: queue.Queue
                 "retrieved_books": crs_result.get("retrieved_books", []),
                 "summary":         crs_result.get("summary", ""),
                 "reflection":      crs_result.get("reflection", ""),
-                "conversation":    agent.get_history(),
+                "conversation":    agent.get_history(),  # 비용 추정용
             })
             break
         user_to_crs.put(agent.answer(message))
@@ -226,7 +224,7 @@ def log_results(persona: dict, persona_name: str, session_id: str,
         "persona":      persona_text,
         "chroma_db_path": chroma_db_path,
         **book_scores,
-        **token_info,
+        **token_info,   # 토큰 수 + 구간별/합계 비용
         **run_config,
     })
     wandb.log({"results_table": table})
@@ -243,9 +241,9 @@ async def main():
     chroma_db_path = make_chroma_path(persona_name)
 
     step_back, rewrite, decompose = QUERY_TRANSFORM_CONFIGS[query_transform]
-    qt_v6.USE_STEP_BACK = step_back
-    qt_v6.USE_REWRITE   = rewrite
-    qt_v6.USE_DECOMPOSE = decompose
+    qt_v5.USE_STEP_BACK = step_back
+    qt_v5.USE_REWRITE   = rewrite
+    qt_v5.USE_DECOMPOSE = decompose
 
     run_config = {
         "persona_name":     persona_name,
@@ -255,20 +253,20 @@ async def main():
     }
 
     wandb.init(
-        project="peekabook-crs-test5",
+        project="peekabook-crs-test4",
         name=f"single_{persona_name.split('_')[0]}_{query_transform}",
         config={**run_config, "chroma_db_path": chroma_db_path},
-        tags=WANDB_TAGS,
     )
 
     print(f"[ChromaDB 경로] {chroma_db_path}")
 
     session_id = uuid.uuid4().hex[:8]
-    thread_id  = f"single_test5_{session_id}"
+    thread_id  = f"single_test4_{session_id}"
     app        = create_app(chroma_db_path=chroma_db_path, use_genre_filter=use_genre_filter,
-                            rag_module=qt_v6)
+                            rag_module=qt_v5)
 
     results = []
+    # LangChain(CRS 그래프) 호출 비용은 get_openai_callback으로 추적
     with get_openai_callback() as cb:
         await run_session(app, persona, results, thread_id=thread_id, session_id=session_id)
 
@@ -312,15 +310,15 @@ async def main():
 
 # ── Sweep 단위 실행 ───────────────────────────────────────────────────────────
 def run():
-    wandb.init(tags=WANDB_TAGS)
+    wandb.init()
     cfg = wandb.config
 
-    qt_v6.QDRANT_COLLECTION_NAME = cfg.collection_name
+    qt_v5.QDRANT_COLLECTION_NAME = cfg.collection_name
 
     step_back, rewrite, decompose = QUERY_TRANSFORM_CONFIGS[cfg.query_transform]
-    qt_v6.USE_STEP_BACK = step_back
-    qt_v6.USE_REWRITE   = rewrite
-    qt_v6.USE_DECOMPOSE = decompose
+    qt_v5.USE_STEP_BACK = step_back
+    qt_v5.USE_REWRITE   = rewrite
+    qt_v5.USE_DECOMPOSE = decompose
 
     persona_name   = cfg.persona_name
     persona        = PERSONA_BANK[persona_name]
@@ -339,7 +337,7 @@ def run():
     session_id = uuid.uuid4().hex[:8]
     thread_id  = f"sweep_{persona_name.split('_')[0]}_{cfg.query_transform}_{cfg.run_index}_{session_id}"
     app        = create_app(chroma_db_path=chroma_db_path, use_genre_filter=cfg.use_genre_filter,
-                            rag_module=qt_v6)
+                            rag_module=qt_v5)
 
     results = []
     with get_openai_callback() as cb:
@@ -385,7 +383,7 @@ def run():
 # ── 진입점 ───────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     if "--sweep" in sys.argv:
-        sweep_id = wandb.sweep(SWEEP_CONFIG, project="peekabook-crs-test5")
+        sweep_id = wandb.sweep(SWEEP_CONFIG, project="peekabook-crs-test4")
         wandb.agent(sweep_id, function=run)
     else:
         asyncio.run(main())

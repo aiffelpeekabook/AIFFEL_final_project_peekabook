@@ -51,18 +51,31 @@ QUERY_TRANSFORM_CONFIGS = {
 }
 
 
-# ── Sweep 설정 ────────────────────────────────────────────────────────────────
+# # ── Sweep 설정 ────────────────────────────────────────────────────────────────
+# SWEEP_CONFIG = {
+#     "method": "grid",
+#     "metric": {"name": "mean_score", "goal": "maximize"},
+#     "parameters": {
+#         "collection_name":  {"values": ["books_intro_48k", "books_merged_48k"]},
+#         "persona_name":     {"values": ["A_최재원", "B_한미영", "C_오민아"]},
+#         "use_genre_filter": {"values": [True, False]},
+#         "query_transform":  {"values": ["none"]},
+#         "run_index":        {"values": list(range(10, 13))},
+#     },
+# }
+
 SWEEP_CONFIG = {
     "method": "grid",
     "metric": {"name": "mean_score", "goal": "maximize"},
     "parameters": {
-        "collection_name":  {"values": ["books_intro_48k", "books_merged_48k"]},
+        "collection_name":  {"values": ["books_intro_48k"]},
         "persona_name":     {"values": ["A_최재원", "B_한미영", "C_오민아"]},
-        "use_genre_filter": {"values": [True, False]},
-        "query_transform":  {"values": ["none"]},
-        "run_index":        {"values": list(range(10, 13))},
+        "use_genre_filter": {"values": [False]},
+        "query_transform":  {"values": ["step_back", "rewrite", "decompose", "rewrite_decompose"]},
+        "run_index":        {"values": list(range(1, 13))},
     },
 }
+
 
 
 # ── 토큰 수 추정 (tiktoken 기반) ─────────────────────────────────────────────
@@ -386,7 +399,7 @@ def run():
 # ── 진입점 ───────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     if "--sweep" in sys.argv:
-        sweep_id = wandb.sweep(SWEEP_CONFIG, project="peekabook-crs-test4")
+        sweep_id = wandb.sweep(SWEEP_CONFIG, project="peekabook-crs-test4-query-transformation")
         wandb.agent(sweep_id, function=run)
     else:
         asyncio.run(main())
