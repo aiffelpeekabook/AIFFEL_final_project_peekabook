@@ -1,10 +1,10 @@
 """
-# Simple RAG with Filtering + Query Transformations (v4)
+# Simple RAG with Filtering + Query Transformations (v5)
 
-v3 대비 변경:
-- 모듈 레벨 플래그로 query transformation 조합 제어 가능
-  USE_STEP_BACK, USE_REWRITE, USE_DECOMPOSE
-- run_simulation에서 monkey-patch로 실험별 조합 지정
+v4 대비 변경:
+- 쿼리당 검색 limit: 5 → 10  (SEARCH_LIMIT)
+- retrieved_books 슬라이스: [:3] → [:10]  (RETRIEVE_TOP_N)
+  NDCG@k / Hit-rate@k 계산을 위해 리랭킹 후 10권 반환
 """
 from __future__ import annotations
 
@@ -12,17 +12,15 @@ import json
 import os
 import pandas as pd
 from dotenv import load_dotenv
-from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
-from langgraph.graph import StateGraph, START, END
 from qdrant_client.models import Filter, FieldCondition, MatchAny
 
 from app.config import QDRANT_COLLECTION_NAME
 from app.db.qdrant import QdrantDB
 from app.embedding.embedder import LocalEmbedder
 from app.reranking.reranker import LocalReranker
-from app.state.state_v3 import GraphState, Phase, UserProfile
+from app.state.state_v3 import GraphState
 
 load_dotenv()
 
@@ -30,6 +28,10 @@ load_dotenv()
 USE_STEP_BACK = True
 USE_REWRITE   = True
 USE_DECOMPOSE = True
+
+# ── 검색 결과 크기 ────────────────────────────────────────────────────────────
+SEARCH_LIMIT   = 10  # 쿼리당 Qdrant 검색 결과 수
+RETRIEVE_TOP_N = 10  # 리랭킹 후 최종 반환 수
 
 # ── 초기화 ────────────────────────────────────────────────────────────────────
 
@@ -246,71 +248,6 @@ def reciprocal_rank_fusion(results_list: list, k: int = 60) -> list:
 
 # ## 7. Query Transform RAG 노드
 
-top_genre_prompt_v2 = ChatPromptTemplate.from_template("""
-사용자 프로파일을 보고 아래 대분류 목록에서 가장 적합한 것을 반드시 2개 선택하세요.
-목록에 없는 값은 절대 반환하지 마세요.
-
-대분류 목록: {large_list}
-사용자 프로파일: {summary}
-
-JSON으로만 반환: {{"categories": ["소설/시/희곡", "경제경영"]}}
-""")
-
-medium_genre_prompt_v2 = ChatPromptTemplate.from_template("""
-사용자 프로파일을 보고 아래 중분류 목록에서 가장 적합한 것을 반드시 3개 선택하세요.
-목록에 없는 값은 절대 반환하지 마세요.
-
-중분류 목록: {medium_list}
-사용자 프로파일: {summary}
-
-JSON으로만 반환: {{"categories": ["한국소설", "외국소설", "경제일반"]}}
-""")
-
-
-def extract_genre_node_v2(state: GraphState) -> dict:
-    """대분류 2개, 중분류 3개를 반드시 선택하도록 강제한 버전."""
-    summary = state.get("summary", "")
-
-    top_resp = (top_genre_prompt_v2 | llm).invoke({
-        "large_list": CATEGORY_LARGE_LIST,
-        "summary": summary,
-    })
-    try:
-        top_cats = json.loads(top_resp.content)["categories"]
-    except (json.JSONDecodeError, KeyError):
-        top_cats = []
-
-    if not top_cats:
-        print("[Genre v2] 대분류 추출 실패 → 필터 없음")
-        return {"genre_filter": [], "genre_level": "none"}
-
-    medium_candidates = []
-    for cat in top_cats:
-        medium_candidates.extend(CATEGORY_TREE.get(cat, []))
-
-    if not medium_candidates:
-        print(f"[Genre v2] 대분류 fallback: {top_cats}")
-        return {"genre_filter": top_cats, "genre_level": "large"}
-
-    medium_resp = (medium_genre_prompt_v2 | llm).invoke({
-        "medium_list": medium_candidates,
-        "summary": summary,
-    })
-    try:
-        medium_cats = json.loads(medium_resp.content)["categories"]
-    except (json.JSONDecodeError, KeyError):
-        medium_cats = []
-
-    if not medium_cats:
-        print(f"[Genre v2] 중분류 추출 실패 → 대분류 fallback: {top_cats}")
-        return {"genre_filter": top_cats, "genre_level": "large"}
-
-    print(f"[Genre v2] 대분류: {top_cats} → 중분류: {medium_cats}")
-    return {"genre_filter": medium_cats, "genre_level": "medium"}
-
-
-# ## 7. Query Transform RAG 노드
-
 def query_transform_rag_node(state: GraphState) -> dict:
     summary     = state.get("summary", "")
     reflection  = state.get("reflection", "")
@@ -350,10 +287,10 @@ def query_transform_rag_node(state: GraphState) -> dict:
         if query_filter:
             results = db.search_with_filter(
                 QDRANT_COLLECTION_NAME, query_vector,
-                query_filter=query_filter, limit=5, threshold=0.5,
+                query_filter=query_filter, limit=SEARCH_LIMIT, threshold=0.5,
             )
         else:
-            results = db.search(QDRANT_COLLECTION_NAME, query_vector, limit=5, threshold=0.5)
+            results = db.search(QDRANT_COLLECTION_NAME, query_vector, limit=SEARCH_LIMIT, threshold=0.5)
         all_results.append(results)
 
     merged_payloads   = reciprocal_rank_fusion(all_results)
@@ -369,7 +306,8 @@ def query_transform_rag_node(state: GraphState) -> dict:
             "category_medium": p.get("category_medium"),
             "cover_url":       p.get("cover_url", ""),
         }
-        for p in reranked_payloads[:3]
+        for p in reranked_payloads[:RETRIEVE_TOP_N]
     ]
 
+    print(f"\n[RAG] 최종 검색 결과: {len(retrieved_books)}권")
     return {"retrieved_books": retrieved_books}
