@@ -12,5 +12,7 @@ sentence-transformers
 transformers
 torch
 openai
+anthropic
 requests
 pydantic
+wandb
