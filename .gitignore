@@ -35,3 +35,5 @@ build/
 
 # wandb local run data
 **/wandb/
+research/data/simulation_results/
+research/tests/lael/research/

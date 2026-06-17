@@ -1,8 +1,8 @@
 """
 페르소나 JSON 파일들을 dict로 합쳐서 로드함.
 
-인계 문서의 load_persona_bank() 패턴.
-실제 페르소나 JSON은 backend/data/personas/*_sessions_manual.json 형태.
+실제 최종 평가용 페르소나 JSON은 backend/data/personas/ 아래 *.json 형태.
+하위 폴더(dummy/)는 자동으로 제외됨.
 
 사용 예:
     from app.simulation.persona_loader import load_persona_bank
@@ -17,26 +17,16 @@ from pathlib import Path
 
 
 def load_persona_bank(persona_dir: str = "backend/data/personas") -> dict:
-    """
-    persona_dir의 모든 *_sessions_manual.json 파일을 읽어 하나의 dict로 합침.
-
-    Args:
-        persona_dir: 페르소나 JSON 파일들이 있는 디렉토리
-
-    Returns:
-        {"A_최재원": {...}, "B_한미영": {...}, ...} 형태의 통합 dict
-    """
     bank: dict = {}
     pdir = Path(persona_dir)
 
     if not pdir.exists():
         raise FileNotFoundError(f"페르소나 디렉토리 없음: {persona_dir}")
 
-    files = sorted(pdir.glob("*_sessions_manual.json"))
+    # 변경: 모든 .json 파일 로드 (더미와 정식 페르소나 모두 지원)
+    files = sorted(pdir.glob("*.json"))
     if not files:
-        raise FileNotFoundError(
-            f"{persona_dir}에 *_sessions_manual.json 파일 없음"
-        )
+        raise FileNotFoundError(f"{persona_dir}에 .json 파일 없음")
 
     for path in files:
         with open(path, encoding="utf-8") as f:
