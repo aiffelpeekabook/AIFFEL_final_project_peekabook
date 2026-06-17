@@ -206,7 +206,7 @@ async def run_session(app,
                 print(f"  [book_intro 추출 실패] {e}")
 
         if verbose:
-            print(f"  [book_intro {'로드' if book_intros else '없음 (fallback)'}] "
+            print(f"  [book_intro {'로드' if book_intros else '없음 — 평가 스킵'}] " 
                   f"{len(book_intros)}권")
 
         if recommendation_text:
@@ -223,7 +223,7 @@ async def run_session(app,
         "retrieved_books":     crs_result.get("retrieved_books", []) if crs_result else [],
         "recommendations":     crs_result.get("recommendations", []) if crs_result else [],
         "self_evaluation":     self_evaluation,
-        "eval_mode":           "book_intro" if book_intros else "fallback",
+        "eval_mode":           "evaluated" if book_intros else "skipped",
         "book_intro_loaded":   len(book_intros),
         "simulated_at":        datetime.now(tz=KST).isoformat(),
     }

@@ -1,8 +1,13 @@
 """
 PeekaReader: 페르소나 DNA 기반 사용자 시뮬레이션 에이전트
 
-CRS의 슬롯 질문에 자동 응답하고 추천 결과를 도서별로 평가함.
+CRS의 슬롯 질문에 자동 응답하고 추천 결과를 도서별로 self-evaluation 함.
 ReAct 패턴(Thought + Action)으로 발화를 생성함.
+
+변경 이력:
+- v2 (현재): EVAL_SYSTEM_BOTH만 채택 (실험에서 가장 일관된 평가)
+              FALLBACK 모드 제거 (book_intro 없으면 평가 자체를 스킵하는 게 더 정직함)
+              evaluate() mode 파라미터 제거 (단일 경로로 단순화)
 """
 
 from __future__ import annotations
@@ -70,7 +75,7 @@ def extract_session_dna(full_persona: dict, session_id: int) -> dict:
 class PeekaReaderAgent:
     """
     CRS 슬롯 질문에 페르소나 DNA 기반으로 자동 응답하고,
-    추천 결과(3권)를 도서별로 평가하는 ReAct 에이전트.
+    추천 결과를 도서별로 self-evaluation 하는 ReAct 에이전트.
     """
 
     ANSWER_SYSTEM = """\
@@ -95,65 +100,9 @@ class PeekaReaderAgent:
 {{"thought": "속마음 한 문장", "utterance": "실제 발화"}}
 """
 
+    # Self-evaluation 시스템 프롬프트 (구 EVAL_SYSTEM_BOTH)
+    # 도서 소개글(주) + CRS 추천 이유(보조) 둘 다 참고
     EVAL_SYSTEM = """\
-당신은 아래 DNA를 가진 도서관 이용자입니다.
-
-## 당신의 페르소나 (DNA)
-{persona_str}
-
-## 과제
-추천된 도서 각각이 당신의 DNA와 맞는지 판단하세요.
-
-## 평가 방법
-아래 각 도서의 소개글을 읽고 DNA 기준으로 직접 판단하세요.
-추천 이유나 도서관 정보는 무시하세요.
-
-## 추천 도서 및 소개글
-{book_intros_str}
-
-## 판단 기준 (권당)
-- 관심 장르/주제와 맞는가
-- 난이도가 내 수준에 맞는가
-- 현재 상황(목적)에 적합한가
-
-## 출력 형식 (JSON만 출력)
-{{
-  "books_evaluated": [
-    {{"title": "책 제목", "match": true, "reason": "내 입장에서 한 문장"}}
-  ],
-  "overall_reason": "전체 소감 한 문장"
-}}
-"""
-
-    EVAL_SYSTEM_FALLBACK = """\
-당신은 아래 DNA를 가진 도서관 이용자입니다.
-
-## 당신의 페르소나 (DNA)
-{persona_str}
-
-## 과제
-시스템이 추천한 도서 각각이 당신의 DNA와 맞는지 직접 판단하세요.
-
-## 판단 기준 (권당)
-- 관심 장르/주제와 맞는가
-- 난이도가 내 수준에 맞는가
-- 현재 상황(목적)에 적합한가
-
-## 주의
-판단 기준은 오직 위의 DNA입니다.
-추천 이유 문구나 도서관 정보는 무시하세요.
-도서 제목과 저자만 보고 DNA 기준으로 직접 판단하세요.
-
-## 출력 형식 (JSON만 출력)
-{{
-  "books_evaluated": [
-    {{"title": "책 제목", "match": true, "reason": "내 입장에서 한 문장"}}
-  ],
-  "overall_reason": "전체 소감 한 문장"
-}}
-"""
-
-    EVAL_SYSTEM_BOTH = """\
 당신은 아래 DNA를 가진 도서관 이용자입니다.
 
 ## 당신의 페르소나 (DNA)
@@ -250,54 +199,39 @@ class PeekaReaderAgent:
         return {"thought": thought, "utterance": utterance}
 
     def evaluate(self, recommendation_text: str,
-                 book_intros: Optional[dict] = None,
-                 mode: str = "both") -> dict:
+                 book_intros: Optional[dict] = None) -> dict:
         """
-        mode:
-          "recommendation" — CRS 추천 이유만 보고 평가
-          "book_intro"     — 서지 소개글만 보고 평가 (기본값)
-          "both"           — 추천 이유 + 서지 소개글 둘 다 보고 평가
+        추천된 도서를 self-evaluation 함.
+
+        book_intros가 비어 있으면 평가 자체를 스킵함 (FALLBACK 평가는
+        실험적으로 신뢰성이 낮아 제거됨). skipped 플래그로 명시함.
+
+        Args:
+            recommendation_text: CRS의 최종 추천 메시지 (보조 참고용)
+            book_intros: {"제목": "소개글"} dict. 필수.
+
+        Returns:
+            정상 평가 시: {"books_evaluated": [...], "overall_reason": "..."}
+            스킵 시:     {"books_evaluated": [], "skipped": True}
         """
+        if not book_intros:
+            if self.verbose:
+                print("  [self-evaluation 스킵] book_intro 없음 — 평가 불가")
+            return {"books_evaluated": [], "skipped": True}
 
-        if mode == "recommendation":
-            system_content = self.EVAL_SYSTEM_FALLBACK.format(
-                persona_str=self.persona_str
-            )
-            user_content = f"시스템 추천 결과:\n{recommendation_text}"
+        book_intros_str = "\n\n".join([
+            f"📚 {title}\n소개: {intro}"
+            for title, intro in book_intros.items()
+        ])
 
-        elif mode == "book_intro":
-            if not book_intros:
-                system_content = self.EVAL_SYSTEM_FALLBACK.format(
-                    persona_str=self.persona_str
-                )
-                user_content = f"시스템 추천 결과:\n{recommendation_text}"
-            else:
-                book_intros_str = "\n\n".join([
-                    f"📚 {title}\n소개: {intro}"
-                    for title, intro in book_intros.items()
-                ])
-                system_content = self.EVAL_SYSTEM.format(
-                    persona_str=self.persona_str,
-                    book_intros_str=book_intros_str
-                )
-                user_content = "추천 도서 소개글을 바탕으로 평가해주세요."
-
-        elif mode == "both":
-            book_intros_str = "\n\n".join([
-                f"📚 {title}\n소개: {intro}"
-                for title, intro in (book_intros or {}).items()
-            ])
-            system_content = self.EVAL_SYSTEM_BOTH.format(
-                persona_str=self.persona_str,
-                book_intros_str=book_intros_str if book_intros else "소개글 없음"
-            )
-            user_content = (
-                f"[추천 이유]\n{recommendation_text}\n\n"
-                f"[도서 소개글]\n{book_intros_str if book_intros else '없음'}"
-            )
-
-        else:
-            raise ValueError(f"지원하지 않는 mode: {mode}")
+        system_content = self.EVAL_SYSTEM.format(
+            persona_str=self.persona_str,
+            book_intros_str=book_intros_str,
+        )
+        user_content = (
+            f"[추천 이유]\n{recommendation_text}\n\n"
+            f"[도서 소개글]\n{book_intros_str}"
+        )
 
         resp = _get_client().chat.completions.create(
             model=LLM_MODEL,
@@ -323,7 +257,7 @@ class PeekaReaderAgent:
         matched = sum(1 for b in books if b.get("match"))
 
         if self.verbose:
-            print(f"\n[Evaluation — mode: {mode}]")
+            print(f"\n[Self-Evaluation]")
             for b in books:
                 mark = "O" if b.get("match") else "X"
                 print(f"  [{mark}] {b.get('title', '?')} — {b.get('reason', '')}")
