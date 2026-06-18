@@ -100,7 +100,7 @@ def _run_user_sim(persona_id:  str,
         # CRS 종료 신호
         if isinstance(message, dict) and message.get("__done__"):
             collector["crs_result"] = message["result"]
-            collector.setdefault("status", "success")
+            collector["status"] = "success"
             break
 
         # max_turns 초과
