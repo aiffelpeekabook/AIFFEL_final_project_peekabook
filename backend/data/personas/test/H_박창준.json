@@ -1,0 +1,256 @@
+{
+  "H_박창준": {
+    "demographics": "31세, 육아휴직 중 (원직업: 회계사), 남성, 경기도 용인 거주, 기혼, 자녀 1명",
+    "speaking_style": "구어체 존댓말, 솔직하고 털털한 어조",
+    "reader_type": "Mood-Driven Reader / Generalist",
+    "disliked": "엄마 중심으로 쓰인 육아서, 죄책감을 유발하는 책",
+    "pain_points": "아이 낮잠 시간에만 읽을 수 있어서 집중력이 자주 끊김",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "아빠로서 아이와 어떻게 놀아줘야 할지 알고 싶음",
+        "preferred_genre": "교육·육아",
+        "reading_style": "아빠 시각에서 쓴 실용적인 가이드 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "육아휴직 첫 주, 아이와 단둘이 있는 게 어색한 상태"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "오랜만에 소설 한 편 읽으며 나만의 시간을 갖고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "빠른 전개보다 감성적인 여운이 있는 이야기 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "아이가 낮잠 든 오후, 처음으로 여유가 생긴 날"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "복직 후를 대비해 재무·세무 감각을 유지하고 싶음",
+        "preferred_genre": "경제·재테크",
+        "reading_style": "최신 세법 변화나 실무 트렌드 반영된 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "육아휴직 3개월째, 슬슬 업무 감각이 무뎌지는 게 느껴지는 시점"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "부부 사이의 대화를 더 잘하는 법을 배우고 싶음",
+        "preferred_genre": "심리·관계",
+        "reading_style": "실제 대화 예시가 담긴 공감형 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "육아 스트레스로 배우자와 사소한 다툼이 잦아진 시기"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "유머 있고 가볍게 웃을 수 있는 책이 필요함",
+        "preferred_genre": "유머·에세이",
+        "reading_style": "일상 에피소드 중심의 유쾌한 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "육아에 지쳐 뭔가 웃긴 걸 읽고 싶어진 밤"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "아빠가 직접 쓴 육아 에세이로 공감과 위안을 얻고 싶음",
+        "preferred_genre": "교육·육아",
+        "reading_style": "솔직하고 유쾌한 아빠 시각의 에세이 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "육아휴직 한 달째, 예상보다 훨씬 힘들다는 걸 실감한 날"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "30대 남성 주인공의 성장 이야기로 공감하며 읽고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "또래 남성의 고민이 담긴 현실감 있는 이야기 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "아이 낮잠 시간, 나 자신을 돌아보고 싶어진 오후"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "육아 번아웃을 극복한 사람들의 이야기를 읽고 싶음",
+        "preferred_genre": "심리·관계",
+        "reading_style": "실제 사례와 회복 과정이 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "연속 야간 수유 후 몸과 마음이 바닥을 찍은 아침"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "최신 세법 트렌드를 따라가며 복직 감각을 유지하고 싶음",
+        "preferred_genre": "경제·재테크",
+        "reading_style": "최신 사례 중심, 실무에 바로 연결되는 글 선호",
+        "difficulty_level": "중급 수준, 회계 배경 있음",
+        "current_context": "아이 낮잠 시간, 오랜만에 업무 관련 책을 펴본 날"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "0~3세 아이의 발달과 놀이 방법을 제대로 알고 싶음",
+        "preferred_genre": "교육·육아",
+        "reading_style": "발달 단계별로 정리된 실용서 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "아이가 뭔가 새로운 행동을 보여 발달이 정상인지 궁금해진 날"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "나 자신을 더 잘 이해하고 감정을 정리하고 싶음",
+        "preferred_genre": "심리·관계",
+        "reading_style": "깊이 있는 사색이 가능한 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "육아 중 화를 내고 나서 자책하게 된 저녁"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "육아 아빠의 솔직한 유머 에세이로 기분 전환하고 싶음",
+        "preferred_genre": "유머·에세이",
+        "reading_style": "공감 가는 아빠 일상 에피소드 중심 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "하루 종일 아이와 씨름하고 지쳐 쓰러진 밤"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "짧은 한국 단편집으로 끊어 읽어도 부담 없는 책을 찾고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "한 편씩 독립적으로 읽히는 단편 형식 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "집중력이 자주 끊기는 육아 환경에서 짧게 읽을 책이 필요함"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "육아휴직 아빠의 하루 루틴을 어떻게 짜면 좋을지 알고 싶음",
+        "preferred_genre": "교육·육아",
+        "reading_style": "실제 아빠들의 루틴 사례가 담긴 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "루틴 없이 하루가 흘러가는 것 같아 불안해진 육아휴직 2개월째"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "30대 맞벌이 부부의 현실적인 재정 설계를 알고 싶음",
+        "preferred_genre": "경제·재테크",
+        "reading_style": "현실적인 사례 중심, 단계별 설명 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "육아휴직으로 수입이 줄어든 상태에서 가계를 다시 정리해야겠다 싶어짐"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "감정 조절과 회복탄력성을 키우는 방법을 배우고 싶음",
+        "preferred_genre": "심리·관계",
+        "reading_style": "실천 가능한 방법이 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "육아 중 감정 기복이 심해진 것 같아 신경 쓰이는 시기"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "가족을 주제로 한 잔잔한 소설로 마음을 채우고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "따뜻하고 감성적인 서사 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "아이가 처음으로 '아빠'라고 부른 날 저녁, 감정이 벅차오른 상태"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "아이 수면 교육 방법을 제대로 알고 싶음",
+        "preferred_genre": "교육·육아",
+        "reading_style": "단계별 가이드와 사례가 담긴 실용서 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "밤마다 아이 재우는 게 두 시간씩 걸려 지쳐가는 시점"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "어떤 아버지가 되고 싶은지 사유해보고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "담담하고 깊이 있는 에세이 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "아이 재운 후 혼자 앉아 내가 잘하고 있는지 의문이 든 밤"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "일과 삶의 균형을 어떻게 찾을지 심리적으로 정리하고 싶음",
+        "preferred_genre": "심리·관계",
+        "reading_style": "공감 가는 사례 중심, 실용적 조언이 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "복직이 가까워지면서 일과 육아 사이에서 갈등하기 시작한 시기"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "집 마련 전략을 미리 알아두고 싶음",
+        "preferred_genre": "경제·재테크",
+        "reading_style": "용어 설명이 친절하고 사례 중심인 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "전세 계약 갱신이 다가오면서 슬슬 내 집 마련을 생각하기 시작한 참"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "직장인의 일상 코미디로 가볍게 웃고 복직 감각을 떠올리고 싶음",
+        "preferred_genre": "유머·에세이",
+        "reading_style": "직장 일상의 공감 포인트가 많은 유머 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "복직이 몇 달 남지 않아 직장 생활이 아득하게 느껴지는 날"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "영유아 언어 발달을 어떻게 도와줄 수 있는지 알고 싶음",
+        "preferred_genre": "교육·육아",
+        "reading_style": "일상에서 바로 실천할 수 있는 팁이 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "또래 아이들은 말을 시작하는데 우리 아이는 아직인 것 같아 걱정되는 시점"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "아버지와 아들을 다룬 소설로 감정적으로 연결되고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "부자 관계의 복잡한 감정을 잘 담아낸 이야기 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "오랜만에 친아버지와 통화하고 나서 묘한 감정이 남은 날"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "일과 삶을 균형 있게 살아가는 방법에 대해 사유하고 싶음",
+        "preferred_genre": "심리·관계",
+        "reading_style": "깊이 있지만 무겁지 않은 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "복직 날짜가 확정되고 나서 기대와 불안이 뒤섞인 상태"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "회계사로서 실무 역량을 유지할 수 있는 책을 찾고 싶음",
+        "preferred_genre": "경제·재테크",
+        "reading_style": "실무 적용 가능한 깊이 있는 내용 선호",
+        "difficulty_level": "중급 수준, 회계 배경 있음",
+        "current_context": "복직 한 달 전, 본격적으로 업무 감각을 다시 끌어올리고 싶은 시점"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "30대 일상을 솔직하게 담은 에세이로 공감하고 싶음",
+        "preferred_genre": "유머·에세이",
+        "reading_style": "30대 남성의 현실적인 일상이 담긴 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "아이 낮잠 시간, 가볍게 읽을 책이 필요한 평일 오후"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "아이와 함께 그림책 읽는 방법과 효과를 알고 싶음",
+        "preferred_genre": "교육·육아",
+        "reading_style": "실제 그림책 활용 사례가 담긴 실용서 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "도서관에서 아이용 그림책을 빌려왔는데 어떻게 읽어줘야 할지 모르겠는 날"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "한국 추리 소설로 몰입감 있게 집중하고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "흡입력 있는 전개와 반전이 있는 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "아이가 낮잠 든 드문 두 시간, 완전히 딴 세계로 빠져들고 싶은 오후"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "30대 남성으로서 삶의 방향을 인문학적으로 사유하고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "또래 남성의 고민을 담은 인문 에세이 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "육아휴직이 끝나가며 앞으로의 삶을 다시 그려보고 싶어진 시기"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}

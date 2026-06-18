@@ -1,0 +1,256 @@
+{
+  "F_김지원": {
+    "demographics": "33세, 간호사, 여성, 대구 거주, 1인 가구",
+    "speaking_style": "구어체 존댓말, 솔직하고 담백한 어조",
+    "reader_type": "Mood-Driven Reader / Generalist",
+    "disliked": "지나치게 무거운 사회 비판서",
+    "pain_points": "불규칙한 교대 근무로 독서 흐름이 자주 끊김",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "퇴근 후 머리를 비우고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "짧고 담백한 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "야간 근무 후 귀가, 몸은 피곤하지만 잠이 안 오는 상태"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "죽음과 삶에 대해 조용히 생각해보고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "어렵지 않게 풀어쓴 인문 에세이 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 오후, 환자를 보내고 난 뒤 마음이 먹먹한 날"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "가볍게 웃으면서 읽을 수 있는 책이 필요함",
+        "preferred_genre": "유머·에세이",
+        "reading_style": "일상 관찰이 담긴 유쾌한 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "연휴 첫날, 오랜만에 완전히 쉬는 날"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "번아웃을 극복한 사람들의 이야기를 읽고 싶음",
+        "preferred_genre": "심리",
+        "reading_style": "실제 사례와 회복 과정이 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "3교대 두 달째, 몸보다 마음이 더 지쳐있는 시점"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "간호사로서의 직업적 의미를 다시 찾고 싶음",
+        "preferred_genre": "직업·인문",
+        "reading_style": "의료 현장의 진솔한 이야기 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "입사 5주년, 초심을 떠올리게 되는 날"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "또래 작가의 일상 글을 읽으며 공감하고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "솔직하고 잔잔한 어조의 글 선호",
+        "difficulty_level": "에세이 수준, 가볍게 읽히는 책",
+        "current_context": "주말 아침, 천천히 커피 한 잔 마시며 책장을 넘기고 싶은 기분"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "미국 추리 소설로 몰입감 있게 시간을 보내고 싶음",
+        "preferred_genre": "외국문학·번역소설",
+        "reading_style": "흡입력 있는 전개와 반전이 있는 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "야간 근무 마치고 들어온 새벽, 정신은 깨어 있지만 가벼운 책이 필요한 시간"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "회복탄력성을 키우는 방법을 알고 싶음",
+        "preferred_genre": "심리",
+        "reading_style": "실험 근거 중심, 실천 가능한 방법이 담긴 글 선호",
+        "difficulty_level": "중급 수준, 깊이 있는 내용도 가능",
+        "current_context": "쉬는 날 오전, 한 주 동안 흔들렸던 감정을 돌아보며"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "동양 고전을 가볍게 접하며 마음의 중심을 잡고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "원문보다 쉽게 풀어쓴 에세이 형식 선호",
+        "difficulty_level": "에세이 수준, 한자 부담 없는 책",
+        "current_context": "주말 저녁, 차분한 글이 읽고 싶은 기분"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "혼자 사는 사람의 자기 돌봄 노하우를 알고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "실생활 사례 중심, 따뜻한 어조 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "혼자 사는 게 문득 외롭게 느껴진 평일 저녁"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "선배 의료인들이 쓴 현장 에세이를 읽고 싶음",
+        "preferred_genre": "직업·인문",
+        "reading_style": "솔직하고 진솔한 회고 형식 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "병동에서 힘든 하루를 보낸 후, 비슷한 경험의 글이 위로가 될 것 같음"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "일본 작가의 잔잔한 일상 소설로 마음을 가라앉히고 싶음",
+        "preferred_genre": "외국문학·번역소설",
+        "reading_style": "사건보다 분위기에 집중하는 잔잔한 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "비 오는 주말 오후, 따뜻한 차와 함께 천천히 읽고 싶은 분위기"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "책방과 도서관을 주제로 한 에세이를 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "공간과 책에 대한 애정이 담긴 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "퇴근길 도서관에 들러 책을 빌리고 온 평일 저녁"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "감정 노동을 하는 사람들의 심리를 이해하고 싶음",
+        "preferred_genre": "심리",
+        "reading_style": "공감 가는 사례와 분석이 함께 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "환자 보호자와 부딪힌 날 밤, 내 감정을 정리하고 싶은 마음"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "삶에서 무엇이 중요한지 다시 생각해보고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "깊이 있는 사색이 가능한 에세이 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "생일 즈음, 한 해를 돌아보며 우선순위를 다시 잡고 싶음"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "음식과 요리에 얽힌 이야기를 곁들인 에세이를 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "따뜻한 어조와 생활감이 담긴 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "혼자 저녁을 차려 먹은 평일 밤"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "북유럽 미스터리 특유의 분위기를 즐기고 싶음",
+        "preferred_genre": "외국문학·번역소설",
+        "reading_style": "차갑고 묵직한 분위기의 글 선호",
+        "difficulty_level": "중급 수준, 두꺼운 책도 감당 가능",
+        "current_context": "연휴, 푹 빠질 만한 책을 한 권 잡고 싶은 기분"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "직장인의 일상을 솔직하게 그린 유머 글로 가볍게 웃고 싶음",
+        "preferred_genre": "유머·에세이",
+        "reading_style": "공감 가는 직장 일상 관찰 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "쉬는 날 낮, 가볍게 웃고 넘길 책이 필요함"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "죽음과 가까이서 일하는 직업인들의 기록을 읽고 싶음",
+        "preferred_genre": "직업·인문",
+        "reading_style": "현장의 묵직한 이야기를 담담하게 풀어낸 글 선호",
+        "difficulty_level": "중급 수준, 묵직한 주제도 감당 가능",
+        "current_context": "장례식 다녀온 다음 날, 마음이 가라앉은 상태"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "스스로를 위로하고 다정하게 대하는 법을 배우고 싶음",
+        "preferred_genre": "심리",
+        "reading_style": "따뜻하고 부담 없이 읽히는 글 선호",
+        "difficulty_level": "성인 일반 수준, 임상적 내용은 부담",
+        "current_context": "자기 자신에게 너무 엄격했던 한 주를 돌아보는 주말 밤"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "영미 단편 소설을 짧게 끊어 읽으며 다양한 작가를 만나보고 싶음",
+        "preferred_genre": "외국문학·번역소설",
+        "reading_style": "한 편씩 독립적으로 읽히는 단편 형식 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "교대 근무로 긴 책 읽기 어려운 한 주, 짧게 끊어 읽을 책이 필요함"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "글을 쓰는 사람의 사유와 일상을 들여다보고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "사색적이고 문장이 단정한 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "조용한 일요일 오후, 차분한 글이 읽고 싶은 기분"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "일상 속 작은 순간을 철학적으로 들여다본 글을 읽고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "일상 사례를 철학으로 해석하는 글 선호",
+        "difficulty_level": "에세이 수준, 가볍게 읽히는 책",
+        "current_context": "퇴근길 버스 안, 짧게 음미할 글이 필요한 시간"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "일본 추리 소설의 정교한 구성을 즐기고 싶음",
+        "preferred_genre": "외국문학·번역소설",
+        "reading_style": "치밀한 플롯과 인간 심리 묘사가 담긴 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "연차 낸 평일 오후, 시간을 들여 한 권에 집중하고 싶음"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "교대 근무자의 수면과 체력을 챙길 방법을 알고 싶음",
+        "preferred_genre": "가정·건강",
+        "reading_style": "실용적이고 과학적 근거가 있는 글 선호",
+        "difficulty_level": "성인 일반 수준, 의학 전문서는 부담",
+        "current_context": "3교대 한 달 만에 체력 저하를 절감한 평일 저녁"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "1인 가구의 외로움과 관계 맺기를 심리적으로 이해하고 싶음",
+        "preferred_genre": "심리",
+        "reading_style": "공감 가는 사례 중심, 따뜻한 시각의 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 저녁, 별 이유 없이 쓸쓸한 기분이 드는 날"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "계절과 날씨를 글감으로 한 에세이로 분위기를 느끼고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "감각적이고 사색적인 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "첫눈이 내린 날, 그 분위기에 어울리는 책을 펴고 싶음"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "환자 가족의 회복기를 통해 다른 시각의 의료 현장을 보고 싶음",
+        "preferred_genre": "직업·인문",
+        "reading_style": "당사자의 솔직한 기록을 담은 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "오랜 환자 한 명을 퇴원시킨 다음 날, 그 가족의 시선이 궁금해진 참"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "반려동물과의 일상을 그린 유머 에세이로 기분 전환하고 싶음",
+        "preferred_genre": "유머·에세이",
+        "reading_style": "따뜻한 어조와 생활감이 담긴 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "쉬는 날 오후, 가볍게 웃고 싶은 기분"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "시간과 기억에 대해 인문학적으로 사유한 글을 읽고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "사색적이고 문장이 깊이 있는 글 선호",
+        "difficulty_level": "중급 수준, 깊이 있는 내용도 가능",
+        "current_context": "한 해의 끝자락, 지나온 시간을 정리하고 싶은 분위기"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}
