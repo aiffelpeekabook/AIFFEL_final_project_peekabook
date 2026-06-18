@@ -53,11 +53,11 @@ SWEEP_CONFIG = {
     "method": "grid",
     "metric": {"name": "mean_score", "goal": "maximize"},
     "parameters": {
-        "collection_name":  {"values": ["books_intro_48k"]},
-        "persona_name":     {"values": ["A_최재원", "B_한미영", "C_오민아"]},
+        "collection_name":  {"values": ["books_intro_48k", "books_pub_review_46k"]},
+        "persona_name":     {"values": ["A_최재원", "B_한미영", "C_오민아", "D_이수빈", "E_정미희"]},
         "use_genre_filter": {"values": [False]},
-        "query_transform":  {"values": ["rewrite"]},
-        "run_index":        {"values": list(range(1, 7))},
+        "query_transform":  {"values": ["none"]},
+        "run_index":        {"values": list(range(1, 10))},
     },
 }
 
