@@ -1,0 +1,256 @@
+{
+  "I_강민형": {
+    "demographics": "43세, 전직 기자 (현재 이직 준비 중), 남성, 서울 마포구 거주, 1인 가구",
+    "speaking_style": "구어체 존댓말, 논리적이고 간결한 어조",
+    "reader_type": "Deep Diver / Specialist",
+    "disliked": "근거 없는 주장, 감성에만 호소하는 글",
+    "pain_points": "읽고 싶은 분야는 넓은데 깊이 있는 책과 가벼운 책을 구분하기 어려움",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "미디어 산업 변화를 큰 그림에서 다시 정리하고 싶음",
+        "preferred_genre": "미디어·사회",
+        "reading_style": "데이터와 현장 사례가 균형 있게 담긴 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "20년 기자 생활을 마무리하며 업계를 객관적으로 돌아보는 시점"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "이직 후 새 분야인 콘텐츠 마케팅을 공부하고 싶음",
+        "preferred_genre": "경영·마케팅",
+        "reading_style": "전략과 사례가 균형 잡힌 실용서 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "이직 면접 준비 중, 마케팅 언어가 아직 낯선 상태"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "혼자 사는 삶을 담담하게 다룬 글을 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "감상적이지 않고 건조하게 쓴 산문 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "이직 준비로 지인들과도 연락이 뜸해진 주말 저녁"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "현대 민주주의의 위기를 분석한 책을 읽고 싶음",
+        "preferred_genre": "정치·사회",
+        "reading_style": "학술적 깊이가 있으면서도 읽기 쉬운 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "선거 뉴스를 보다가 구조적으로 파고들고 싶어진 날"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "한국 현대 소설을 오랜만에 제대로 읽고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "문장이 단단하고 사회적 맥락이 담긴 작품 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "취재하며 놓쳤던 문학을 다시 찾고 싶어진 시점"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "한국 사회 불평등 구조를 체계적으로 이해하고 싶음",
+        "preferred_genre": "정치·사회",
+        "reading_style": "데이터와 구조 분석이 탄탄한 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "취재 현장에서 봐온 불평등을 이론적으로 정리하고 싶어진 시점"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "디지털 저널리즘의 미래를 전망한 책을 읽고 싶음",
+        "preferred_genre": "미디어·사회",
+        "reading_style": "현장 사례와 전망이 균형 있게 담긴 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "퇴직 후 저널리즘 변화를 바깥에서 객관적으로 보고 싶어진 날"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "브랜드 스토리텔링의 원리를 배우고 이직 준비에 활용하고 싶음",
+        "preferred_genre": "경영·마케팅",
+        "reading_style": "기자 출신이 이해하기 쉬운 내러티브 중심 설명 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "면접에서 스토리텔링 역량을 어필하고 싶어 공부를 시작한 평일 저녁"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "사회적 맥락이 담긴 한국 장편소설을 깊이 읽고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "문장이 단단하고 밀도 있는 작품 선호",
+        "difficulty_level": "중급 이상",
+        "current_context": "주말 오전, 오랜만에 긴 소설 한 권을 제대로 읽을 시간이 생긴 날"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "포퓰리즘이 어떻게 민주주의를 위협하는지 분석하고 싶음",
+        "preferred_genre": "정치·사회",
+        "reading_style": "비교 정치학 관점의 분석서 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "해외 선거 결과를 보도하며 느꼈던 의문을 이론적으로 풀고 싶어진 날"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "중년 남성의 고독을 솔직하게 담은 에세이를 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "감상 없이 담백하게 쓴 산문 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "퇴직 후 처음으로 아무 계획 없는 일요일 오후"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "현대사를 통해 지금 한국 사회를 다시 읽고 싶음",
+        "preferred_genre": "역사·인문",
+        "reading_style": "현재와 연결되는 역사 해석 중심의 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "취재 현장에서 접한 사건들의 역사적 맥락이 궁금해진 날"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "기후 위기와 정치의 관계를 구조적으로 이해하고 싶음",
+        "preferred_genre": "정치·사회",
+        "reading_style": "과학적 근거와 정치 분석이 결합된 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "환경 관련 기사를 쓰던 기억이 떠올라 다시 파보고 싶어진 날"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "단편 소설 여러 편을 끊어 읽으며 문학 감각을 되살리고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "짧고 밀도 있는 단편 형식 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "이직 준비로 집중이 안 되는 날, 짧게 끊어 읽을 책이 필요함"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "디지털 마케팅 실무를 빠르게 파악하고 싶음",
+        "preferred_genre": "경영·마케팅",
+        "reading_style": "실무 중심, 바로 적용 가능한 사례 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "이직 후 첫 달, 디지털 마케팅 용어에 적응하느라 바쁜 시기"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "SNS와 여론 조작의 메커니즘을 분석한 책을 읽고 싶음",
+        "preferred_genre": "미디어·사회",
+        "reading_style": "실증적 분석과 사례가 풍부한 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "소셜 미디어 알고리즘 취재 당시 느꼈던 불편함을 이론으로 정리하고 싶어진 날"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "도시 젠트리피케이션 문제를 사회학적으로 이해하고 싶음",
+        "preferred_genre": "정치·사회",
+        "reading_style": "현장 사례와 구조 분석이 결합된 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "서울 집값 기사를 쓰던 당시 느꼈던 구조적 의문을 다시 들여다보고 싶어진 날"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "한국 현대 시를 오랜만에 읽으며 언어 감각을 다듬고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "단단한 문장과 사유가 담긴 시집 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "오랜만에 혼자 카페에 앉아 글 쓰기 좋은 오후"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "제국주의와 식민지의 역사적 유산을 현재의 시각으로 읽고 싶음",
+        "preferred_genre": "역사·인문",
+        "reading_style": "탈식민주의 시각이 담긴 깊이 있는 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "해외 특파원 시절 느꼈던 역사적 맥락이 다시 떠오른 날"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "스타트업 커뮤니케이션 전략을 익혀 새 직장에 적응하고 싶음",
+        "preferred_genre": "경영·마케팅",
+        "reading_style": "스타트업 현장 사례 중심 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "스타트업으로 이직 후 조직 문화가 낯설게 느껴지는 시기"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "미디어와 권력의 관계를 역사적으로 분석한 책을 읽고 싶음",
+        "preferred_genre": "정치·사회",
+        "reading_style": "역사적 사례와 현재 적용이 연결된 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "기자 시절 권력과 언론의 관계를 되짚어보고 싶어진 날"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "글 쓰는 사람의 사유와 방법론을 담은 에세이를 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "작법보다 사유 과정에 집중한 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "이직 후 글쓰기 방식을 바꿔야 할 것 같은 느낌이 드는 시점"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "기자·언론인이 쓴 한국 논픽션을 읽으며 다른 시각을 접하고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "현장 취재가 녹아든 르포·논픽션 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "후배 기자가 쓴 책을 읽고 자극받은 날"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "뉴스 리터러시와 팩트체킹에 관한 체계적인 책을 읽고 싶음",
+        "preferred_genre": "미디어·사회",
+        "reading_style": "실용적인 방법론과 사례가 담긴 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "미디어 리터러시 교육 강의 제안을 받고 준비하게 된 시점"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "동아시아 근현대사의 흐름을 큰 그림으로 파악하고 싶음",
+        "preferred_genre": "역사·인문",
+        "reading_style": "거시적 역사 서술과 분석이 담긴 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "한중일 관계 기사를 쓰다 역사 공부를 다시 해야겠다 싶어진 날"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "정치 양극화의 원인과 구조를 분석한 책을 읽고 싶음",
+        "preferred_genre": "정치·사회",
+        "reading_style": "비교 정치 분석과 데이터가 결합된 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "정치부 취재 경험을 이론적으로 정리하고 싶어진 날"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "콘텐츠 마케팅의 큰 그림을 전략적으로 파악하고 싶음",
+        "preferred_genre": "경영·마케팅",
+        "reading_style": "전략 프레임워크와 사례가 균형 잡힌 글 선호",
+        "difficulty_level": "중급 수준",
+        "current_context": "이직 6개월째, 마케팅 전체 구조를 다시 정리할 필요를 느낀 시점"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "2020년대 한국 신진 작가의 소설로 동시대 감각을 확인하고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "실험적이고 동시대적 감각이 담긴 소설 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "후배가 추천한 젊은 작가 소설이 궁금해진 날"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "1인 가구의 일상을 담담하게 그린 에세이로 공감하고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "과장 없이 솔직하게 쓴 일상 산문 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "혼자 저녁을 먹다 문득 조용함이 어색해진 평일 밤"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "디지털 미디어가 저널리즘 윤리에 미친 영향을 분석하고 싶음",
+        "preferred_genre": "미디어·사회",
+        "reading_style": "윤리적 논쟁과 사례가 균형 있게 담긴 글 선호",
+        "difficulty_level": "고급 수준",
+        "current_context": "미디어 강의 준비 중, 저널리즘 윤리를 다시 정리해야겠다 싶어진 시점"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}

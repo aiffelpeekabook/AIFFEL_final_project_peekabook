@@ -1,0 +1,256 @@
+{
+  "G_박영희": {
+    "demographics": "69세, 전업주부, 여성, 부산 동래구 거주, 자녀 독립 후 부부 2인 가구",
+    "speaking_style": "정중하고 따뜻한 구어체, 천천히 설명하는 어조, 2~3문장",
+    "reader_type": "Deep Diver / Specialist",
+    "disliked": "너무 빠르게 전개되는 자극적인 이야기, 젊은 세대 위주의 트렌디한 책",
+    "pain_points": "글씨가 작은 책은 읽기 힘듦 / 요즘 책이 너무 많아 뭘 골라야 할지 모름",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "건강하게 나이 드는 방법이 궁금함",
+        "preferred_genre": "가정·건강",
+        "reading_style": "쉽고 친절하게 설명된 실용서 선호",
+        "difficulty_level": "성인 일반 수준, 전문 용어 적은 책",
+        "current_context": "주말 오전, 남편 건강 챙기다 나 자신도 돌봐야겠다 싶어짐"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "마음의 평안을 찾는 데 도움이 되는 종교 서적이 읽고 싶음",
+        "preferred_genre": "종교·신앙",
+        "reading_style": "어렵지 않고 마음에 위안을 주는 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "평일 오후, 집안일 마치고 조용히 혼자 앉아 있는 시간"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "손주와 대화할 때 AI 이야기를 이해하고 싶음",
+        "preferred_genre": "AI·전산",
+        "reading_style": "어렵지 않게 풀어쓴 교양서 선호",
+        "difficulty_level": "성인 초급 수준, 기술 용어 없이 읽히는 책",
+        "current_context": "손주가 AI 얘기를 자꾸 하는데 무슨 말인지 몰라 답답함"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "인생 후반기를 어떻게 살아야 할지 사유하고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "잔잔하고 깊이 있는 에세이 선호",
+        "difficulty_level": "에세이 수준, 가볍게 읽히는 책",
+        "current_context": "큰아이가 어느새 마흔을 넘겼다는 게 실감 나는 날"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "오래 살아온 사람들의 이야기를 읽으며 공감하고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "담담하고 따뜻한 어조의 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 오후, 오랜 친구와 통화한 후 감회가 새로운 날"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "노부부가 함께 건강을 챙기는 방법을 알고 싶음",
+        "preferred_genre": "가정·건강",
+        "reading_style": "사례 중심, 바로 실천할 수 있는 내용 선호",
+        "difficulty_level": "성인 일반 수준, 전문 용어 적은 책",
+        "current_context": "평일 오전, 남편과 동네 산책하다 건강 이야기를 나눈 후"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "부산 같은 지방 도시에서 나이 든 삶을 담은 글이 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "친근한 지역 정서가 담긴 담백한 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "동래 시장 다녀온 평일 오후, 익숙한 골목이 새삼 정겹게 느껴진 날"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "불교 가르침으로 마음을 다스리는 법을 배우고 싶음",
+        "preferred_genre": "종교·신앙",
+        "reading_style": "쉽게 풀어쓴 불교 교양서 선호",
+        "difficulty_level": "성인 일반 수준, 어려운 경전은 부담",
+        "current_context": "마음이 무겁고 잡념이 많은 요즘, 차분해지고 싶은 마음"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "노년 주인공의 삶을 담은 한국 소설이 읽고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "잔잔하고 서사가 있는 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "평일 오후, 긴 시간 천천히 읽을 책이 필요한 날"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "나이에 맞는 식단과 영양 관리 방법을 알고 싶음",
+        "preferred_genre": "가정·건강",
+        "reading_style": "실용적인 정보 중심, 따라하기 쉬운 구성 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 오전, 시장에서 장을 보다 뭘 사야 할지 고민된 날"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "노년의 삶에서 의미와 보람을 찾는 사유를 하고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "깊이 있지만 어렵지 않은 에세이 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "자녀들 모두 독립한 후 집이 조용해진 어느 평일 오후"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "자녀를 보내고 빈 둥지가 된 삶을 담은 글이 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "공감 가는 담담한 어조의 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "막내가 결혼 후 처음 맞는 명절, 집이 유독 넓게 느껴지는 날"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "관절과 근육 건강을 지키는 실용적인 방법을 알고 싶음",
+        "preferred_genre": "가정·건강",
+        "reading_style": "동작 설명이 자세하고 따라하기 쉬운 구성 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "계단 오르내리기가 예전보다 힘들어진 것을 느낀 요즘"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "기도와 위로에 관한 따뜻한 신앙 에세이를 읽고 싶음",
+        "preferred_genre": "종교·신앙",
+        "reading_style": "따뜻하고 위로가 되는 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "오랜 친구가 아프다는 소식을 듣고 마음이 무거워진 날"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "고향과 가족의 이야기를 담은 한국 단편집이 읽고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "감동적이고 여운이 남는 단편 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "고향 생각이 나는 가을 저녁"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "잠을 잘 자고 피로를 회복하는 방법을 알고 싶음",
+        "preferred_genre": "가정·건강",
+        "reading_style": "과학적 근거와 실용 팁이 함께 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "요즘 들어 새벽에 자꾸 깨는 날이 많아진 상태"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "나이 들면서 찾아오는 고독을 어떻게 받아들일지 생각해보고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "솔직하고 담담하게 쓰인 사색적인 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "혼자 있는 오후, 문득 조용함이 낯설게 느껴진 날"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "남편과 함께 나이 들어가는 이야기를 담은 에세이가 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "잔잔하고 따뜻한 부부 이야기 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "결혼 40주년 즈음, 남편과 보낸 세월이 떠오르는 날"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "손주 세대가 왜 AI를 좋아하는지 이해하고 싶음",
+        "preferred_genre": "AI·전산",
+        "reading_style": "쉬운 사례로 풀어쓴 교양서 선호",
+        "difficulty_level": "성인 초급 수준",
+        "current_context": "주말, 손주가 태블릿으로 AI와 대화하는 것을 신기하게 지켜보다"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "치매를 예방하고 뇌를 건강하게 유지하는 방법이 궁금함",
+        "preferred_genre": "가정·건강",
+        "reading_style": "사례 중심, 일상에서 실천 가능한 내용 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "지인이 치매 진단을 받았다는 소식을 듣고 불안해진 참"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "죽음 이후를 어떻게 바라봐야 할지 종교적으로 생각해보고 싶음",
+        "preferred_genre": "종교·신앙",
+        "reading_style": "두렵지 않게 다가오는 따뜻한 시각의 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "또래 지인의 부고를 듣고 자신의 삶을 돌아보게 된 날"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "한국 여성 작가의 잔잔한 소설로 마음을 채우고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "서정적이고 감성적인 문체 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "비 오는 주말 오후, 조용히 혼자 읽고 싶은 기분"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "시장과 골목의 일상을 담은 생활 에세이가 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "생활감 있고 친근한 어조의 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "동래 재래시장 다녀온 평일 오후, 상인들 얼굴이 정겨운 날"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "잘 마무리하는 삶에 대해 생각해보고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "따뜻하고 담담하게 쓰인 인문 에세이 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "유언장을 써두어야 하나 생각이 든 어느 날 저녁"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "노년기에 부부가 함께 할 수 있는 운동법을 알고 싶음",
+        "preferred_genre": "가정·건강",
+        "reading_style": "실용적인 정보 중심, 따라하기 쉬운 내용 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "남편과 함께 꾸준히 할 수 있는 운동을 찾고 싶어진 요즘"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "오래된 시인의 시집으로 감성을 되살리고 싶음",
+        "preferred_genre": "한국문학",
+        "reading_style": "리듬감 있고 여백이 있는 시 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "봄날 오후, 창가에 앉아 오래된 책 냄새가 그리워진 날"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "일상 속에서 감사함을 찾는 신앙적 글이 읽고 싶음",
+        "preferred_genre": "종교·신앙",
+        "reading_style": "짧고 따뜻한 묵상 형식 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "아침 기도 후, 오늘 하루를 잘 살고 싶은 마음이 드는 날"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "손주와 함께하는 시간에 대한 따뜻한 에세이를 읽고 싶음",
+        "preferred_genre": "에세이",
+        "reading_style": "따뜻하고 감동적인 어조의 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "손주가 다녀간 다음 날, 집이 다시 조용해진 오후"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "스마트폰을 더 편리하게 쓰는 방법을 배우고 싶음",
+        "preferred_genre": "AI·전산",
+        "reading_style": "그림과 설명이 친절하게 담긴 입문서 선호",
+        "difficulty_level": "성인 초급 수준, 큰 글씨와 그림 많은 책",
+        "current_context": "자녀에게 카카오톡 사용법을 물어보기 민망했던 날"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "동양 고전의 지혜로 노년을 평온하게 보내는 마음을 얻고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "쉽게 풀어쓴 고전 해설서 선호",
+        "difficulty_level": "에세이 수준, 원문보다 해석 중심",
+        "current_context": "동래 온천천 산책 후, 오래된 것들의 가치가 새삼 느껴진 오후"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}
