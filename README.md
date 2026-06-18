@@ -121,11 +121,47 @@ LLM_TEMPERATURE=0.7
 CHROMA_DB_PATH=./chroma_db
 ```
 
-### 3. 시뮬레이션 실행
+### 3. 멀티세션 시뮬레이션 실행
+
+페르소나 기반 멀티세션 시뮬레이션을 실행하고 wandb에 결과를 기록한다.
+
+**단일 페르소나 실행**
 
 ```bash
-cd backend
-python run_simulation.py
+cd /path/to/peekabook
+python run_multi_session_simulator.py --persona A_최재원
 ```
 
-페르소나(`직장인_SF팬` / `대학생_문학팬` / `중년_역사_비문학`)를 `run_simulation.py` 내 `main()` 함수에서 선택하여 실행한다.
+**전체 페르소나 순회**
+
+```bash
+python run_multi_session_simulator.py --all
+```
+
+**Sweep 실행** (wandb grid search, `SWEEP_CONFIG`에 정의된 페르소나 × 전략 조합)
+
+```bash
+python run_multi_session_simulator.py --sweep
+```
+
+**주요 옵션**
+
+| 옵션 | 기본값 | 설명 |
+|------|--------|------|
+| `--persona` | — | 페르소나 ID (예: `A_최재원`) |
+| `--all` | false | 전체 페르소나 순회 |
+| `--persona-dir` | `backend/data/personas` | 페르소나 파일 디렉토리 |
+| `--query-transform` | `none` | 쿼리 변환 전략 (`none` / `step_back` / `rewrite` / `decompose` / `rewrite_decompose`) |
+| `--n-sessions` | 5 | 페르소나당 세션 수 |
+| `--use-genre-filter` | false | 장르 필터 사용 여부 |
+| `--quiet` | — | verbose 출력 끄기 |
+
+**더미 페르소나로 빠른 검증**
+
+```bash
+python run_multi_session_simulator.py --persona-dir backend/data/personas/dummy --persona a --n-sessions 2
+```
+
+결과는 wandb 프로젝트 `peekabook-crs-multisession-test1`에 기록되며, `ANTHROPIC_API_KEY`(PeekaJudge용)가 `.env`에 설정되어 있어야 한다.
+
+> **세션 수 조정**: 본실험 전 `run_multi_session_simulator.py` 상단의 `N_SESSIONS` 값을 확인하고 필요에 따라 수정한다. `--n-sessions` 옵션으로도 덮어쓸 수 있다.

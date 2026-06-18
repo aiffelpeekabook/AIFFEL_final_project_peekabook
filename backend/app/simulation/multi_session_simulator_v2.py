@@ -184,6 +184,7 @@ async def run_session(app,
     return {
         "persona_id":          persona_id,
         "session_id":          session_id,
+        "thread_id":           thread_id,
         "status":              status,
         "response_time_sec":   elapsed,
         "total_turns":         agent.turn_count if agent else 0,
@@ -253,8 +254,9 @@ def run_multi_session(persona_id:    str,
         print(f"Judge model: {judge_model}")
         print(f"{'='*60}")
 
-    sessions_log: list = []
-    table_rows:   list = []
+    sessions_log:     list = []
+    table_rows:       list = []
+    book_detail_rows: list = []
 
     for session_spec in full_persona["sessions"][:total]:
         session_id = session_spec["session_id"]
@@ -324,8 +326,30 @@ def run_multi_session(persona_id:    str,
             except Exception as e:
                 print(f"  [오류] update_long_term_memory 실패: {e}")
 
+        # books_detail 행 구성
+        thread_id  = session_result.get("thread_id", "")
         self_eval  = session_result.get("self_evaluation") or {}
         self_books = self_eval.get("books_evaluated", [])
+        judge_books = judge_result.get("books_evaluated", [])
+
+        judge_by_key = {b.get("title", ""): b for b in judge_books}
+        self_by_key  = {b.get("title", ""): b for b in self_books}
+
+        for rank, book in enumerate(retrieved_books, start=1):
+            title = book.get("title", "")
+            jb    = judge_by_key.get(title, {})
+            sb    = self_by_key.get(title, {})
+            book_detail_rows.append([
+                session_id,
+                thread_id,
+                rank,
+                book.get("title", ""),
+                book.get("author", ""),
+                1 if jb.get("match") else 0,
+                jb.get("reason", ""),
+                1 if sb.get("match") else 0,
+                sb.get("reason", ""),
+            ])
         self_match_rate = (
             sum(1 for b in self_books if b.get("match")) / len(self_books)
             if self_books else 0.0
@@ -375,12 +399,18 @@ def run_multi_session(persona_id:    str,
         ])
 
     if wandb.run is not None:
-        table = wandb.Table(
-            columns=["session_id", "preferred_genre", "status",
-                     "self_match_rate", "judge_match_rate", "verdict", "top3_books"],
-            data=table_rows,
-        )
-        wandb.log({"sessions_detail": table})
+        wandb.log({
+            "sessions_detail": wandb.Table(
+                columns=["session_id", "preferred_genre", "status",
+                         "self_match_rate", "judge_match_rate", "verdict", "top3_books"],
+                data=table_rows,
+            ),
+            "books_detail": wandb.Table(
+                columns=["step", "thread_id", "rank", "title", "author",
+                         "judge_score", "judge_reason", "self_score", "self_reason"],
+                data=book_detail_rows,
+            ),
+        })
 
     if verbose:
         print(f"\n{'='*60}")
