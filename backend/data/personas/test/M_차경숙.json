@@ -1,0 +1,256 @@
+{
+  "M_차경숙": {
+    "demographics": "54세, 카페 사장, 여성, 제주 애월읍 거주, 기혼, 자녀 독립 후 부부 2인 가구",
+    "speaking_style": "구어체 존댓말, 감성적이고 여유로운 어조",
+    "reader_type": "Slow Reader / Generalist",
+    "disliked": "빠른 성과를 강조하는 자기계발서, 딱딱한 이론서",
+    "pain_points": "취향은 뚜렷한데 딱 맞는 책을 언어로 설명하기 어려움 / 바쁜 영업 중에는 긴 책을 이어 읽기 어려움",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "카페 공간과 브랜딩에 영감을 얻고 싶음",
+        "preferred_genre": "디자인·예술",
+        "reading_style": "감각적인 사진과 글이 어우러진 책 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "영업 준비 전 이른 아침, 카페에 혼자 있는 시간"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "느리게 사는 삶의 방식에 대해 읽고 싶음",
+        "preferred_genre": "라이프스타일·에세이",
+        "reading_style": "잔잔하고 여운이 긴 산문 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "비 오는 평일 오후, 손님이 뜸한 시간대"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "소규모 자영업 운영에 실질적인 도움을 얻고 싶음",
+        "preferred_genre": "경영·창업",
+        "reading_style": "소상공인 실제 사례 중심의 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "월말 정산하며 다음 달 운영 고민이 많은 밤"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "외국 시를 읽으며 언어의 감각을 즐기고 싶음",
+        "preferred_genre": "외국 시·문학",
+        "reading_style": "번역이 아름답고 여백이 있는 시집 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "영업 마친 저녁, 조용히 시 한 편 읽고 싶은 기분"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "다른 나라의 여행기를 읽으며 간접 경험을 하고 싶음",
+        "preferred_genre": "여행기·에세이",
+        "reading_style": "풍경과 감정이 잘 담긴 여행 산문 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "제주를 벗어나고 싶은 마음이 드는 주말 저녁"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "커피의 역사와 문화를 깊이 알고 싶음",
+        "preferred_genre": "커피·음식 문화",
+        "reading_style": "커피를 인문학적으로 풀어낸 교양서 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "새 원두 들여오면서 커피 공부를 더 하고 싶어진 날"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "제주로 이주한 사람들의 삶을 담은 에세이를 읽고 싶음",
+        "preferred_genre": "라이프스타일·에세이",
+        "reading_style": "공감 가는 이주 생활 이야기 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "제주 온 지 몇 년째, 이 선택이 맞았는지 돌아보는 날"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "카페 소품과 인테리어에 영감을 얻고 싶음",
+        "preferred_genre": "디자인·예술",
+        "reading_style": "사진과 감각적인 레이아웃이 풍부한 책 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "카페 한쪽 코너를 새로 꾸미고 싶어진 날"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "작은 카페를 오래 운영하는 노하우를 알고 싶음",
+        "preferred_genre": "경영·창업",
+        "reading_style": "현실적인 운영 사례가 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주변 카페가 폐업하는 걸 보고 불안해진 날"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "커피 산지별 특성과 문화를 알고 싶음",
+        "preferred_genre": "커피·음식 문화",
+        "reading_style": "산지 이야기와 감각적인 묘사가 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "에티오피아 원두를 쓰면서 그 나라 커피 문화가 궁금해진 날"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "러시아 문학과 시를 읽으며 깊은 감성을 느끼고 싶음",
+        "preferred_genre": "외국 시·문학",
+        "reading_style": "묵직하고 여운이 긴 러시아 문학 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "손님 없는 오후, 깊이 있는 글 한 편이 읽고 싶은 기분"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "50대 여성의 두 번째 삶에 대한 이야기를 읽고 싶음",
+        "preferred_genre": "라이프스타일·에세이",
+        "reading_style": "담담하고 솔직한 어조의 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "자녀 독립 후 처음으로 나만의 시간이 생긴 것을 실감한 날"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "중앙아시아나 남미 여행기를 읽으며 낯선 세계를 느끼고 싶음",
+        "preferred_genre": "여행기·에세이",
+        "reading_style": "익숙하지 않은 풍경과 문화를 생생하게 담은 여행기 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "비성수기, 완전히 다른 세계의 이야기가 읽고 싶어진 날"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "북유럽 생활 디자인 철학에서 영감을 얻고 싶음",
+        "preferred_genre": "디자인·예술",
+        "reading_style": "일상 속 북유럽 디자인 철학이 담긴 교양서 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "카페 메뉴판과 패키지 디자인을 바꾸고 싶어진 날"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "로컬 브랜드가 어떻게 자리를 잡는지 알고 싶음",
+        "preferred_genre": "경영·창업",
+        "reading_style": "제주나 지방 소도시 브랜드 사례가 담긴 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "애월 상권이 변해가는 걸 느끼며 방향을 다시 잡고 싶어진 시점"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "작은 가게 주인의 일상을 담은 에세이를 읽고 싶음",
+        "preferred_genre": "라이프스타일·에세이",
+        "reading_style": "소박하고 따뜻한 어조의 일상 산문 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "영업 마친 밤, 오늘 하루를 조용히 돌아보는 시간"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "유럽 감성의 시집을 읽으며 언어의 아름다움을 느끼고 싶음",
+        "preferred_genre": "외국 시·문학",
+        "reading_style": "번역이 섬세하고 이미지가 풍부한 시집 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "주말 아침, 커피 한 잔과 함께 시집을 펴고 싶은 기분"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "커피 로스팅의 원리와 감각을 깊이 알고 싶음",
+        "preferred_genre": "커피·음식 문화",
+        "reading_style": "로스팅 과정을 감각적으로 풀어낸 전문 교양서 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "직접 로스팅을 해보고 싶다는 생각이 든 날"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "계절과 자연의 변화를 담은 생활 에세이를 읽고 싶음",
+        "preferred_genre": "라이프스타일·에세이",
+        "reading_style": "계절 감각이 살아있는 잔잔한 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "제주 한라산에 첫눈이 내린 날 아침"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "죽음에 대해 차분하게 사유한 인문 에세이를 읽고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "두렵지 않게 죽음을 다룬 따뜻한 시각의 글 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "오랜 친구가 아프다는 소식을 듣고 삶과 죽음을 생각하게 된 날"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "공간과 사진으로 읽는 감성 에세이를 보고 싶음",
+        "preferred_genre": "디자인·예술",
+        "reading_style": "사진과 짧은 글이 함께 있는 책 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "카페 인스타그램 피드를 다시 정리하고 싶어진 날"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "남미 느린 여행기를 읽으며 다른 속도의 삶을 느끼고 싶음",
+        "preferred_genre": "여행기·에세이",
+        "reading_style": "천천히 걸으며 기록한 여행 산문 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "겨울 비성수기, 남미에 가보고 싶다는 생각이 드는 오후"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "카페 메뉴와 음식 레시피를 담은 에세이를 보고 싶음",
+        "preferred_genre": "커피·음식 문화",
+        "reading_style": "레시피와 감성 글이 함께 있는 책 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "시즌 한정 메뉴 아이디어가 필요한 날"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "자연과 고요를 담은 외국 단편 소설을 읽고 싶음",
+        "preferred_genre": "외국 시·문학",
+        "reading_style": "짧고 여운이 긴 단편 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "손님 없는 오후, 짧게 읽을 수 있는 좋은 글이 필요한 시간"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "부부 둘이 사는 삶을 담담하게 그린 에세이를 읽고 싶음",
+        "preferred_genre": "라이프스타일·에세이",
+        "reading_style": "잔잔하고 따뜻한 부부 일상 이야기 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "자녀 독립 후 남편과 둘이 보내는 저녁이 낯설게 느껴진 날"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "50대 창업자의 현실적인 이야기를 읽고 싶음",
+        "preferred_genre": "경영·창업",
+        "reading_style": "솔직하고 공감 가는 창업 에세이 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "카페를 열기 잘했는지 가끔 흔들리는 날"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "느림과 여백의 철학에 대해 사유하고 싶음",
+        "preferred_genre": "철학·인문",
+        "reading_style": "가볍게 읽히지만 깊이 있는 인문 에세이 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "빠르게 돌아가는 세상 속에서 나만 느린 것 같은 날"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "자연에서 영감을 받은 예술과 디자인 책을 보고 싶음",
+        "preferred_genre": "디자인·예술",
+        "reading_style": "자연과 디자인을 연결한 감각적인 책 선호",
+        "difficulty_level": "성인 일반 수준",
+        "current_context": "애월 바다를 보다가 카페 공간을 자연 색감으로 바꾸고 싶어진 날"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "제주 섬 안을 여행하는 에세이를 읽고 싶음",
+        "preferred_genre": "여행기·에세이",
+        "reading_style": "제주의 구석구석을 감성적으로 담은 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "살면서도 모르는 제주 동네가 많다는 걸 깨달은 날"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "제주 자연과 생태를 담은 에세이를 읽고 싶음",
+        "preferred_genre": "자연·환경",
+        "reading_style": "제주 자연을 감각적으로 풀어낸 글 선호",
+        "difficulty_level": "에세이 수준",
+        "current_context": "카페 앞 바다가 오늘따라 유독 아름다운 오후"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}
