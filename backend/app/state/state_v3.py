@@ -36,3 +36,4 @@ class GraphState(TypedDict):
     genre_filter: list
     genre_level: str
     availability_results: Optional[str]
+    hypothetical_doc: str

@@ -139,6 +139,7 @@ step_back_prompt = ChatPromptTemplate.from_template("""
 """)
 
 
+
 def step_back_query(summary: str, llm) -> str:
     return (step_back_prompt | llm).invoke({"summary": summary}).content.strip()
 
