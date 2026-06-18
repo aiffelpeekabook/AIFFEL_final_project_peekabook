@@ -46,7 +46,7 @@ from app.config import (
     SIMULATION_CHROMA_BASE,
     SIMULATION_RESULTS_DIR,
 )
-from app.simulation.multi_session_simulator import run_multi_session
+from app.simulation.multi_session_simulator_v2 import run_multi_session
 from app.simulation.persona_loader          import load_persona_bank
 from app.simulation.multi_sim_logger        import (
     print_multi_session_summary,
@@ -64,6 +64,7 @@ from app.simulation.profile_visualizer      import (
 # 현재는 팀원 graph_test3이 factory를 export함.
 # 그래프가 graph_v4 등으로 promote되면 여기 한 줄만 변경.
 from app.pipeline.graph_test3 import create_app, initial_state
+import app.rag.query_transform_v5 as qt_v5
 
 
 # ──────────────────────────────────────────────
@@ -100,7 +101,11 @@ def run_for_persona(persona_id:   str,
             persona_id=persona_id,
             full_persona=full_persona,
             run_id=run_id,
-            create_app_fn=create_app,
+            create_app_fn=lambda chroma_db_path: create_app(
+                chroma_db_path=chroma_db_path,
+                use_genre_filter=False,
+                rag_module=qt_v5,
+            ),
             initial_state=initial_state,
             chroma_base_dir=SIMULATION_CHROMA_BASE,
             judge_model=args.judge_model,
