@@ -458,6 +458,8 @@ def run_multi_session(persona_id:    str,
             "genre_filter":                     session_result.get("genre_filter", []),
             "genre_level":                      session_result.get("genre_level", ""),
             "crs_recommendations":              session_result.get("crs_recommendations", []),
+            "hypothetical_doc":                 session_result.get("hypothetical_doc", ""),
+            "query_transforms":                 session_result.get("query_transforms", {}),
             # ── 검색 결과 ──────────────────────────────
             "rag_retrieved_count":              session_result.get("rag_retrieved_count", 0),
             "retrieved_books":                  retrieved_books,
