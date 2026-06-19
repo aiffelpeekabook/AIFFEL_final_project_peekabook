@@ -203,6 +203,7 @@ def run_for_persona(persona_id:       str,
                     n_sessions:       int,
                     max_turns:        int,
                     judge_model:      str,
+                    qdrant_collection: str,
                     wandb_project:    str,
                     wandb_entity:     str,
                     output_dir:       str,
@@ -223,7 +224,7 @@ def run_for_persona(persona_id:       str,
             "llm_model":        LLM_MODEL,
             "judge_model":      judge_model,
             "max_turns":        max_turns,
-            "collection_name":  os.getenv("QDRANT_COLLECTION_NAME", ""),
+            "collection_name":  qdrant_collection,
             "chroma_db_path":   chroma_db_path,
             "run_id":           run_id,
         },
@@ -231,7 +232,7 @@ def run_for_persona(persona_id:       str,
         reinit=True,
     )
 
-    qt_v5.QDRANT_COLLECTION_NAME = os.getenv("QDRANT_COLLECTION_NAME", "")
+    qt_v5.QDRANT_COLLECTION_NAME = qdrant_collection
     _set_query_transform(query_transform)
 
     try:
@@ -270,6 +271,19 @@ def run_for_persona(persona_id:       str,
         save_path = _save_persona_result(output_dir, run_id, persona_id, result)
         if verbose:
             print(f"  [체크포인트] 저장됨: {save_path}")
+
+        # ChromaDB 백업 (사용자 프로파일 그래프 분석용)
+        try:
+            import shutil, time
+            time.sleep(0.5)  # SQLite WAL checkpoint 시간 확보
+            chroma_backup = Path(output_dir) / run_id / f"{persona_id}_chroma"
+            if Path(chroma_db_path).exists():
+                shutil.copytree(chroma_db_path, chroma_backup, dirs_exist_ok=True)
+                if verbose:
+                    print(f"  [ChromaDB 백업] {chroma_backup}")
+        except Exception as e:
+            # 백업 실패해도 페르소나 자체는 정상 완료 처리
+            print(f"  [ChromaDB 백업 실패] {e} — 페르소나는 정상 완료")
 
         return result
     finally:
@@ -339,6 +353,10 @@ def main():
     parser.add_argument("--judge-model",      type=str, default=JUDGE_MODEL)
     parser.add_argument("--n-sessions",       type=int, default=DEFAULT_N_SESSIONS)
     parser.add_argument("--max-turns",        type=int, default=MAX_TURNS)
+    parser.add_argument("--qdrant-collection", type=str,
+                        default=os.getenv("QDRANT_COLLECTION_NAME", ""),
+                        help="Qdrant collection (default: env QDRANT_COLLECTION_NAME)")
+    
 
     # 동시 실행
     parser.add_argument("--concurrent",       type=int, default=1,
@@ -394,6 +412,7 @@ def main():
         "query_transform":  args.query_transform,
         "use_genre_filter": args.use_genre_filter,
         "judge_model":      args.judge_model,
+        "qdrant_collection": args.qdrant_collection,
         "concurrent":       args.concurrent,
         "output_dir":       args.output_dir,
         "is_resume":        is_resume,
@@ -417,6 +436,7 @@ def main():
         "n_sessions":       args.n_sessions,
         "max_turns":        args.max_turns,
         "judge_model":      args.judge_model,
+        "qdrant_collection":  args.qdrant_collection,
         "wandb_project":    args.wandb_project,
         "wandb_entity":     args.wandb_entity,
         "output_dir":       args.output_dir,
