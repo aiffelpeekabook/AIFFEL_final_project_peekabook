@@ -1,0 +1,256 @@
+{
+  "L_진성우": {
+    "demographics": "17세, 고등학교 2학년, 남성, 대전 유성구 거주, 부모님과 함께 생활",
+    "speaking_style": "10대 구어체, 직설적이고 열정적인 어조, 짧은 문장, 관심 분야 얘기할 때 말이 많아짐",
+    "reader_type": "Deep Diver / Specialist",
+    "disliked": "뻔한 교훈 위주 이야기, 현실과 동떨어진 억지 감동",
+    "pain_points": "SF·판타지 장르 책이 도서관에 많지 않음 / 번역 퀄리티가 들쑥날쑥해서 고르기 어려움",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "세계관이 탄탄한 SF 소설을 읽고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "설정이 치밀하고 몰입감 있는 이야기 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "주말 오후, SF 영화 보고 원작 소설이 읽고 싶어짐"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "e스포츠 프로 선수나 팀의 이야기를 읽고 싶음",
+        "preferred_genre": "e스포츠·게임 문화",
+        "reading_style": "실제 선수 인터뷰나 팀 비하인드가 담긴 글 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "좋아하는 프로팀 경기 본 후 뒷이야기가 궁금해짐"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "소설 쓰는 법을 배우고 싶음",
+        "preferred_genre": "창작·글쓰기",
+        "reading_style": "실제 작가의 경험과 실용적인 조언이 담긴 책 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "평일 밤, 아이디어는 넘치는데 막상 쓰려니 막막한 상태"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "마법과 모험이 가득한 판타지 소설을 읽고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "독창적인 세계관과 캐릭터가 살아있는 이야기 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "학교 독서 시간, 바로 읽을 책이 필요한 상태"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "작가나 창작자로 사는 삶이 어떤 건지 알고 싶음",
+        "preferred_genre": "진로·청소년 에세이",
+        "reading_style": "현직 작가의 솔직한 이야기 선호, 뻔한 성공담은 질색",
+        "difficulty_level": "청소년 수준",
+        "current_context": "진로 시간에 작가라고 말하기 망설여진 날"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "인류 멸망이나 사회 붕괴를 다룬 디스토피아 소설이 읽고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "긴장감 있고 현실적인 묘사가 담긴 이야기 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "사회 시간에 미래 사회 이야기 듣고 디스토피아 소설이 땡긴 날"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "소설 속 세계관과 설정 구축하는 법을 배우고 싶음",
+        "preferred_genre": "창작·글쓰기",
+        "reading_style": "실제 작가가 설정을 만드는 과정이 담긴 책 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "쓰고 싶은 이야기 설정 만들다가 논리가 자꾸 무너지는 상태"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "e스포츠 산업이 어떻게 성장했는지 알고 싶음",
+        "preferred_genre": "e스포츠·게임 문화",
+        "reading_style": "역사와 현황을 흥미롭게 풀어낸 글 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "e스포츠 관련 진로를 알아보다 산업 구조가 궁금해진 날"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "고2 진로 고민을 솔직하게 다룬 책을 읽고 싶음",
+        "preferred_genre": "진로·청소년 에세이",
+        "reading_style": "공감 가는 또래 이야기, 억지 긍정은 싫음",
+        "difficulty_level": "청소년 수준",
+        "current_context": "담임 선생님과 진로 면담 후 더 복잡해진 마음"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "한국 SF 소설을 읽어보고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "한국적 정서가 담긴 SF, 번역 아닌 원작 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "외국 SF만 읽다가 한국 SF도 궁금해진 주말"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "중세나 고대 역사를 판타지 창작 소재로 공부하고 싶음",
+        "preferred_genre": "역사·인문",
+        "reading_style": "딱딱한 교과서보다 이야기식으로 풀어낸 역사서 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "쓰고 싶은 판타지 배경을 중세로 정했는데 아는 게 없는 상태"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "매력적인 캐릭터를 만드는 방법을 배우고 싶음",
+        "preferred_genre": "창작·글쓰기",
+        "reading_style": "캐릭터 심리와 동기 설계를 다룬 실용적인 책 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "내가 만든 주인공이 매력 없다는 피드백을 받은 날"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "광활한 우주를 배경으로 한 스페이스 오페라를 읽고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "스케일 크고 전투·모험이 가득한 이야기 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "주말, 완전히 다른 세계로 빠져들고 싶은 기분"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "게임이 어떻게 기획되고 만들어지는지 알고 싶음",
+        "preferred_genre": "e스포츠·게임 문화",
+        "reading_style": "게임 기획 과정이 쉽게 설명된 교양서 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "좋아하는 게임의 개발 스토리를 읽고 흥미가 생긴 날"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "꿈을 찾아가는 10대 이야기가 읽고 싶음",
+        "preferred_genre": "진로·청소년 에세이",
+        "reading_style": "현실적이고 솔직한 이야기, 억지 감동 없는 글 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "친구가 진로를 확실히 정했다는 말에 뒤처지는 느낌이 든 날"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "마법사와 마법 학교가 나오는 판타지 소설을 읽고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "마법 체계가 정교하고 성장 서사가 있는 이야기 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "기말고사 끝나고 보상으로 재밌는 책 한 권 읽고 싶어진 날"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "작가들이 창작 과정에서 어떤 고민을 하는지 알고 싶음",
+        "preferred_genre": "창작·글쓰기",
+        "reading_style": "현직 작가의 솔직한 창작 에세이 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "글이 잘 안 써지는 슬럼프가 온 평일 밤"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "SF 소설 속 과학 원리가 실제로 가능한지 알고 싶음",
+        "preferred_genre": "과학·기술 교양",
+        "reading_style": "어렵지 않게 풀어쓴 과학 교양서 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "읽던 SF에 나온 기술이 진짜인지 궁금해진 날"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "게임 세계관을 배경으로 한 소설이나 라노벨을 읽고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "게임 감각이 살아있는 빠른 전개 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "좋아하는 게임의 세계관 확장 이야기가 궁금해진 날"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "게임이 사회와 문화에 미치는 영향을 알고 싶음",
+        "preferred_genre": "e스포츠·게임 문화",
+        "reading_style": "게임 문화를 진지하게 다룬 교양서 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "게임 때문에 부모님과 다툰 후 게임의 가치를 설명하고 싶어진 날"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "입시 너머의 삶을 다룬 현실적인 에세이를 읽고 싶음",
+        "preferred_genre": "진로·청소년 에세이",
+        "reading_style": "입시 중심 사고에 지친 10대가 공감할 글 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "수능 얘기만 나오는 학교 분위기에 숨막히는 날"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "짧은 SF 단편들을 끊어 읽으며 다양한 상상력을 접하고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "아이디어 하나를 극한까지 밀어붙인 단편 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "시험 기간, 짧게 끊어 읽을 책이 필요한 상태"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "이야기의 구조와 스토리텔링 원리를 배우고 싶음",
+        "preferred_genre": "창작·글쓰기",
+        "reading_style": "영화·소설 사례로 설명하는 실용적인 책 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "쓴 이야기가 왜 재미없는지 스스로 몰라서 답답한 날"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "신화와 전설을 창작 소재로 공부하고 싶음",
+        "preferred_genre": "역사·인문",
+        "reading_style": "다양한 나라의 신화를 이야기식으로 풀어낸 책 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "판타지 소설에 자꾸 신화 레퍼런스가 나와서 공부하고 싶어진 날"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "은하와 우주를 주제로 한 천체물리 교양서를 읽고 싶음",
+        "preferred_genre": "과학·기술 교양",
+        "reading_style": "수식 없이 개념을 풀어쓴 흥미로운 교양서 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "스페이스 오페라 읽다가 실제 우주가 궁금해진 날"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "프로 e스포츠 선수가 되는 과정이 궁금함",
+        "preferred_genre": "e스포츠·게임 문화",
+        "reading_style": "실제 선수 경험담이 담긴 현실적인 글 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "e스포츠 선수 진로를 부모님께 말하기 전에 먼저 공부해보고 싶어진 날"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "우주 식민지나 행성 탐사를 다룬 하드 SF를 읽고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "과학적 설정이 탄탄하고 현실감 있는 이야기 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "화성 탐사 뉴스를 보고 SF 소설이 땡기는 주말"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "소설 속 대화와 문체를 어떻게 다듬는지 배우고 싶음",
+        "preferred_genre": "창작·글쓰기",
+        "reading_style": "예문과 수정 사례가 풍부한 실용서 선호",
+        "difficulty_level": "청소년~성인 초입 수준",
+        "current_context": "내가 쓴 대화가 너무 딱딱하다는 피드백을 받은 날"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "이세계물이나 게임 판타지 장르 소설을 읽고 싶음",
+        "preferred_genre": "SF·판타지 소설",
+        "reading_style": "스피디한 전개와 성장 서사가 있는 이야기 선호",
+        "difficulty_level": "청소년 수준",
+        "current_context": "연휴, 오랜만에 가볍게 빠져들 수 있는 책이 필요한 날"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "작가가 되고 싶은 10대에게 현실적인 조언을 주는 책을 읽고 싶음",
+        "preferred_genre": "진로·청소년 에세이",
+        "reading_style": "솔직하고 현실적인 이야기, 근거 없는 격려는 싫음",
+        "difficulty_level": "청소년 수준",
+        "current_context": "고3 되기 전 진로를 확실히 정해야 할 것 같은 압박이 오는 시기"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}

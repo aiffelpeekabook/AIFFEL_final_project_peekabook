@@ -6,6 +6,13 @@ multi_session_simulator.py 대비 변경:
   - Judge: retrieved_books 전체(10권) 평가
   - LTM previously_recommended: retrieved_books[:3] (리랭커 상위 3권) 누적
 - api_tool_calling_node 불필요 (graph_test3 + qt_v5 기준)
+
+v2.1 (이번 변경):
+- sessions_log JSON에 분석용 필드 대폭 추가
+  - session_dna 스냅샷
+  - LTM before/after 스냅샷 (누적 효과 측정용)
+  - CRS 내부 상태 (summary, reflection, ai_response, genre_filter, genre_level)
+  - 검색·평가 디테일 (rag_retrieved_count, book_intros, self/judge_eval_details)
 """
 
 from __future__ import annotations
@@ -176,29 +183,46 @@ async def run_session(app,
                 print(f"  [book_intro 추출 실패] {e}")
 
         if verbose:
-            print(f"  [book_intro {'로드' if book_intros else '없음 (fallback)'}] "
+            print(f"  [book_intro {'로드' if book_intros else '없음 — 평가 스킵'}] "
                   f"{len(book_intros)}권")
 
         if recommendation_text:
             self_evaluation = agent.evaluate(recommendation_text, book_intros)
 
+    _crs = crs_result or {}
     return {
+        # ── 기본 ──────────────────────────────────
         "persona_id":          persona_id,
         "session_id":          session_id,
         "thread_id":           thread_id,
         "status":              status,
-        "response_time_sec":   elapsed,
+        "simulated_at":        datetime.now(tz=KST).isoformat(),
+        # ── 대화 ──────────────────────────────────
         "total_turns":         agent.turn_count if agent else 0,
         "conversation":        collector.get("conversation", []),
+        "response_time_sec":   elapsed,
+        # ── CRS 내부 상태 ──────────────────────────
+        "crs_summary":         _crs.get("summary", ""),
+        "crs_reflection":      _crs.get("reflection", ""),
+        "ai_response":         _crs.get("ai_response", ""),
+        "genre_filter":        _crs.get("genre_filter", []),
+        "genre_level":         _crs.get("genre_level", ""),
+        "crs_recommendations": _crs.get("recommendations", []),
+        # ── 검색 결과 ──────────────────────────────
+        "retrieved_books":     _crs.get("retrieved_books", []),
+        "rag_retrieved_count": len(_crs.get("retrieved_books", [])),
+        "book_intro_loaded":   len(book_intros),
+        "book_intros":         book_intros,
+        # ── Self-Evaluation ────────────────────────
         "recommendation_text": recommendation_text,
-        "retrieved_books":     crs_result.get("retrieved_books", []) if crs_result else [],
-        "recommendations":     [],
         "self_evaluation":     self_evaluation,
-        "eval_mode":           "book_intro" if book_intros else "fallback",
         "book_intro_loaded":   len(book_intros),
         "simulated_at":        datetime.now(tz=KST).isoformat(),
         "hypothetical_doc":    crs_result.get("hypothetical_doc", "") if crs_result else "",
         "query_transforms":    crs_result.get("query_transforms", {}) if crs_result else {},
+        "eval_mode":           "book_intro" if book_intros else "skipped",
+        # ── 호환성 유지 ────────────────────────────
+        "recommendations":     [],
     }
 
 
@@ -275,6 +299,13 @@ def run_multi_session(persona_id:    str,
             print(f"{'─'*60}")
 
         session_dna = extract_session_dna(full_persona, session_id)
+
+        # 세션 시작 시점의 LTM 스냅샷 (누적 효과 측정용)
+        ltm_before = full_persona["long_term_memory"]
+        ltm_snapshot_before = {
+            "derived_preferences":     list(ltm_before.get("derived_preferences", [])),
+            "previously_recommended":  list(ltm_before.get("previously_recommended", [])),
+        }
 
         try:
             session_result = asyncio.run(run_session(
@@ -361,7 +392,7 @@ def run_multi_session(persona_id:    str,
         thread_id  = session_result.get("thread_id", "")
         self_eval  = session_result.get("self_evaluation") or {}
         self_books = self_eval.get("books_evaluated", [])
-        judge_books = judge_result.get("books_evaluated", [])
+        judge_books = judge_result.get("books_evaluated", )[]
 
         judge_by_key = {b.get("title", ""): b for b in judge_books}
         self_by_key  = {b.get("title", ""): b for b in self_books}
@@ -382,6 +413,7 @@ def run_multi_session(persona_id:    str,
                 1 if sb.get("match") else 0,
                 sb.get("reason", ""),
             ])
+
         self_match_rate = (
             sum(1 for b in self_books if b.get("match")) / len(self_books)
             if self_books else 0.0
@@ -407,14 +439,45 @@ def run_multi_session(persona_id:    str,
         }, step=session_id)
 
         sessions_log.append({
-            "session_id":       session_id,
-            "preferred_genre":  session_spec.get("preferred_genre", ""),
-            "status":           session_result.get("status", "unknown"),
-            "self_match_rate":  self_match_rate,
-            "judge_match_rate": judge_match_rate,
-            "verdict":          verdict,
-            "conversation":     session_result.get("conversation", []),
-            "retrieved_books":  retrieved_books,
+            # ── 기본 ──────────────────────────────────
+            "session_id":                       session_id,
+            "thread_id":                        thread_id,
+            "preferred_genre":                  session_spec.get("preferred_genre", ""),
+            "status":                           session_result.get("status", "unknown"),
+            "simulated_at":                     session_result.get("simulated_at", ""),
+            # ── 세션 시작 스냅샷 (누적 효과 측정용) ─────
+            "session_dna":                      session_dna,
+            "accumulated_preferences_before":   ltm_snapshot_before["derived_preferences"],
+            "prev_recommended_count_before":    len(ltm_snapshot_before["previously_recommended"]),
+            # ── 대화 ──────────────────────────────────
+            "turn_count":                       session_result.get("total_turns", 0),
+            "response_time_sec":                session_result.get("response_time_sec", 0.0),
+            "conversation":                     session_result.get("conversation", []),
+            # ── CRS 내부 상태 ──────────────────────────
+            "crs_summary":                      session_result.get("crs_summary", ""),
+            "crs_reflection":                   session_result.get("crs_reflection", ""),
+            "ai_response":                      session_result.get("ai_response", ""),
+            "genre_filter":                     session_result.get("genre_filter", []),
+            "genre_level":                      session_result.get("genre_level", ""),
+            "crs_recommendations":              session_result.get("crs_recommendations", []),
+            # ── 검색 결과 ──────────────────────────────
+            "rag_retrieved_count":              session_result.get("rag_retrieved_count", 0),
+            "retrieved_books":                  retrieved_books,
+            "book_intro_loaded":                session_result.get("book_intro_loaded", 0),
+            "book_intros":                      session_result.get("book_intros", {}),
+            # ── 평가 ──────────────────────────────────
+            "recommendation_text":              session_result.get("recommendation_text", ""),
+            "eval_mode":                        session_result.get("eval_mode", ""),
+            "self_match_rate":                  self_match_rate,
+            "self_eval_details":                self_eval.get("books_evaluated", []),
+            "self_eval_summary":                self_eval.get("overall_reason", ""),
+            "judge_match_rate":                 judge_match_rate,
+            "judge_eval_details":               judge_result.get("books_evaluated", []),
+            "verdict":                          verdict,
+            # ── LTM 사후 상태 (세션 종료 후) ────────────
+            "accumulated_preferences_after":    list(ltm.get("derived_preferences", [])),
+            "prev_recommended_count_after":     len(ltm.get("previously_recommended", [])),
+            "latest_feedback":                  latest_fb,
         })
 
         recs_titles = ", ".join(

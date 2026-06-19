@@ -1,0 +1,256 @@
+{
+  "D_이수빈": {
+    "demographics": "12세, 초등학생 6학년, 여성, 서울 동대문구 거주, 부모님과 함께 생활",
+    "speaking_style": "10대 구어체, 솔직하고 호기심 많은 표현, 짧은 문장, 가끔 '왠지', '엄청' 같은 강조어",
+    "reader_type": "Curious Explorer / Generalist",
+    "disliked": "어려운 단어 많은 책, 너무 길고 무거운 분위기의 책",
+    "pain_points": "내 수준에 맞는지 판단 어려움 / 표지만 보고는 재미있을지 모름",
+    "sessions": [
+      {
+        "session_id": 1,
+        "reading_goal": "친구와 함께 읽을 책을 찾고 싶음",
+        "preferred_genre": "한국문학, 청소년 소설",
+        "reading_style": "재미있고 감동적인 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 오후, 친구네 집에서 같이 책 읽기로 한 날"
+      },
+      {
+        "session_id": 2,
+        "reading_goal": "용돈 관리 방법을 쉽고 재미있게 배우고 싶음",
+        "preferred_genre": "어린이 경제·실생활",
+        "reading_style": "유익하고 실생활에 바로 쓸 수 있는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 저녁, 용돈으로 사고 싶은 게 자꾸 늘어나서 고민되는 중"
+      },
+      {
+        "session_id": 3,
+        "reading_goal": "모험 가득한 판타지 이야기로 상상력을 키우고 싶음",
+        "preferred_genre": "동화·창작 이야기",
+        "reading_style": "주인공이 모험하는 신나는 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "방과 후, 학원 가기 전 잠깐 짬 나는 시간"
+      },
+      {
+        "session_id": 4,
+        "reading_goal": "짧고 가볍게 웃을 수 있는 만화책을 보고 싶음",
+        "preferred_genre": "만화·그래픽노블",
+        "reading_style": "유머러스하고 부담 없이 읽히는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 오후, 학원 대기 시간에 휴대폰 대신 책 보고 싶음"
+      },
+      {
+        "session_id": 5,
+        "reading_goal": "전래동화나 옛이야기를 통해 우리 문화를 알아가고 싶음",
+        "preferred_genre": "한국문학, 청소년 소설",
+        "reading_style": "옛날 분위기 있는 흥미로운 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 저녁, 가족 도서관 방문 후 분위기 이어가고 싶은 참"
+      },
+      {
+        "session_id": 6,
+        "reading_goal": "친구들과의 학교생활 속 우정 이야기를 읽고 싶음",
+        "preferred_genre": "동화·창작 이야기",
+        "reading_style": "공감 가는 또래 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 저녁, 친구와 다툰 후 마음이 복잡한 날"
+      },
+      {
+        "session_id": 7,
+        "reading_goal": "역사를 만화로 쉽게 배우고 싶음",
+        "preferred_genre": "만화·그래픽노블",
+        "reading_style": "그림이 많고 핵심을 잘 짚어주는 구성 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 오전, 사회 시험 앞두고 부담 없이 공부하고 싶음"
+      },
+      {
+        "session_id": 8,
+        "reading_goal": "또래 주인공이 성장하는 이야기로 공감하며 읽고 싶음",
+        "preferred_genre": "한국문학, 청소년 소설",
+        "reading_style": "주인공이 변화하고 자라는 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 밤, 자기 전에 한 챕터씩 읽고 싶은 분위기"
+      },
+      {
+        "session_id": 9,
+        "reading_goal": "우주와 별에 대한 신비로운 이야기를 알아보고 싶음",
+        "preferred_genre": "어린이 과학·자연",
+        "reading_style": "사진과 그림이 많고 신기한 사실이 가득한 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 밤, 별이 잘 보이는 날 밤하늘을 본 후"
+      },
+      {
+        "session_id": 10,
+        "reading_goal": "가족 사이의 따뜻한 이야기를 읽고 마음이 따뜻해지고 싶음",
+        "preferred_genre": "동화·창작 이야기",
+        "reading_style": "잔잔하고 감동적인 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 오후, 가족과 외출 후 집에서 쉬는 시간"
+      },
+      {
+        "session_id": 11,
+        "reading_goal": "어린이 눈높이에서 경제가 어떻게 돌아가는지 알고 싶음",
+        "preferred_genre": "어린이 경제·실생활",
+        "reading_style": "쉬운 예시로 개념을 풀어주는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 저녁, 뉴스에서 물가 얘기를 듣고 궁금해진 참"
+      },
+      {
+        "session_id": 12,
+        "reading_goal": "신나는 모험을 떠나는 만화책을 읽으며 기분 전환하고 싶음",
+        "preferred_genre": "만화·그래픽노블",
+        "reading_style": "흥미진진하고 그림이 멋진 만화 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 오후, 한가한 시간에 푹 빠질 만한 만화 찾는 중"
+      },
+      {
+        "session_id": 13,
+        "reading_goal": "동물이 주인공인 이야기를 읽고 싶음",
+        "preferred_genre": "동화·창작 이야기",
+        "reading_style": "주인공 동물에게 감정 이입할 수 있는 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 저녁, 강아지 키우는 친구 집 다녀와서 동물 이야기가 보고 싶어진 날"
+      },
+      {
+        "session_id": 14,
+        "reading_goal": "짧지만 감동이 큰 한국 단편 소설을 읽고 싶음",
+        "preferred_genre": "한국문학, 청소년 소설",
+        "reading_style": "분량이 짧고 여운이 남는 글 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 밤, 자기 전에 한 편씩 읽기 좋은 책이 필요함"
+      },
+      {
+        "session_id": 15,
+        "reading_goal": "동물과 자연이 어떻게 살아가는지 알아보고 싶음",
+        "preferred_genre": "어린이 과학·자연",
+        "reading_style": "흥미로운 사실과 사진이 풍부한 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 오전, 동물원 다녀온 다음 날"
+      },
+      {
+        "session_id": 16,
+        "reading_goal": "재미있는 시리즈물을 발견해서 푹 빠져 읽고 싶음",
+        "preferred_genre": "동화·창작 이야기",
+        "reading_style": "다음 권이 기대되는 흥미진진한 시리즈 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "방학을 앞두고 길게 읽을 책이 필요한 참"
+      },
+      {
+        "session_id": 17,
+        "reading_goal": "한국의 위인들이 어떻게 살았는지 알고 싶음",
+        "preferred_genre": "위인전·인물 이야기",
+        "reading_style": "이야기처럼 읽히는 위인전 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 오후, 사회 시간에 위인 발표 준비하면서"
+      },
+      {
+        "session_id": 18,
+        "reading_goal": "그림책처럼 쉽게 읽히는 그래픽노블을 보고 싶음",
+        "preferred_genre": "만화·그래픽노블",
+        "reading_style": "그림이 예쁘고 한 권으로 끝나는 작품 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 아침, 가볍게 시작할 책을 찾는 중"
+      },
+      {
+        "session_id": 19,
+        "reading_goal": "또래 친구들이 추천하는 인기 있는 책을 읽어보고 싶음",
+        "preferred_genre": "한국문학, 청소년 소설",
+        "reading_style": "친구들이 좋아한다는 이유를 알 수 있는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "쉬는 시간, 친구가 읽고 있던 책이 자꾸 신경 쓰이는 날"
+      },
+      {
+        "session_id": 20,
+        "reading_goal": "외국의 유명한 동화를 어린이 눈높이로 읽어보고 싶음",
+        "preferred_genre": "동화·창작 이야기",
+        "reading_style": "원작 느낌을 살린 친근한 번역 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 저녁, 영어 학원에서 외국 동화 얘기를 듣고 호기심 생긴 참"
+      },
+      {
+        "session_id": 21,
+        "reading_goal": "미래에 어떤 직업이 있는지 살펴보고 싶음",
+        "preferred_genre": "어린이 경제·실생활",
+        "reading_style": "다양한 직업을 흥미롭게 소개하는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 오후, 진로 발표 숙제를 앞두고 고민되는 날"
+      },
+      {
+        "session_id": 22,
+        "reading_goal": "지구와 환경에 대해 어린이도 이해할 수 있게 배우고 싶음",
+        "preferred_genre": "어린이 과학·자연",
+        "reading_style": "그림과 사진으로 쉽게 설명되는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 오후, 학교 환경 캠페인 참여 후 더 알고 싶어진 참"
+      },
+      {
+        "session_id": 23,
+        "reading_goal": "선생님이 추천해주신 책 중에서 골라 읽고 싶음",
+        "preferred_genre": "동화·창작 이야기",
+        "reading_style": "교훈과 재미가 같이 있는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 저녁, 학교 도서관에서 받아온 추천 목록을 들여다보는 중"
+      },
+      {
+        "session_id": 24,
+        "reading_goal": "짧고 아름다운 시를 읽으며 감성을 느끼고 싶음",
+        "preferred_genre": "한국문학, 청소년 소설",
+        "reading_style": "리듬감 있고 그림이 곁들여진 동시집 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 아침, 비 오는 날 창가에서 책을 펴고 싶은 분위기"
+      },
+      {
+        "session_id": 25,
+        "reading_goal": "다양한 직업을 만화로 재미있게 알아보고 싶음",
+        "preferred_genre": "만화·그래픽노블",
+        "reading_style": "직업을 흥미롭게 보여주는 만화 형식 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 오후, 진로 수업 듣고 와서 호기심이 이어진 참"
+      },
+      {
+        "session_id": 26,
+        "reading_goal": "세계의 위인들이 어떤 일을 해냈는지 알고 싶음",
+        "preferred_genre": "위인전·인물 이야기",
+        "reading_style": "다양한 나라의 인물을 흥미롭게 소개하는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 오후, 도서관 위인전 코너에서 책을 고르는 중"
+      },
+      {
+        "session_id": 27,
+        "reading_goal": "일상 속에 숨은 과학 원리를 알아가고 싶음",
+        "preferred_genre": "어린이 과학·자연",
+        "reading_style": "주변에서 볼 수 있는 현상을 설명해주는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 저녁, 엄마가 요리하는 모습을 보다 신기한 게 생긴 참"
+      },
+      {
+        "session_id": 28,
+        "reading_goal": "환경 보호의 중요성을 동화로 따뜻하게 배우고 싶음",
+        "preferred_genre": "동화·창작 이야기",
+        "reading_style": "메시지가 자연스럽게 녹아 있는 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "주말 오전, 분리수거 도와드린 다음 환경 얘기가 마음에 남은 참"
+      },
+      {
+        "session_id": 29,
+        "reading_goal": "어린이도 알기 쉬운 사회·경제 뉴스를 다룬 책을 읽고 싶음",
+        "preferred_genre": "어린이 경제·실생활",
+        "reading_style": "최근 이슈를 어린이 눈높이로 풀어주는 책 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "평일 저녁, TV 뉴스를 보다 모르는 단어가 많아 답답해진 날"
+      },
+      {
+        "session_id": 30,
+        "reading_goal": "요즘 또래들 사이에서 인기 있는 청소년 소설을 읽고 싶음",
+        "preferred_genre": "한국문학, 청소년 소설",
+        "reading_style": "트렌드를 잘 담은 흥미로운 이야기 선호",
+        "difficulty_level": "초등 고학년 수준",
+        "current_context": "방학 시작 첫날, 베스트셀러 코너에서 책을 고르는 중"
+      }
+    ],
+    "long_term_memory": {
+      "previously_recommended": [],
+      "feedback_history": [],
+      "derived_preferences": []
+    }
+  }
+}
