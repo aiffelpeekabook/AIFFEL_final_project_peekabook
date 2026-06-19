@@ -216,8 +216,6 @@ async def run_session(app,
         # ── Self-Evaluation ────────────────────────
         "recommendation_text": recommendation_text,
         "self_evaluation":     self_evaluation,
-        "book_intro_loaded":   len(book_intros),
-        "simulated_at":        datetime.now(tz=KST).isoformat(),
         "hypothetical_doc":    crs_result.get("hypothetical_doc", "") if crs_result else "",
         "query_transforms":    crs_result.get("query_transforms", {}) if crs_result else {},
         "eval_mode":           "book_intro" if book_intros else "skipped",
@@ -392,7 +390,7 @@ def run_multi_session(persona_id:    str,
         thread_id  = session_result.get("thread_id", "")
         self_eval  = session_result.get("self_evaluation") or {}
         self_books = self_eval.get("books_evaluated", [])
-        judge_books = judge_result.get("books_evaluated", )[]
+        judge_books = judge_result.get("books_evaluated", [])
 
         judge_by_key = {b.get("title", ""): b for b in judge_books}
         self_by_key  = {b.get("title", ""): b for b in self_books}
@@ -530,8 +528,9 @@ def run_multi_session(persona_id:    str,
 
     return {
         "persona_id":     persona_id,
-        "total_sessions": total,
-        "sessions":       sessions_log,
-        "final_memory":   copy.deepcopy(full_persona["long_term_memory"]),
-        "completed_at":   datetime.now(tz=KST).isoformat(),
+        "total_sessions":  total,
+        "sessions":        sessions_log,
+        "final_memory":    copy.deepcopy(full_persona["long_term_memory"]),
+        "completed_at":    datetime.now(tz=KST).isoformat(),
+        "chroma_db_path":  chroma_db_path,
     }

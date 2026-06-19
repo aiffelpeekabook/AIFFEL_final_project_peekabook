@@ -16,3 +16,5 @@ anthropic
 requests
 pydantic
 wandb
+tiktoken
+pandas

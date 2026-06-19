@@ -234,10 +234,11 @@ def run():
     wandb.init(tags=WANDB_TAGS)
     cfg = wandb.config
 
+    persona_id = cfg.persona_name
+    run_id     = datetime.now().strftime("%Y%m%d_%H%M%S")
+
     bank         = load_persona_bank(os.path.join(REPO_ROOT, "backend/data/personas"))
-    persona_id   = cfg.persona_name
     full_persona = copy.deepcopy(bank[persona_id])
-    run_id           = datetime.now().strftime("%Y%m%d_%H%M%S")
     use_genre_filter = getattr(cfg, "use_genre_filter", False)
     judge_model      = getattr(cfg, "judge_model", JUDGE_MODEL)
     run_index        = getattr(cfg, "run_index", 1)
@@ -247,6 +248,7 @@ def run():
     _set_query_transform(cfg.query_transform)
 
     chroma_db_path = f"{SIMULATION_CHROMA_BASE}/{run_id}_{persona_id}"
+    wandb.run.name = f"{run_id}_{persona_id}"
     wandb.config.update({
         "n_sessions":      N_SESSIONS,
         "llm_model":       LLM_MODEL,
