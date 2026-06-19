@@ -37,3 +37,4 @@ class GraphState(TypedDict):
     genre_level: str
     availability_results: Optional[str]
     hypothetical_doc: str
+    query_transforms: dict  # {original, step_back, rewritten, sub_queries, all}

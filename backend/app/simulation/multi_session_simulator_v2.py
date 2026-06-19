@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import asyncio
 import copy
+import json
 import queue
 import threading
 import time
@@ -114,7 +115,7 @@ def _run_user_sim(persona_id:  str,
         ans = agent.answer(str(message))
         collector["conversation"].append({
             "turn":    agent.turn_count,
-            "csr":     str(message),
+            "crs":     str(message),
             "thought": ans["thought"],
             "user":    ans["utterance"],
         })
@@ -215,6 +216,10 @@ async def run_session(app,
         # ── Self-Evaluation ────────────────────────
         "recommendation_text": recommendation_text,
         "self_evaluation":     self_evaluation,
+        "book_intro_loaded":   len(book_intros),
+        "simulated_at":        datetime.now(tz=KST).isoformat(),
+        "hypothetical_doc":    crs_result.get("hypothetical_doc", "") if crs_result else "",
+        "query_transforms":    crs_result.get("query_transforms", {}) if crs_result else {},
         "eval_mode":           "book_intro" if book_intros else "skipped",
         # ── 호환성 유지 ────────────────────────────
         "recommendations":     [],
@@ -276,9 +281,11 @@ def run_multi_session(persona_id:    str,
         print(f"Judge model: {judge_model}")
         print(f"{'='*60}")
 
-    sessions_log:     list = []
-    table_rows:       list = []
-    book_detail_rows: list = []
+    sessions_log:         list = []
+    table_rows:           list = []
+    book_detail_rows:     list = []
+    conversation_rows:    list = []
+    query_transform_rows: list = []
 
     for session_spec in full_persona["sessions"][:total]:
         session_id = session_spec["session_id"]
@@ -355,11 +362,37 @@ def run_multi_session(persona_id:    str,
             except Exception as e:
                 print(f"  [오류] update_long_term_memory 실패: {e}")
 
-        # books_detail 행 구성 (W&B Table용)
-        thread_id   = session_result.get("thread_id", "")
-        self_eval   = session_result.get("self_evaluation") or {}
-        self_books  = self_eval.get("books_evaluated", [])
-        judge_books = judge_result.get("books_evaluated", [])
+        # query_transform 행 구성
+        # hyde: hypothetical_doc / qt_v5: query_transforms dict (GraphState에 저장됨)
+        hypothetical_doc = session_result.get("hypothetical_doc", "")
+        qt = session_result.get("query_transforms", {})
+        query_transform_rows.append([
+            persona_id,
+            session_id,
+            qt.get("original", ""),
+            qt.get("step_back", ""),
+            qt.get("rewritten", ""),
+            json.dumps(qt.get("sub_queries", []), ensure_ascii=False),
+            hypothetical_doc,
+            json.dumps(qt.get("all", []), ensure_ascii=False),
+        ])
+
+        # conversation 행 구성
+        for turn in session_result.get("conversation", []):
+            conversation_rows.append([
+                persona_id,
+                session_id,
+                turn.get("turn", ""),
+                turn.get("crs", ""),
+                turn.get("thought", ""),
+                turn.get("user", ""),
+            ])
+
+        # books_detail 행 구성
+        thread_id  = session_result.get("thread_id", "")
+        self_eval  = session_result.get("self_evaluation") or {}
+        self_books = self_eval.get("books_evaluated", [])
+        judge_books = judge_result.get("books_evaluated", )[]
 
         judge_by_key = {b.get("title", ""): b for b in judge_books}
         self_by_key  = {b.get("title", ""): b for b in self_books}
@@ -369,6 +402,7 @@ def run_multi_session(persona_id:    str,
             jb    = judge_by_key.get(title, {})
             sb    = self_by_key.get(title, {})
             book_detail_rows.append([
+                persona_id,
                 session_id,
                 thread_id,
                 rank,
@@ -450,6 +484,7 @@ def run_multi_session(persona_id:    str,
             b.get("title", "") for b in retrieved_books[:3]
         )
         table_rows.append([
+            persona_id,
             session_id,
             session_spec.get("preferred_genre", "")[:30],
             session_result.get("status", "unknown"),
@@ -462,14 +497,23 @@ def run_multi_session(persona_id:    str,
     if wandb.run is not None:
         wandb.log({
             "sessions_detail": wandb.Table(
-                columns=["session_id", "preferred_genre", "status",
+                columns=["persona_name", "session_id", "preferred_genre", "status",
                          "self_match_rate", "judge_match_rate", "verdict", "top3_books"],
                 data=table_rows,
             ),
             "books_detail": wandb.Table(
-                columns=["step", "thread_id", "rank", "title", "author",
+                columns=["persona_name", "session_id", "thread_id", "rank", "title", "author",
                          "judge_score", "judge_reason", "self_score", "self_reason"],
                 data=book_detail_rows,
+            ),
+            "conversation": wandb.Table(
+                columns=["persona_name", "session_id", "turn", "crs", "thought", "user"],
+                data=conversation_rows,
+            ),
+            "query_transforms": wandb.Table(
+                columns=["persona_name", "session_id", "original", "step_back", "rewritten",
+                         "sub_queries", "hypothetical_doc", "all_queries"],
+                data=query_transform_rows,
             ),
         })
 

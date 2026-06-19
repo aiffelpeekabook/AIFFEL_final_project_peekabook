@@ -26,8 +26,8 @@ load_dotenv(_ROOT / ".env")
 
 # ── 설정 ─────────────────────────────────────────────────────────────────────
 INPUT_CSV      = _ROOT / "research/data/processed/books_with_category.csv"
-OUTPUT_CSV     = _ROOT / "research/data/processed/books_with_summarized_review.csv"
-CHECKPOINT_CSV = _ROOT / "research/data/processed/books_with_summarized_review_checkpoint.csv"
+OUTPUT_CSV     = _ROOT / "research/data/processed/books_with_summarized_review_2.csv"
+CHECKPOINT_CSV = _ROOT / "research/data/processed/books_with_summarized_review_checkpoint_2.csv"
 
 MAX_CONCURRENT  = 3     # 동시 요청 수
 CHECKPOINT_EVERY = 500  # N건마다 중간 저장
@@ -37,18 +37,33 @@ API_KEY  = os.getenv("CLOVASTUDIO_API_KEY", "")
 API_URL  = "https://clovastudio.apigw.ntruss.com/testapp/v1/chat-completions/HCX-DASH-001"
 
 SYSTEM_PROMPT = (
-    "당신은 도서 서평 요약 전문가입니다. "
-    "아래 출판사 서평을 핵심 내용만 남겨 4~6문장으로 요약하세요. "
-    "불필요한 마케팅 문구나 반복 내용은 제거하고, "
-    "책의 주제·특징·대상 독자를 중심으로 간결하게 작성하세요."
+    "당신은 도서 큐레이터입니다.\n"
+    "아래 [도서 소개]와 [출판사 서평]을 읽고, 출판사 서평을 핵심 내용만 남겨 요약하세요.\n\n"
+    "[규칙]\n"
+    "- 실제 출판사 서평이나 도서 소개에 나올 법한 문체와 어휘를 사용하세요.\n"
+    "- 저자명, 책 제목은 만들지 마세요. 내용과 주제만 묘사하세요.\n"
+    "- 책의 주제·특징을 중심으로 4~6문장으로 작성하세요.\n"
+    "- 어떤 독자에게 맞는 책인지(대상 독자층, 독서 목적)가 드러나도록 하세요.\n"
+    "- 책의 난이도·분량 성격(가볍게 읽을 수 있는지, 학술적인지 등)을 한 문장 이내로 포함하세요.\n"
+    "- 이 책만의 차별점이나 추천 근거가 드러나도록 하세요.\n"
+    "- [출판사 서평]이 빈약하면 [도서 소개]의 내용을 보완적으로 활용하세요. 단, 두 원문 어디에도 없는 내용은 절대 만들어내지 마세요.\n"
+    "- [출판사 서평]이 짧거나 내용이 부족하면 있는 내용만 요약하고, 문장 수를 억지로 채우지 마세요.\n"
+    "- [출판사 서평]이 비어 있거나 의미 있는 정보가 없으면 빈 문자열만 반환하세요."
 )
 
 
 # ── API 호출 ─────────────────────────────────────────────────────────────────
 MAX_INPUT_CHARS = 4000  # HCX-DASH-001 입력 한도 대비 안전 마진
+MIN_INPUT_CHARS = 50    # 이보다 짧으면 요약 불필요 (원문 그대로 사용)
 
-async def summarize(client: httpx.AsyncClient, sem: asyncio.Semaphore, text: str) -> str:
-    text = text[:MAX_INPUT_CHARS]  # 입력 길이 제한
+def _build_user_message(book_intro: str, pub_review: str) -> str:
+    intro_part  = book_intro[:1000] if book_intro else "(없음)"
+    review_part = pub_review[:3000] if pub_review else "(없음)"
+    return f"[도서 소개]\n{intro_part}\n\n[출판사 서평]\n{review_part}"
+
+
+async def summarize(client: httpx.AsyncClient, sem: asyncio.Semaphore,
+                    book_intro: str, pub_review: str) -> str:
     async with sem:
         headers = {
             "Authorization": f"Bearer {API_KEY}",
@@ -59,7 +74,7 @@ async def summarize(client: httpx.AsyncClient, sem: asyncio.Semaphore, text: str
         body = {
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user",   "content": text},
+                {"role": "user",   "content": _build_user_message(book_intro, pub_review)},
             ],
             "maxTokens":     300,
             "temperature":   0.3,
@@ -70,7 +85,13 @@ async def summarize(client: httpx.AsyncClient, sem: asyncio.Semaphore, text: str
         }
         resp = await client.post(API_URL, headers=headers, json=body, timeout=TIMEOUT)
         resp.raise_for_status()
-        return resp.json()["result"]["message"]["content"].strip()
+        text = resp.json()["result"]["message"]["content"].strip()
+        # 모델이 자체적으로 붙이는 "출판사 서평 :", "요약 :" 등 prefix 제거
+        for prefix in ("출판사 서평 :", "출판사서평:", "요약 :", "요약:"):
+            if text.startswith(prefix):
+                text = text[len(prefix):].lstrip()
+                break
+        return text
 
 
 # ── 메인 ─────────────────────────────────────────────────────────────────────
@@ -85,8 +106,14 @@ async def main():
     pbar   = tqdm(total=len(rows), desc="진행")
 
     async def process(client, row):
-        review = str(row["pub_review"]) if pd.notna(row["pub_review"]) else ""
-        summary = await summarize(client, sem, review) if review else ""
+        intro  = str(row["book_intro"])  if pd.notna(row["book_intro"])  else ""
+        review = str(row["pub_review"])  if pd.notna(row["pub_review"])  else ""
+        if len(review) >= MIN_INPUT_CHARS:
+            summary = await summarize(client, sem, intro, review)
+        elif len(intro) >= MIN_INPUT_CHARS:
+            summary = await summarize(client, sem, intro, review)  # review는 짧거나 없음
+        else:
+            summary = "[서평 없음]"
         pbar.update(1)
         return {**row.to_dict(), "pub_review_summarized": summary}
 

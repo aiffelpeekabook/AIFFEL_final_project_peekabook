@@ -6,6 +6,7 @@ load_dotenv()
 
 OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
 CLOVASTUDIO_API_KEY: str = os.getenv("CLOVASTUDIO_API_KEY", "")
+GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
 QDRANT_URL: str = os.getenv("QDRANT_URL", "")
 QDRANT_API_KEY: str = os.getenv("QDRANT_API_KEY", "")
 LIBRARY_API_KEY: str = os.getenv("LIBRARY_API_KEY", "")
