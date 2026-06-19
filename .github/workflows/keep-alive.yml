@@ -1,0 +1,14 @@
+name: Keep HF Space Alive
+
+on:
+  schedule:
+    - cron: '0 */8 * * *'  # 6시간마다 실행 (시간은 UTC 기준)
+  workflow_dispatch:        # 수동 실행도 가능
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping HF Space health endpoint
+        run: |
+          curl -f https://${{ secrets.HF_SPACE_URL }}/health || echo "Space may be waking up"
