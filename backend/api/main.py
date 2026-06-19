@@ -144,3 +144,13 @@ async def chat(req: ChatRequest):
         thread_id=result["thread_id"],
         session_done=result["session_done"],
     )
+
+# ────────────────────────────────────────────────────────────────────────────
+# URL 접근, API 호출 횟수 통제
+# ────────────────────────────────────────────────────────────────────────────
+MAX_TURNS_PER_SESSION = 20 # 세션당 최대 턴 수 제한
+
+@app.post("/chat")
+async def chat(req: ChatRequest):
+    if req.turn_count and req.turn_count > MAX_TURNS_PER_SESSION:
+        raise HTTPException(status_code=429, detail="세션 최대 턴 수 초과")
