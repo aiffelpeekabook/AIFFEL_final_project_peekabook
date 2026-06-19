@@ -37,7 +37,7 @@ SLOT_DESCRIPTIONS: dict[str, str] = {
     "preferred_genre": "사용자가 현재 관심을 가지는 장르나 분야",
     "reading_style": "사용자가 어떤 스타일의 독서를 선호하는지 (깊이, 속도, 형식 등)",
     "difficulty_level": "사용자가 선호하는 책의 난이도",
-    "current_context": "사용자의 현재 상황이나 감정 상태",
+    "current_context": "사용자가 책을 읽고자 하는 상황이나 감정 상태",
 }
 
 
