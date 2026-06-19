@@ -25,9 +25,11 @@ from app.state.state_v3 import GraphState
 load_dotenv()
 
 # ── Query Transformation 플래그 ───────────────────────────────────────────────
+USE_ORIGINAL  = True
 USE_STEP_BACK = True
 USE_REWRITE   = True
 USE_DECOMPOSE = True
+USE_HYDE      = False
 
 # ── 검색 결과 크기 ────────────────────────────────────────────────────────────
 SEARCH_LIMIT   = 10  # 쿼리당 Qdrant 검색 결과 수
@@ -166,7 +168,30 @@ def rewrite_query(summary: str, llm) -> str:
     return (rewrite_prompt | llm).invoke({"summary": summary}).content.strip()
 
 
-# ## 4. Sub-query Decomposition
+# ## 4. HyDE (Hypothetical Document Embedding)
+
+_hyde_prompt = ChatPromptTemplate.from_template("""
+당신은 도서 큐레이터입니다.
+아래 사용자 프로파일을 읽고, 이 사용자에게 주제와 내용 면에서 완벽하게 맞는
+도서의 소개글(book_intro)이 어떻게 쓰여있을지 작성하세요.
+
+[규칙]
+- 실제 출판사 서평이나 도서 소개에 나올 법한 문체와 어휘를 사용하세요.
+- 저자명, 책 제목은 만들지 마세요. 내용과 주제만 묘사하세요.
+- 사용자의 독서 목적과 선호 장르에 집중하세요.
+- 200자 내외로 작성하세요.
+
+사용자 프로파일: {summary}
+
+가상 도서 소개:
+""")
+
+
+def generate_hypothetical_doc(summary: str, llm) -> str:
+    return (_hyde_prompt | llm).invoke({"summary": summary}).content.strip()
+
+
+# ## 5. Sub-query Decomposition
 
 decompose_prompt = ChatPromptTemplate.from_template("""
 당신은 도서 추천 시스템의 검색 쿼리 전문가입니다.
@@ -203,19 +228,26 @@ def decompose_query(rewritten: str, llm) -> list:
     ]
 
 
-# ## 5. Chained Pipeline
+# ## 6. Chained Pipeline
 
 def get_chained_queries(user_profile_query: str, llm,
+                        use_original: bool = True,
                         use_step_back: bool = True,
                         use_rewrite: bool = True,
-                        use_decompose: bool = True) -> dict:
-    all_queries = []
+                        use_decompose: bool = True,
+                        use_hyde: bool = False) -> dict:
+    all_queries      = []
+    hypothetical_doc = ""
 
-    step_back = step_back_query(user_profile_query, llm) if use_step_back else user_profile_query
+    if use_original:
+        all_queries.append(user_profile_query)
+
+    step_back = step_back_query(user_profile_query, llm) if use_step_back else ""
     print(f"  [Step-back]  : {step_back}")
     if use_step_back:
         all_queries.append(step_back)
 
+    # decompose 입력으로 쓰기 위한 값 (use_rewrite=False면 원본 쿼리 사용)
     rewritten = rewrite_query(user_profile_query, llm) if use_rewrite else user_profile_query
     print(f"  [Rewritten]  : {rewritten}")
     if use_rewrite:
@@ -225,15 +257,21 @@ def get_chained_queries(user_profile_query: str, llm,
     print(f"  [Sub-queries]: {sub_queries}")
     all_queries.extend(sub_queries)
 
+    if use_hyde:
+        hypothetical_doc = generate_hypothetical_doc(user_profile_query, llm)
+        print(f"  [HyDE]       : {hypothetical_doc[:80]}...")
+        all_queries.append(hypothetical_doc)
+
     return {
-        "step_back":   step_back,
-        "rewritten":   rewritten,
-        "sub_queries": sub_queries,
-        "all":         all_queries,
+        "step_back":        step_back,
+        "rewritten":        rewritten,
+        "sub_queries":      sub_queries,
+        "hypothetical_doc": hypothetical_doc,
+        "all":              all_queries,
     }
 
 
-# ## 6. RRF
+# ## 7. RRF
 
 def reciprocal_rank_fusion(results_list: list, k: int = 60) -> list:
     scores, payloads = {}, {}
@@ -246,7 +284,7 @@ def reciprocal_rank_fusion(results_list: list, k: int = 60) -> list:
     return [payloads[isbn] for isbn, _ in sorted(scores.items(), key=lambda x: x[1], reverse=True)]
 
 
-# ## 7. Query Transform RAG 노드
+# ## 8. Query Transform RAG 노드
 
 def query_transform_rag_node(state: GraphState) -> dict:
     summary     = state.get("summary", "")
@@ -262,17 +300,23 @@ def query_transform_rag_node(state: GraphState) -> dict:
     user_profile_query = " ".join(filter(None, [summary, reflection]))
 
     print("\n[Query Transformations]")
-    if not (USE_STEP_BACK or USE_REWRITE or USE_DECOMPOSE):
-        print("  [변환 없음] 원본 쿼리만 사용")
-        all_queries = [user_profile_query]
-    else:
-        queries     = get_chained_queries(
-            user_profile_query, llm,
-            use_step_back=USE_STEP_BACK,
-            use_rewrite=USE_REWRITE,
-            use_decompose=USE_DECOMPOSE,
-        )
-        all_queries = queries["all"]
+    queries = get_chained_queries(
+        user_profile_query, llm,
+        use_original=USE_ORIGINAL,
+        use_step_back=USE_STEP_BACK,
+        use_rewrite=USE_REWRITE,
+        use_decompose=USE_DECOMPOSE,
+        use_hyde=USE_HYDE,
+    )
+    all_queries      = queries["all"] or [user_profile_query]  # 아무것도 없으면 원본 fallback
+    hypothetical_doc = queries.get("hypothetical_doc", "")
+    query_transforms = {
+        "original":    user_profile_query,
+        "step_back":   queries.get("step_back", "") if USE_STEP_BACK else "",
+        "rewritten":   queries.get("rewritten", "") if USE_REWRITE else "",
+        "sub_queries": queries.get("sub_queries", []),
+        "all":         all_queries,
+    }
 
     field_map = {"large": "category_large", "medium": "category_medium"}
     query_filter = None
@@ -310,4 +354,4 @@ def query_transform_rag_node(state: GraphState) -> dict:
     ]
 
     print(f"\n[RAG] 최종 검색 결과: {len(retrieved_books)}권")
-    return {"retrieved_books": retrieved_books}
+    return {"retrieved_books": retrieved_books, "query_transforms": query_transforms, "hypothetical_doc": hypothetical_doc}

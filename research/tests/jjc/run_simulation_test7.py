@@ -54,10 +54,10 @@ SWEEP_CONFIG = {
     "metric": {"name": "mean_score", "goal": "maximize"},
     "parameters": {
         "collection_name":  {"values": ["books_intro_48k", "books_pub_review_46k"]},
-        "persona_name":     {"values": ["A_최재원", "B_한미영", "C_오민아", "D_이수빈", "E_정미희"]},
+        "persona_name":     {"values": ["A_최재원", "B_한미영", "C_오민아"]},
         "use_genre_filter": {"values": [False]},
         "query_transform":  {"values": ["none"]},
-        "run_index":        {"values": list(range(1, 10))},
+        "run_index":        {"values": list(range(1, 7))},
     },
 }
 

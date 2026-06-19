@@ -1,8 +1,9 @@
 """
 PeekaJudge: 추천 도서 적합성을 평가하는 독립 LLM-as-Judge
 
-Claude Haiku 4.5 사용 
-(PeekaReader의 gpt-4o-mini와 모델 패밀리 분리해 Preference Leakage 편향 회피)
+기본 모델: Claude Haiku 4.5 (Anthropic)
+멀티 프로바이더 지원: Anthropic / OpenAI / Gemini / ClovaStudio
+모델 이름 접두사로 자동 감지 (claude-* / gemini-* / HCX-* / 그 외→openai)
 
 주요 구성:
 - PeekaJudge          : LLM-as-Judge 평가자
@@ -15,6 +16,7 @@ Claude Haiku 4.5 사용
 from __future__ import annotations
 
 import json
+import os
 import re
 from datetime import datetime
 from typing import Optional
@@ -24,16 +26,60 @@ from anthropic import Anthropic
 from app.config import JUDGE_MODEL, KST
 
 
-# Anthropic 클라이언트 지연 초기화 (테스트 시 env 주입 순서 문제 회피)
-_client: Optional[Anthropic] = None
+# ── 프로바이더 감지 ────────────────────────────────────────────────────────────
+
+def _detect_provider(model: str) -> str:
+    """모델 이름 접두사로 API 프로바이더를 결정함.
+
+    claude-*       → anthropic
+    gemini-*       → gemini   (OpenAI-compat endpoint)
+    HCX-* / clova* → clovastudio (OpenAI-compat endpoint)
+    그 외           → openai
+    """
+    if model.startswith("claude-"):
+        return "anthropic"
+    if model.startswith("gemini-"):
+        return "gemini"
+    if model.startswith("HCX-") or model.lower().startswith("clova"):
+        return "clovastudio"
+    return "openai"
 
 
-def _get_client() -> Anthropic:
-    """Anthropic 클라이언트를 지연 초기화하여 반환함"""
-    global _client
-    if _client is None:
-        _client = Anthropic()
-    return _client
+# ── 클라이언트 지연 초기화 ──────────────────────────────────────────────────────
+
+_anthropic_client: Optional[Anthropic] = None
+_openai_clients: dict = {}  # provider → openai.OpenAI instance
+
+
+def _get_anthropic_client() -> Anthropic:
+    global _anthropic_client
+    if _anthropic_client is None:
+        _anthropic_client = Anthropic()
+    return _anthropic_client
+
+
+def _get_openai_client(provider: str):
+    """OpenAI-호환 클라이언트 (openai / gemini / clovastudio) 지연 초기화"""
+    if provider in _openai_clients:
+        return _openai_clients[provider]
+
+    import openai
+
+    if provider == "gemini":
+        client = openai.OpenAI(
+            api_key=os.getenv("GEMINI_API_KEY", ""),
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        )
+    elif provider == "clovastudio":
+        client = openai.OpenAI(
+            api_key=os.getenv("CLOVASTUDIO_API_KEY", ""),
+            base_url="https://clovastudio.stream.ntruss.com/v1",
+        )
+    else:
+        client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY", ""))
+
+    _openai_clients[provider] = client
+    return client
 
 
 # ──────────────────────────────────────────────
@@ -159,20 +205,28 @@ class PeekaJudge:
             book_intros_str=book_intros_str,
         )
 
-        # Anthropic API 호출 (OpenAI와 시그니처 다름: system은 별도 인자)
-        # seed 파라미터 없음 → temperature=0.0으로 재현성 확보
-        resp = _get_client().messages.create(
-            model=self.model,
-            max_tokens=max_tokens,
-            temperature=temperature,
-            system=prompt,
-            messages=[
-                {"role": "user", "content": "위 도서 소개글을 평가해주세요."},
-            ],
-        )
+        provider = _detect_provider(self.model)
 
-        # Anthropic 응답: resp.content는 ContentBlock 리스트, 첫 번째가 text
-        raw = resp.content[0].text.strip() if resp.content else ""
+        if provider == "anthropic":
+            resp = _get_anthropic_client().messages.create(
+                model=self.model,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                system=prompt,
+                messages=[{"role": "user", "content": "위 도서 소개글을 평가해주세요."}],
+            )
+            raw = resp.content[0].text.strip() if resp.content else ""
+        else:
+            resp = _get_openai_client(provider).chat.completions.create(
+                model=self.model,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                messages=[
+                    {"role": "system",  "content": prompt},
+                    {"role": "user",    "content": "위 도서 소개글을 평가해주세요."},
+                ],
+            )
+            raw = resp.choices[0].message.content or "" if resp.choices else ""
         result = _extract_json(raw)
 
         books = result.get("books_evaluated", [])

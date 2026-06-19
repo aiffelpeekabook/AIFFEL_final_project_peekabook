@@ -1,10 +1,8 @@
 """
-graph_test5: HyDE RAG 지원 팩토리 (v5).
+graph_test5: query_transform_v5 기반 RAG 팩토리.
 
-graph_test3 대비 변경:
-- use_hyde 파라미터 추가: True면 query_transform_hyde 모듈 사용
-  False면 rag_module 파라미터 또는 query_transform_v5 사용
-- use_genre_filter, rag_module 파라미터는 그대로 유지
+USE_ORIGINAL / USE_STEP_BACK / USE_REWRITE / USE_DECOMPOSE / USE_HYDE 플래그는
+run_multi_session_simulator.py 에서 qt_v5 모듈 전역변수로 주입됩니다.
 """
 import os
 from dotenv import load_dotenv
@@ -46,26 +44,19 @@ initial_state = {
     "genre_filter": [],
     "genre_level": "none",
     "availability_results": None,
+    "hypothetical_doc":    "",
+    "query_transforms":    {},
 }
 
 
 def create_app(chroma_db_path: str,
-               use_genre_filter: bool = True,
-               use_hyde: bool = True,
-               rag_module=None):
+               use_genre_filter: bool = True):
     """
     Parameters
     ----------
     use_genre_filter : 장르 필터 노드 on/off
-    use_hyde         : True면 HyDE RAG, False면 rag_module(기본 v5) 사용
-    rag_module       : use_hyde=False일 때 사용할 RAG 모듈 (None이면 query_transform_v5)
     """
-    if use_hyde:
-        import app.rag.query_transform_hyde as active_rag
-    else:
-        active_rag = rag_module
-        if active_rag is None:
-            import app.rag.query_transform_v5 as active_rag
+    import app.rag.query_transform_v5 as active_rag
 
     memory_store = MemoryStore(persist_directory=chroma_db_path)
     nodes        = create_nodes(llm, memory_store)
