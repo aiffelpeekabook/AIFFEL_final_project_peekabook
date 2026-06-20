@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir -r requirements-demo.txt
 
 # 나머지 코드 복사
 COPY . .
+RUN ln -s /app/research /research
 
 EXPOSE 7860
 
