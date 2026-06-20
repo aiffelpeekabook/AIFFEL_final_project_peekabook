@@ -2,7 +2,7 @@ name: Keep HF Space Alive
 
 on:
   schedule:
-    - cron: '0 */8 * * *'  # 6시간마다 실행 (시간은 UTC 기준)
+    - cron: '0 */12 * * *'  # 12 시간마다 실행 (시간은 UTC 기준)
   workflow_dispatch:        # 수동 실행도 가능
 
 jobs:
