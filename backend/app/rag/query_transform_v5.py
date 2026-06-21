@@ -287,8 +287,8 @@ def reciprocal_rank_fusion(results_list: list, k: int = 60) -> list:
 # ## 8. Query Transform RAG 노드
 
 def query_transform_rag_node(state: GraphState) -> dict:
-    # summary     = state.get("summary", "")
-    summary     = ""    # w/o summary 실험을 위해 수정
+    summary     = state.get("summary", "")
+    # summary     = ""    # w/o summary 실험을 위해 수정
     reflection  = state.get("reflection", "")
     categories  = state.get("genre_filter", [])
     genre_level = state.get("genre_level", "none")
