@@ -1,7 +1,7 @@
 """
 graph_demo.py — 웹 데모용 그래프 어댑터.
 
-기존 backend/app/pipeline/graph_test3.py를 그대로 import해서 사용하되,
+backend/app/pipeline/graph_main.py를 import해서 사용하되,
 웹 챗봇 환경에 맞게 다음 두 가지를 처리한다:
 
 1. interrupt_before 우회
@@ -26,8 +26,7 @@ from typing import Optional
 
 from langchain_core.messages import HumanMessage, AIMessage
 
-# 원본 그래프 모듈은 절대 건드리지 않고 import만.
-from app.pipeline import graph_test3
+from app.pipeline import graph_main
 from app.state.state import (
     UserProfile,
     BookExperience,
@@ -43,10 +42,9 @@ from app.state.state import (
 # 진짜 영속성은 클라이언트 localStorage가 담당.
 _DEMO_CHROMA_PATH = os.environ.get("DEMO_CHROMA_PATH", "/tmp/peekabook_demo_chroma")
 
-_compiled_graph = graph_test3.create_app(
+_compiled_graph = graph_main.create_app(
     chroma_db_path=_DEMO_CHROMA_PATH,
     use_genre_filter=True,
-    rag_module=None,  # 기본값 query_transform_v4 사용
 )
 
 
@@ -150,7 +148,7 @@ async def run_one_turn(
         # 첫 턴: initial_state에 prior profile inject 후 시작
         prior = deserialize_profile_payload(prior_profile_payload)
 
-        initial = dict(graph_test3.initial_state)  # 얕은 복사
+        initial = dict(graph_main.initial_state)  # 얕은 복사
         initial["session_id"] = session_id
         initial["messages"] = [HumanMessage(content=user_message)]
         
@@ -185,8 +183,16 @@ async def run_one_turn(
     # next가 비어있으면 그래프가 END에 도달한 것
     session_done = not snapshot.next
 
+    # 최종 응답은 messages 마지막 항목에서 읽음 (rag_llm/api_tool_calling이 messages에 기록)
+    # 프로파일링 중간 턴은 ai_response를 fallback으로 사용
+    messages = state_values.get("messages", [])
+    last_ai_message = next(
+        (m.content for m in reversed(messages) if isinstance(m, AIMessage)),
+        state_values.get("ai_response", ""),
+    )
+
     return {
-        "ai_response": state_values.get("ai_response", ""),
+        "ai_response": last_ai_message,
         "recommendations": state_values.get("recommendations", []),
         "phase": _phase_to_str(state_values.get("phase")),
         "profile_payload": serialize_profile_payload(state_values),

@@ -55,7 +55,7 @@ agent_executor = create_react_agent(llm, tools, prompt=system_prompt)
 def api_tool_calling_node(state: GraphState) -> dict:
     recommendations = state.get("recommendations", [])
     summary = state.get("summary", "")
-    district = "강남구"
+    district = "중구"
 
     if not recommendations:
         msg = "검색된 도서가 없어 추천을 제공할 수 없습니다."
