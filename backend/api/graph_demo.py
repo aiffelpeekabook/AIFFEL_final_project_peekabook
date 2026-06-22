@@ -153,8 +153,16 @@ async def run_one_turn(
         initial = dict(graph_test3.initial_state)  # 얕은 복사
         initial["session_id"] = session_id
         initial["messages"] = [HumanMessage(content=user_message)]
-        initial["user_profile"] = prior["user_profile"]
-        initial["book_experiences"] = prior["book_experiences"]
+        
+        # 세션 2부터는 슬롯 빈 상태로 시작
+        initial["user_profile"] = UserProfile()
+        initial["book_experiences"] = []
+
+        # 이전 세션 요약만 컨텍스트로 주입
+        if prior.get("summary"):
+            initial["summary"] = f"[이전 세션 요약] {prior['summary']}"
+        if prior.get("reflection"):
+            initial["reflection"] = f"[이전 세션 인사이트] {prior['reflection']}"
 
         # 누적 프로파일이 있으면 슬롯필링 일부를 건너뛰고 바로 추천으로 가는 것도
         # 가능하지만, 데모에서는 "기억하고 있음을 보여주는" 효과가 더 중요하므로
