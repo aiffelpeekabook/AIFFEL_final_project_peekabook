@@ -804,8 +804,8 @@ def create_nodes(llm: BaseChatModel, memory_store: MemoryStore):
     
             # 리스트 형태 파싱
             reflection_parsed = parse_json_response(reflection_raw)
-            if isinstance(reflection_parsed, list):
-                reflection_list = reflection_parsed
+            if isinstance(reflection_parsed, dict):
+                reflection_list = reflection_parsed.get("insights", [])
             else:
                 # fallback: 파싱 실패 시 원문을 단일 항목 리스트로
                 reflection_list = [reflection_raw.strip()]
