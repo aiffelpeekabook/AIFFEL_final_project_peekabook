@@ -10,7 +10,7 @@ from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import StateGraph, END
 
-from app.profiling.profiler import (
+from app.profiling.profiler_last import (
     MemoryStore,
     create_nodes,
     route_after_slot_processing,
