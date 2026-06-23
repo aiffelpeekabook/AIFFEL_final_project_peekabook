@@ -24,11 +24,11 @@ from app.state.state_v3 import GraphState
 load_dotenv()
 
 # ── Query Transformation 플래그 ───────────────────────────────────────────────
-USE_ORIGINAL  = True
-USE_STEP_BACK = True
-USE_REWRITE   = True
-USE_DECOMPOSE = True
-USE_HYDE      = False
+USE_ORIGINAL  = False
+USE_STEP_BACK = False
+USE_REWRITE   = False
+USE_DECOMPOSE = False
+USE_HYDE      = True
 
 # ── 검색 결과 크기 ────────────────────────────────────────────────────────────
 SEARCH_LIMIT   = 10  # 쿼리당 Qdrant 검색 결과 수
@@ -36,10 +36,9 @@ RETRIEVE_TOP_N = 10  # 리랭킹 후 최종 반환 수
 
 # ── 초기화 ────────────────────────────────────────────────────────────────────
 
-_csv_path = os.path.join(
-    os.path.dirname(__file__),
-    "../../../research/src/rag/query_transformations/aladin_category.csv",
-)
+_csv_path = os.path.join(os.path.dirname(__file__), "../../data/aladin_category.csv")
+if not os.path.exists(_csv_path):
+    _csv_path = os.path.join(os.path.dirname(__file__), "../../../research/src/rag/query_transformations/aladin_category.csv")
 _df = pd.read_csv(_csv_path)
 
 CATEGORY_TREE = (
@@ -442,7 +441,7 @@ def rag_llm_node(state: GraphState) -> dict:
         f"표지URL: {b.get('cover_url', '')}\n"
         f"소개: {(b.get('book_intro') or '')[:300]}\n"
         f"사전분석: {b.get('analysis', '')}"
-        for b in books
+        for b in books[:3]
     ])
 
     response = (rag_prompt | llm).invoke({

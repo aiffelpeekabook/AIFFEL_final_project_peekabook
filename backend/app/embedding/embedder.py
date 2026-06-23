@@ -32,8 +32,10 @@ class LocalEmbedder(BaseEmbedder):
     embedder = LocalEmbedder("BAAI/bge-m3")
     """
     def __init__(self, model_name="BAAI/bge-m3"):
+        import torch
         from sentence_transformers import SentenceTransformer
-        self.model = SentenceTransformer(model_name)
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.model = SentenceTransformer(model_name, device=device)
 
     def embed(self, text: str) -> list[float]:
         return self.model.encode(text).tolist()     # 출력 형식 : 단일 리스트

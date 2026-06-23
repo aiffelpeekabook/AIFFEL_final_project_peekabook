@@ -58,6 +58,9 @@ class ChatRequest(BaseModel):
     session_id: Optional[str] = Field(
         None, description="현재 세션 ID. 없으면 서버가 새로 발급."
     )
+    user_id: Optional[str] = Field(
+        None, description="사용자 ID. ChromaDB 경로 분리에 사용."
+    )
     thread_id: Optional[str] = Field(
         None,
         description=(
@@ -127,6 +130,7 @@ async def chat(req: ChatRequest):
         result = await run_one_turn(
             user_message=req.message,
             session_id=session_id,
+            user_id=req.user_id or "default",
             prior_profile_payload=req.prior_profile_payload,
             thread_id=req.thread_id,
         )
@@ -145,12 +149,3 @@ async def chat(req: ChatRequest):
         session_done=result["session_done"],
     )
 
-# ────────────────────────────────────────────────────────────────────────────
-# URL 접근, API 호출 횟수 통제
-# ────────────────────────────────────────────────────────────────────────────
-MAX_TURNS_PER_SESSION = 20 # 세션당 최대 턴 수 제한
-
-@app.post("/chat")
-async def chat(req: ChatRequest):
-    if req.turn_count and req.turn_count > MAX_TURNS_PER_SESSION:
-        raise HTTPException(status_code=429, detail="세션 최대 턴 수 초과")

@@ -22,7 +22,7 @@ from __future__ import annotations
 
 import os
 import uuid
-from typing import Optional
+from typing import Any, Optional
 
 from langchain_core.messages import HumanMessage, AIMessage
 
@@ -36,16 +36,23 @@ from app.state.state import (
 
 
 # ────────────────────────────────────────────────────────────────────────────
-# 그래프 인스턴스 (모듈 로드 시 1회만 생성)
+# 유저별 그래프 인스턴스 관리
 # ────────────────────────────────────────────────────────────────────────────
-# 데모는 ChromaDB 영속성을 쓰지 않으므로 임시 디렉토리에 만들고 매 호출마다 새로 시작.
-# 진짜 영속성은 클라이언트 localStorage가 담당.
-_DEMO_CHROMA_PATH = os.environ.get("DEMO_CHROMA_PATH", "/tmp/peekabook_demo_chroma")
+# 유저 ID별로 ChromaDB 경로를 분리해 세션 기억을 격리한다.
+# HF Spaces 무료 플랜은 슬립 후 /tmp가 초기화되므로 재시작 시 데이터가 초기화됨.
+_DEMO_CHROMA_BASE = os.environ.get("DEMO_CHROMA_BASE", "/tmp/peekabook_demo_chroma")
 
-_compiled_graph = graph_main.create_app(
-    chroma_db_path=_DEMO_CHROMA_PATH,
-    use_genre_filter=True,
-)
+_graphs: dict[str, Any] = {}
+
+
+def _get_graph(user_id: str):
+    if user_id not in _graphs:
+        chroma_path = os.path.join(_DEMO_CHROMA_BASE, user_id)
+        _graphs[user_id] = graph_main.create_app(
+            chroma_db_path=chroma_path,
+            use_genre_filter=True,
+        )
+    return _graphs[user_id]
 
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -109,6 +116,7 @@ def deserialize_profile_payload(payload: Optional[dict]) -> dict:
 async def run_one_turn(
     user_message: str,
     session_id: str,
+    user_id: str = "default",
     prior_profile_payload: Optional[dict] = None,
     thread_id: Optional[str] = None,
 ) -> dict:
@@ -138,8 +146,10 @@ async def run_one_turn(
 
     config = {"configurable": {"thread_id": thread_id}}
 
+    compiled_graph = _get_graph(user_id)
+
     # 현재 checkpoint 상태를 확인 — 같은 thread에서 이어지는 호출인지 첫 호출인지 판단
-    current_snapshot = _compiled_graph.get_state(config)
+    current_snapshot = compiled_graph.get_state(config)
     is_first_turn_in_thread = (
         current_snapshot is None or not current_snapshot.values
     )
@@ -167,17 +177,17 @@ async def run_one_turn(
         # 정상 흐름을 유지하되 generate_slot_question 노드가 이미 채워진 슬롯을
         # 인지하도록 둔다 (그래프 로직이 filled_slots()를 이미 확인함).
 
-        await _compiled_graph.ainvoke(initial, config=config)
+        await compiled_graph.ainvoke(initial, config=config)
     else:
         # 같은 thread의 후속 턴: interrupt_before로 멈춰있는 상태에 유저 메시지만 추가
-        _compiled_graph.update_state(
+        compiled_graph.update_state(
             config,
             {"messages": [HumanMessage(content=user_message)]},
         )
-        await _compiled_graph.ainvoke(None, config=config)
+        await compiled_graph.ainvoke(None, config=config)
 
     # 실행 후 상태 조회
-    snapshot = _compiled_graph.get_state(config)
+    snapshot = compiled_graph.get_state(config)
     state_values = snapshot.values
 
     # next가 비어있으면 그래프가 END에 도달한 것
@@ -216,6 +226,6 @@ def _phase_to_str(phase) -> str:
 def healthcheck() -> dict:
     """그래프가 정상 컴파일됐는지만 가볍게 확인."""
     return {
-        "graph_compiled": _compiled_graph is not None,
+        "graph_compiled": True,
         "slot_names": SLOT_NAMES,
     }

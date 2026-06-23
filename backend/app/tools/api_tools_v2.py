@@ -61,11 +61,16 @@ def api_tool_calling_node(state: GraphState) -> dict:
         msg = "검색된 도서가 없어 추천을 제공할 수 없습니다."
         return {"messages": [AIMessage(content=msg)]}
 
+    # retrieved_books에서 ISBN 기준으로 원본 book_intro 조회 (rag_llm_node의 300자 잘림 우회)
+    retrieved_index = {b.get("isbn", ""): b for b in state.get("retrieved_books", [])}
+
     if isinstance(recommendations, str):
         rec_text = recommendations
     else:
         rec_text = "\n".join([
-            f"- 제목: {r['title']}, 저자: {r['author']}, ISBN: {r['isbn']}, cover_url: {r.get('cover_url', '')}, 책소개: {r.get('book_intro', '')} , 추천 이유: {r['reason']}"
+            f"- 제목: {r['title']}, 저자: {r['author']}, ISBN: {r['isbn']}, cover_url: {r.get('cover_url', '')}, "
+            f"책소개: {retrieved_index.get(r['isbn'], {}).get('book_intro', r.get('book_intro', ''))}, "
+            f"추천 이유: {r['reason']}"
             for r in recommendations
         ])
 
