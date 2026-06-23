@@ -34,6 +34,26 @@ from app.state.state import (
     SLOT_NAMES,
 )
 
+# ────────────────────────────────────────────────────────────────────────────
+# Langfuse 트레이싱 (환경변수가 있을 때만 활성화)
+# ────────────────────────────────────────────────────────────────────────────
+_langfuse_handler = None
+try:
+    if os.environ.get("LANGFUSE_PUBLIC_KEY") and os.environ.get("LANGFUSE_SECRET_KEY"):
+        from langfuse.callback import CallbackHandler
+
+        _langfuse_handler = CallbackHandler(
+            public_key=os.environ["LANGFUSE_PUBLIC_KEY"],
+            secret_key=os.environ["LANGFUSE_SECRET_KEY"],
+            host=os.environ.get("LANGFUSE_HOST", "https://cloud.langfuse.com"),
+        )
+        print("[graph_demo] Langfuse callback handler initialized")
+    else:
+        print("[graph_demo] Langfuse env vars not set — tracing disabled")
+except Exception as e:
+    print(f"[graph_demo] Langfuse init failed (continuing without tracing): {e}")
+    _langfuse_handler = None
+
 
 # ────────────────────────────────────────────────────────────────────────────
 # 유저별 그래프 인스턴스 관리
@@ -144,9 +164,21 @@ async def run_one_turn(
     if thread_id is None:
         thread_id = str(uuid.uuid4())
 
-    config = {"configurable": {"thread_id": thread_id}}
+    config: dict = {"configurable": {"thread_id": thread_id}}
+    if _langfuse_handler is not None:
+        config["callbacks"] = [_langfuse_handler]
+        # 데모 식별용 메타데이터 — Langfuse 대시보드에서 필터링 가능
+        config["metadata"] = {
+            "user_id": user_id,
+            "session_id": session_id,
+            "langfuse_session_id": session_id,
+            "langfuse_user_id": user_id,
+        }
 
     compiled_graph = _get_graph(user_id)
+
+    # 현재 checkpoint 상태를 확인 — 같은 thread에서 이어지는 호출인지 첫 호출인지 판단
+    current_snapshot = compiled_graph.get_state(config)
 
     # 현재 checkpoint 상태를 확인 — 같은 thread에서 이어지는 호출인지 첫 호출인지 판단
     current_snapshot = compiled_graph.get_state(config)

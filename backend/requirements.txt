@@ -18,3 +18,4 @@ pydantic
 wandb
 tiktoken
 pandas
+langfuse>=2.0.0
