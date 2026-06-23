@@ -40,7 +40,7 @@ from app.state.state import (
 _langfuse_handler = None
 try:
     if os.environ.get("LANGFUSE_PUBLIC_KEY") and os.environ.get("LANGFUSE_SECRET_KEY"):
-        from langfuse.callback import CallbackHandler
+        from langfuse.langchain import CallbackHandler
 
         _langfuse_handler = CallbackHandler(
             public_key=os.environ["LANGFUSE_PUBLIC_KEY"],
